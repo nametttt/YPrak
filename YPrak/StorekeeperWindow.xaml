@@ -131,7 +131,7 @@
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Column="0" Text="Выберите вид материала:"/>
                             <TextBlock Grid.Row="1" Grid.Column="0" Text="Выберите материал:"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Пересчитанные данные:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Данные на складе:"/>
                             <TextBlock Grid.Row="3" Grid.Column="0" Text="Пересчитанные данные:"/>
                             <TextBlock Grid.Row="4" Grid.Column="0" Text="Расхождения:"/>
                             <ComboBox Grid.Column="1" Margin="10" x:Name="combobox1" SelectionChanged="ComboBox_SelectionChanged" Height="28">
