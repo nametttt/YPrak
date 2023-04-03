@@ -1,0 +1,74 @@
+﻿<Window x:Class="YPrak.ManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YPrak"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Экран менеджера" Height="720" Width="800" MinHeight="700" MinWidth="800" Icon="Logo\logo-02.jpg" Closed="Window_Closed">
+    <Window.Resources>
+        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+        <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
+    </Window.Resources>
+    <ScrollViewer>
+        <StackPanel>
+            <Button Content="Выход" Margin="0,10,10,0" HorizontalAlignment="Right" Click="Button_Click"/>
+            <TabControl>
+                <TabItem Header="Список изделий">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="Список изделий" Margin="0,40,0,30" FontSize="36" HorizontalAlignment="Center"/>
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="Поиск по названию"/>
+                            <TextBox Margin="10, 0, 0, 0" MinWidth="450" Name="Search1" KeyDown="Search1_KeyDown"/>
+                        </WrapPanel>
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 20, 0, 10">
+                            <Label Content="Единица измерения"/>
+                            <ComboBox Margin="10, 0, 0, 0" MinWidth="450" Name="Edin" SelectionChanged="Edin1_SelectionChanged">
+                                <ComboBoxItem Content="мм"/>
+                                <ComboBoxItem Content="см"/>
+                                <ComboBoxItem Content="дм"/>
+                                <ComboBoxItem Content="м"/>
+                            </ComboBox>
+                        </WrapPanel>
+                        <DataGrid Height="300" Margin="10,10" x:Name="datagrid1"></DataGrid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Оформление заказа">
+                    <StackPanel>
+                        <TextBlock Text="Оформление заказа" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
+
+                        <DataGrid Height="300" Margin="10,10" x:Name="datagrid11" Background="White"></DataGrid>
+
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="Итоговая стоимость"/>
+                            <TextBox Margin="10, 0, 0, 0" MinWidth="600" Name="AllCost"/>
+                        </WrapPanel>
+                        <Button Margin="10" Content="Оформить" Click="Button_Click_1"/>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Заказы">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="Список заказов" Margin="0,40,0,30" FontSize="36" HorizontalAlignment="Center"/>
+                        <WrapPanel Orientation="Horizontal">
+                            <Label Content="Поиск по номеру"/>
+                            <TextBox Margin="35, 0, 10, 0" MinWidth="450" Name="Search2" KeyDown="Search2_KeyDown"/>
+                        </WrapPanel>
+                        <WrapPanel Orientation="Horizontal" Margin="0, 10, 0, 10">
+                            <Label Content="Поиск по покупателю"/>
+                            <TextBox Margin="0, 0, 10, 0" MinWidth="450" Name="Search3" KeyDown="Search3_KeyDown"/>
+                        </WrapPanel>
+                        <WrapPanel Orientation="Horizontal">
+                            <Label Content="Поиск по менеджеру"/>
+                            <TextBox Margin="5, 0, 10, 0" MinWidth="450" Name="Search4" KeyDown="Search4_KeyDown"/>
+                        </WrapPanel>
+                        <Button Margin="10" Content="Обновить" Click="Button_Click_1" />
+                        <DataGrid Height="300" Margin="10,10" x:Name="datagrid2"></DataGrid>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

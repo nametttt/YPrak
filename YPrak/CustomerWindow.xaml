@@ -1,0 +1,35 @@
+﻿<Window x:Class="YPrak.CustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YPrak"
+        mc:Ignorable="d"
+        Title="Экран заказчика" Height="700" Width="700" MinHeight="600" MinWidth="700" Icon="Logo\logo-02.jpg" Closed="Window_Closed">
+    <Window.Resources>
+        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+        <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
+    </Window.Resources>
+    <StackPanel>
+        <Button Content="Выход" Margin="0,10,10,0" HorizontalAlignment="Right" Click="Button_Click"/>
+        <TabControl>
+            <TabItem Header="Оформить заказ">
+                <StackPanel>
+                    <TextBlock Text="Оформление заказа" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
+
+                    <DataGrid Height="300" Margin="10,10" x:Name="datagrid1" Background="White" MouseDown="datagrid1_PreviewMouseDown"></DataGrid>
+
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Content="Итоговая стоимость"/>
+                        <TextBox Margin="10, 0, 0, 0" MinWidth="500" Name="AllCost"/>
+                    </WrapPanel>
+                    <Button Margin="10" Content="Оформить" Click="Button_Click_1"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Мои заказы">
+            </TabItem>
+        </TabControl>
+    </StackPanel>
+</Window>

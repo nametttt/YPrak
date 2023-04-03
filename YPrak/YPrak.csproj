@@ -1,0 +1,1184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{763F3EBC-FD2C-4D58-8FAF-DBE9100FF480}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>YPrak</RootNamespace>
+    <AssemblyName>YPrak</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AboutProduct.xaml.cs">
+      <DependentUpon>AboutProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Auth.xaml.cs">
+      <DependentUpon>Auth.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Color.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consist.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerWindow.xaml.cs">
+      <DependentUpon>CustomerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryWindow.xaml.cs">
+      <DependentUpon>DirectoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fabric_Fyr.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fabric_Textile.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fyr.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fyr_Product.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fyr_Type.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerWindow.xaml.cs">
+      <DependentUpon>ManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ordered_Products.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Picture.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reg.xaml.cs">
+      <DependentUpon>Reg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StorekeeperWindow.xaml.cs">
+      <DependentUpon>StorekeeperWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Textile.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Textile_Color.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Textile_Consist.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Textile_Product.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Type.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="MyModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MyModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MyModel.edmx.diagram">
+      <DependentUpon>MyModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo\logo-01.jpg" />
+    <Resource Include="Logo\logo-02.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ProdImage\001.427.40.JPG" />
+    <Resource Include="ProdImage\001.635.58.JPG" />
+    <Resource Include="ProdImage\001.745.14.JPG" />
+    <Resource Include="ProdImage\001.903.64.JPG" />
+    <Resource Include="ProdImage\002.127.52.JPG" />
+    <Resource Include="ProdImage\002.341.22.JPG" />
+    <Resource Include="ProdImage\002.958.08.JPG" />
+    <Resource Include="ProdImage\002.958.51.JPG" />
+    <Resource Include="ProdImage\002.988.35.JPG" />
+    <Resource Include="ProdImage\002.988.40.JPG" />
+    <Resource Include="ProdImage\002.996.46.JPG" />
+    <Resource Include="ProdImage\003.065.00.JPG" />
+    <Resource Include="ProdImage\003.495.66.JPG" />
+    <Resource Include="ProdImage\003.511.68.JPG" />
+    <Resource Include="ProdImage\003.582.64.JPG" />
+    <Resource Include="ProdImage\003.646.89.JPG" />
+    <Resource Include="ProdImage\003.724.15.JPG" />
+    <Resource Include="ProdImage\1,13891E+12.jpg" />
+    <Resource Include="ProdImage\101.499.82.JPG" />
+    <Resource Include="ProdImage\101.635.48.JPG" />
+    <Resource Include="ProdImage\101.635.72.JPG" />
+    <Resource Include="ProdImage\102.093.39.JPG" />
+    <Resource Include="ProdImage\102.127.56.JPG" />
+    <Resource Include="ProdImage\102.446.63.JPG" />
+    <Resource Include="ProdImage\102.524.79.JPG" />
+    <Resource Include="ProdImage\102.957.99.JPG" />
+    <Resource Include="ProdImage\102.988.30.JPG" />
+    <Resource Include="ProdImage\103.079.95.JPG" />
+    <Resource Include="ProdImage\103.145.14.JPG" />
+    <Resource Include="ProdImage\103.319.19.JPG" />
+    <Resource Include="ProdImage\103.335.22.JPG" />
+    <Resource Include="ProdImage\103.378.22.JPG" />
+    <Resource Include="ProdImage\1113446319198.jpg" />
+    <Resource Include="ProdImage\112245499198.jpg" />
+    <Resource Include="ProdImage\112246669198.jpg" />
+    <Resource Include="ProdImage\113336644198.jpg" />
+    <Resource Include="ProdImage\113336669198.jpg" />
+    <Resource Include="ProdImage\1133448554198.jpg" />
+    <Resource Include="ProdImage\1133555644198.jpg" />
+    <Resource Include="ProdImage\1133558554198.jpg" />
+    <Resource Include="ProdImage\1133558844198.jpg" />
+    <Resource Include="ProdImage\1138888554198.jpg" />
+    <Resource Include="ProdImage\1138890900198.jpg" />
+    <Resource Include="ProdImage\1138895555198.jpg" />
+    <Resource Include="ProdImage\1138896650198.jpg" />
+    <Resource Include="ProdImage\1138896650199.jpg" />
+    <Resource Include="ProdImage\1138896651198.jpg" />
+    <Resource Include="ProdImage\1138896652198.jpg" />
+    <Resource Include="ProdImage\1138896653198.jpg" />
+    <Resource Include="ProdImage\1138896654198.jpg" />
+    <Resource Include="ProdImage\1138896655198.jpg" />
+    <Resource Include="ProdImage\1138896664198.jpg" />
+    <Resource Include="ProdImage\1138897745200.jpg" />
+    <Resource Include="ProdImage\1138898840201.jpg" />
+    <Resource Include="ProdImage\1138899935202.jpg" />
+    <Resource Include="ProdImage\1138899954198.jpg" />
+    <Resource Include="ProdImage\1138901030203.jpg" />
+    <Resource Include="ProdImage\1138902125204.jpg" />
+    <Resource Include="ProdImage\1138903220205.jpg" />
+    <Resource Include="ProdImage\1138904315206.jpg" />
+    <Resource Include="ProdImage\1138906505208.jpg" />
+    <Resource Include="ProdImage\1138907600209.jpg" />
+    <Resource Include="ProdImage\1138908695210.jpg" />
+    <Resource Include="ProdImage\1138909790211.jpg" />
+    <Resource Include="ProdImage\1138910885212.jpg" />
+    <Resource Include="ProdImage\1138911980213.jpg" />
+    <Resource Include="ProdImage\1138913075214.jpg" />
+    <Resource Include="ProdImage\1138914170215.jpg" />
+    <Resource Include="ProdImage\1138915265216.jpg" />
+    <Resource Include="ProdImage\1138916360217.jpg" />
+    <Resource Include="ProdImage\1138917455218.jpg" />
+    <Resource Include="ProdImage\1138918550219.jpg" />
+    <Resource Include="ProdImage\1138919645220.jpg" />
+    <Resource Include="ProdImage\1138920740221.jpg" />
+    <Resource Include="ProdImage\1138921835222.jpg" />
+    <Resource Include="ProdImage\1138922930223.jpg" />
+    <Resource Include="ProdImage\1138924025224.jpg" />
+    <Resource Include="ProdImage\1138925120225.jpg" />
+    <Resource Include="ProdImage\1138926215226.jpg" />
+    <Resource Include="ProdImage\1138927310227.jpg" />
+    <Resource Include="ProdImage\1138928405228.jpg" />
+    <Resource Include="ProdImage\1138929500229.jpg" />
+    <Resource Include="ProdImage\1138930595230.jpg" />
+    <Resource Include="ProdImage\1138931690231.jpg" />
+    <Resource Include="ProdImage\1138932785232.jpg" />
+    <Resource Include="ProdImage\1138933880233.jpg" />
+    <Resource Include="ProdImage\1138934975234.jpg" />
+    <Resource Include="ProdImage\1138936070235.jpg" />
+    <Resource Include="ProdImage\1138937165236.jpg" />
+    <Resource Include="ProdImage\1138938260237.jpg" />
+    <Resource Include="ProdImage\1138939355238.jpg" />
+    <Resource Include="ProdImage\1138940450239.jpg" />
+    <Resource Include="ProdImage\1138941545240.jpg" />
+    <Resource Include="ProdImage\1138942640241.jpg" />
+    <Resource Include="ProdImage\1138943735242.jpg" />
+    <Resource Include="ProdImage\1138944830243.jpg" />
+    <Resource Include="ProdImage\1138945925244.jpg" />
+    <Resource Include="ProdImage\1138947020245.jpg" />
+    <Resource Include="ProdImage\1138948115246.jpg" />
+    <Resource Include="ProdImage\1138949210247.jpg" />
+    <Resource Include="ProdImage\1138950305248.jpg" />
+    <Resource Include="ProdImage\1138951400249.jpg" />
+    <Resource Include="ProdImage\1138952495250.jpg" />
+    <Resource Include="ProdImage\1138953590251.jpg" />
+    <Resource Include="ProdImage\1138954685252.jpg" />
+    <Resource Include="ProdImage\1138955780253.jpg" />
+    <Resource Include="ProdImage\1138956875254.jpg" />
+    <Resource Include="ProdImage\1138957970255.jpg" />
+    <Resource Include="ProdImage\1138959065256.jpg" />
+    <Resource Include="ProdImage\1138960160257.jpg" />
+    <Resource Include="ProdImage\1138961255258.jpg" />
+    <Resource Include="ProdImage\1138962350259.jpg" />
+    <Resource Include="ProdImage\1138963445260.jpg" />
+    <Resource Include="ProdImage\1138964540261.jpg" />
+    <Resource Include="ProdImage\1138965635262.jpg" />
+    <Resource Include="ProdImage\1138966730263.jpg" />
+    <Resource Include="ProdImage\1138967825264.jpg" />
+    <Resource Include="ProdImage\1138968920265.jpg" />
+    <Resource Include="ProdImage\1138970015266.jpg" />
+    <Resource Include="ProdImage\1138971110267.jpg" />
+    <Resource Include="ProdImage\1138972205268.jpg" />
+    <Resource Include="ProdImage\1138973300269.jpg" />
+    <Resource Include="ProdImage\1138974395270.jpg" />
+    <Resource Include="ProdImage\1138975490271.jpg" />
+    <Resource Include="ProdImage\1138976585272.jpg" />
+    <Resource Include="ProdImage\1138977680273.jpg" />
+    <Resource Include="ProdImage\1138978775274.jpg" />
+    <Resource Include="ProdImage\1138979870275.jpg" />
+    <Resource Include="ProdImage\1138980965276.jpg" />
+    <Resource Include="ProdImage\1138982060277.jpg" />
+    <Resource Include="ProdImage\1138983155278.jpg" />
+    <Resource Include="ProdImage\1138984250279.jpg" />
+    <Resource Include="ProdImage\1138985345280.jpg" />
+    <Resource Include="ProdImage\1138986440281.jpg" />
+    <Resource Include="ProdImage\1138987535282.jpg" />
+    <Resource Include="ProdImage\1138988630283.jpg" />
+    <Resource Include="ProdImage\1138989725284.jpg" />
+    <Resource Include="ProdImage\1138990820285.jpg" />
+    <Resource Include="ProdImage\1138991915286.jpg" />
+    <Resource Include="ProdImage\1138993010287.jpg" />
+    <Resource Include="ProdImage\1138994105288.jpg" />
+    <Resource Include="ProdImage\1138995200289.jpg" />
+    <Resource Include="ProdImage\1138996295290.jpg" />
+    <Resource Include="ProdImage\1138997390291.jpg" />
+    <Resource Include="ProdImage\1138998485292.jpg" />
+    <Resource Include="ProdImage\1138999580293.jpg" />
+    <Resource Include="ProdImage\1139000675294.jpg" />
+    <Resource Include="ProdImage\1139001770295.jpg" />
+    <Resource Include="ProdImage\1139002865296.jpg" />
+    <Resource Include="ProdImage\1139003960297.jpg" />
+    <Resource Include="ProdImage\1139005055298.jpg" />
+    <Resource Include="ProdImage\1139006150299.jpg" />
+    <Resource Include="ProdImage\1139007245300.jpg" />
+    <Resource Include="ProdImage\1139008340301.jpg" />
+    <Resource Include="ProdImage\1139009435302.jpg" />
+    <Resource Include="ProdImage\1139010530303.jpg" />
+    <Resource Include="ProdImage\1139011625304.jpg" />
+    <Resource Include="ProdImage\1139012720305.jpg" />
+    <Resource Include="ProdImage\1139013815306.jpg" />
+    <Resource Include="ProdImage\1139014910307.jpg" />
+    <Resource Include="ProdImage\1139016005308.jpg" />
+    <Resource Include="ProdImage\1139017100309.jpg" />
+    <Resource Include="ProdImage\1139018195310.jpg" />
+    <Resource Include="ProdImage\1139019290311.jpg" />
+    <Resource Include="ProdImage\119445459198.jpg" />
+    <Resource Include="ProdImage\119445499198.jpg" />
+    <Resource Include="ProdImage\119446319198.jpg" />
+    <Resource Include="ProdImage\12743249.JPG" />
+    <Resource Include="ProdImage\12743250.JPG" />
+    <Resource Include="ProdImage\12743251.JPG" />
+    <Resource Include="ProdImage\12743252.JPG" />
+    <Resource Include="ProdImage\12743253.JPG" />
+    <Resource Include="ProdImage\12743254.JPG" />
+    <Resource Include="ProdImage\12743255.JPG" />
+    <Resource Include="ProdImage\12743256.JPG" />
+    <Resource Include="ProdImage\12743257.JPG" />
+    <Resource Include="ProdImage\12743258.JPG" />
+    <Resource Include="ProdImage\12743259.JPG" />
+    <Resource Include="ProdImage\12743260.JPG" />
+    <Resource Include="ProdImage\12743261.JPG" />
+    <Resource Include="ProdImage\12743262.JPG" />
+    <Resource Include="ProdImage\12743263.JPG" />
+    <Resource Include="ProdImage\12743264.JPG" />
+    <Resource Include="ProdImage\12743265.JPG" />
+    <Resource Include="ProdImage\12743266.JPG" />
+    <Resource Include="ProdImage\12743267.JPG" />
+    <Resource Include="ProdImage\12743268.JPG" />
+    <Resource Include="ProdImage\12743269.JPG" />
+    <Resource Include="ProdImage\12743270.JPG" />
+    <Resource Include="ProdImage\12743271.JPG" />
+    <Resource Include="ProdImage\12743272.JPG" />
+    <Resource Include="ProdImage\12743273.JPG" />
+    <Resource Include="ProdImage\12743274.JPG" />
+    <Resource Include="ProdImage\12743275.JPG" />
+    <Resource Include="ProdImage\12743276.JPG" />
+    <Resource Include="ProdImage\12743277.JPG" />
+    <Resource Include="ProdImage\12743278.JPG" />
+    <Resource Include="ProdImage\12743279.JPG" />
+    <Resource Include="ProdImage\12743280.JPG" />
+    <Resource Include="ProdImage\12743281.JPG" />
+    <Resource Include="ProdImage\12743282.JPG" />
+    <Resource Include="ProdImage\12743283.JPG" />
+    <Resource Include="ProdImage\12743284.JPG" />
+    <Resource Include="ProdImage\12743285.JPG" />
+    <Resource Include="ProdImage\12743286.JPG" />
+    <Resource Include="ProdImage\12743287.JPG" />
+    <Resource Include="ProdImage\12743288.JPG" />
+    <Resource Include="ProdImage\12743289.JPG" />
+    <Resource Include="ProdImage\12743290.JPG" />
+    <Resource Include="ProdImage\12743291.JPG" />
+    <Resource Include="ProdImage\12743292.JPG" />
+    <Resource Include="ProdImage\12743293.JPG" />
+    <Resource Include="ProdImage\12743294.JPG" />
+    <Resource Include="ProdImage\12743295.JPG" />
+    <Resource Include="ProdImage\12743296.JPG" />
+    <Resource Include="ProdImage\12743297.JPG" />
+    <Resource Include="ProdImage\12743298.JPG" />
+    <Resource Include="ProdImage\12743299.JPG" />
+    <Resource Include="ProdImage\12743300.JPG" />
+    <Resource Include="ProdImage\12743301.JPG" />
+    <Resource Include="ProdImage\12743302.JPG" />
+    <Resource Include="ProdImage\12743303.JPG" />
+    <Resource Include="ProdImage\12743304.JPG" />
+    <Resource Include="ProdImage\12743305.JPG" />
+    <Resource Include="ProdImage\12743306.JPG" />
+    <Resource Include="ProdImage\12743307.JPG" />
+    <Resource Include="ProdImage\12743308.JPG" />
+    <Resource Include="ProdImage\12743309.JPG" />
+    <Resource Include="ProdImage\12743310.JPG" />
+    <Resource Include="ProdImage\12743311.JPG" />
+    <Resource Include="ProdImage\12743312.JPG" />
+    <Resource Include="ProdImage\12743313.JPG" />
+    <Resource Include="ProdImage\12743314.JPG" />
+    <Resource Include="ProdImage\12743315.JPG" />
+    <Resource Include="ProdImage\12743316.JPG" />
+    <Resource Include="ProdImage\12743317.JPG" />
+    <Resource Include="ProdImage\12743318.JPG" />
+    <Resource Include="ProdImage\12743319.JPG" />
+    <Resource Include="ProdImage\12743320.JPG" />
+    <Resource Include="ProdImage\12743321.JPG" />
+    <Resource Include="ProdImage\12743322.JPG" />
+    <Resource Include="ProdImage\12743323.JPG" />
+    <Resource Include="ProdImage\12743324.JPG" />
+    <Resource Include="ProdImage\12743325.JPG" />
+    <Resource Include="ProdImage\12743326.JPG" />
+    <Resource Include="ProdImage\12743327.JPG" />
+    <Resource Include="ProdImage\12743328.JPG" />
+    <Resource Include="ProdImage\12743329.JPG" />
+    <Resource Include="ProdImage\12743330.JPG" />
+    <Resource Include="ProdImage\12743331.JPG" />
+    <Resource Include="ProdImage\12743332.JPG" />
+    <Resource Include="ProdImage\12743333.JPG" />
+    <Resource Include="ProdImage\12743334.JPG" />
+    <Resource Include="ProdImage\12743335.JPG" />
+    <Resource Include="ProdImage\12743336.JPG" />
+    <Resource Include="ProdImage\12743337.JPG" />
+    <Resource Include="ProdImage\12743338.JPG" />
+    <Resource Include="ProdImage\12743339.JPG" />
+    <Resource Include="ProdImage\12743340.JPG" />
+    <Resource Include="ProdImage\12743341.JPG" />
+    <Resource Include="ProdImage\12743342.JPG" />
+    <Resource Include="ProdImage\12743343.JPG" />
+    <Resource Include="ProdImage\12743344.JPG" />
+    <Resource Include="ProdImage\12743345.JPG" />
+    <Resource Include="ProdImage\12743346.JPG" />
+    <Resource Include="ProdImage\12743347.JPG" />
+    <Resource Include="ProdImage\12743348.JPG" />
+    <Resource Include="ProdImage\12743349.JPG" />
+    <Resource Include="ProdImage\12743350.JPG" />
+    <Resource Include="ProdImage\12743351.JPG" />
+    <Resource Include="ProdImage\12743352.JPG" />
+    <Resource Include="ProdImage\12743353.JPG" />
+    <Resource Include="ProdImage\12743354.JPG" />
+    <Resource Include="ProdImage\12743355.JPG" />
+    <Resource Include="ProdImage\12743356.JPG" />
+    <Resource Include="ProdImage\12743357.JPG" />
+    <Resource Include="ProdImage\12743358.JPG" />
+    <Resource Include="ProdImage\12743359.JPG" />
+    <Resource Include="ProdImage\12743360.JPG" />
+    <Resource Include="ProdImage\12743361.JPG" />
+    <Resource Include="ProdImage\12743362.JPG" />
+    <Resource Include="ProdImage\12743363.JPG" />
+    <Resource Include="ProdImage\12743364.JPG" />
+    <Resource Include="ProdImage\12743365.JPG" />
+    <Resource Include="ProdImage\12743366.JPG" />
+    <Resource Include="ProdImage\12743367.JPG" />
+    <Resource Include="ProdImage\12743368.JPG" />
+    <Resource Include="ProdImage\12743369.JPG" />
+    <Resource Include="ProdImage\12743370.JPG" />
+    <Resource Include="ProdImage\12743371.JPG" />
+    <Resource Include="ProdImage\12743372.JPG" />
+    <Resource Include="ProdImage\12743373.JPG" />
+    <Resource Include="ProdImage\12743374.JPG" />
+    <Resource Include="ProdImage\12743375.JPG" />
+    <Resource Include="ProdImage\12743376.JPG" />
+    <Resource Include="ProdImage\12743377.JPG" />
+    <Resource Include="ProdImage\12743378.JPG" />
+    <Resource Include="ProdImage\12743379.JPG" />
+    <Resource Include="ProdImage\12743380.JPG" />
+    <Resource Include="ProdImage\12743381.JPG" />
+    <Resource Include="ProdImage\12743382.JPG" />
+    <Resource Include="ProdImage\12743383.JPG" />
+    <Resource Include="ProdImage\12743384.JPG" />
+    <Resource Include="ProdImage\12743385.JPG" />
+    <Resource Include="ProdImage\12743386.JPG" />
+    <Resource Include="ProdImage\12743387.JPG" />
+    <Resource Include="ProdImage\12743388.JPG" />
+    <Resource Include="ProdImage\12743389.JPG" />
+    <Resource Include="ProdImage\12743390.JPG" />
+    <Resource Include="ProdImage\12743391.JPG" />
+    <Resource Include="ProdImage\12743392.JPG" />
+    <Resource Include="ProdImage\12743393.JPG" />
+    <Resource Include="ProdImage\12743394.JPG" />
+    <Resource Include="ProdImage\12743395.JPG" />
+    <Resource Include="ProdImage\12743396.JPG" />
+    <Resource Include="ProdImage\12743397.JPG" />
+    <Resource Include="ProdImage\12743398.JPG" />
+    <Resource Include="ProdImage\12743399.JPG" />
+    <Resource Include="ProdImage\12743400.JPG" />
+    <Resource Include="ProdImage\12743401.JPG" />
+    <Resource Include="ProdImage\12743402.JPG" />
+    <Resource Include="ProdImage\12743403.JPG" />
+    <Resource Include="ProdImage\12743404.JPG" />
+    <Resource Include="ProdImage\12743405.JPG" />
+    <Resource Include="ProdImage\12743406.JPG" />
+    <Resource Include="ProdImage\12743407.JPG" />
+    <Resource Include="ProdImage\12743408.JPG" />
+    <Resource Include="ProdImage\12743409.JPG" />
+    <Resource Include="ProdImage\12743410.JPG" />
+    <Resource Include="ProdImage\12743411.JPG" />
+    <Resource Include="ProdImage\12743412.JPG" />
+    <Resource Include="ProdImage\12743413.JPG" />
+    <Resource Include="ProdImage\12743414.JPG" />
+    <Resource Include="ProdImage\12743415.JPG" />
+    <Resource Include="ProdImage\12743416.JPG" />
+    <Resource Include="ProdImage\12743417.JPG" />
+    <Resource Include="ProdImage\12743418.JPG" />
+    <Resource Include="ProdImage\12743419.JPG" />
+    <Resource Include="ProdImage\12743420.JPG" />
+    <Resource Include="ProdImage\12743421.JPG" />
+    <Resource Include="ProdImage\12743422.JPG" />
+    <Resource Include="ProdImage\12743423.JPG" />
+    <Resource Include="ProdImage\12743424.JPG" />
+    <Resource Include="ProdImage\12743425.JPG" />
+    <Resource Include="ProdImage\12743426.JPG" />
+    <Resource Include="ProdImage\12743427.JPG" />
+    <Resource Include="ProdImage\12743428.JPG" />
+    <Resource Include="ProdImage\12743429.JPG" />
+    <Resource Include="ProdImage\12743430.JPG" />
+    <Resource Include="ProdImage\12743431.JPG" />
+    <Resource Include="ProdImage\12743432.JPG" />
+    <Resource Include="ProdImage\12743433.JPG" />
+    <Resource Include="ProdImage\12743434.JPG" />
+    <Resource Include="ProdImage\12743435.JPG" />
+    <Resource Include="ProdImage\12743436.JPG" />
+    <Resource Include="ProdImage\12743437.JPG" />
+    <Resource Include="ProdImage\12743438.JPG" />
+    <Resource Include="ProdImage\12743439.JPG" />
+    <Resource Include="ProdImage\12743440.JPG" />
+    <Resource Include="ProdImage\12743441.JPG" />
+    <Resource Include="ProdImage\12743442.JPG" />
+    <Resource Include="ProdImage\12743443.JPG" />
+    <Resource Include="ProdImage\12743444.JPG" />
+    <Resource Include="ProdImage\12743445.JPG" />
+    <Resource Include="ProdImage\12743446.JPG" />
+    <Resource Include="ProdImage\12743447.JPG" />
+    <Resource Include="ProdImage\135116750.jpg" />
+    <Resource Include="ProdImage\135447378.jpg" />
+    <Resource Include="ProdImage\135488944.jpg" />
+    <Resource Include="ProdImage\135567663.jpg" />
+    <Resource Include="ProdImage\136031530.jpg" />
+    <Resource Include="ProdImage\137213069.jpg" />
+    <Resource Include="ProdImage\137592465.jpg" />
+    <Resource Include="ProdImage\138139753.jpg" />
+    <Resource Include="ProdImage\138142157.jpg" />
+    <Resource Include="ProdImage\138142999.jpg" />
+    <Resource Include="ProdImage\138143002.jpg" />
+    <Resource Include="ProdImage\138290853.jpg" />
+    <Resource Include="ProdImage\138336844.jpg" />
+    <Resource Include="ProdImage\138903665.jpg" />
+    <Resource Include="ProdImage\138903667.jpg" />
+    <Resource Include="ProdImage\138904511.jpg" />
+    <Resource Include="ProdImage\138972045.jpg" />
+    <Resource Include="ProdImage\138972048.jpg" />
+    <Resource Include="ProdImage\138972050.jpg" />
+    <Resource Include="ProdImage\138972063.jpg" />
+    <Resource Include="ProdImage\138972077.jpg" />
+    <Resource Include="ProdImage\138972085.jpg" />
+    <Resource Include="ProdImage\138972086.jpg" />
+    <Resource Include="ProdImage\138972087.jpg" />
+    <Resource Include="ProdImage\138972089.jpg" />
+    <Resource Include="ProdImage\138972090.jpg" />
+    <Resource Include="ProdImage\138972094.jpg" />
+    <Resource Include="ProdImage\139105161.jpg" />
+    <Resource Include="ProdImage\139105168.jpg" />
+    <Resource Include="ProdImage\139105171.jpg" />
+    <Resource Include="ProdImage\139105174.jpg" />
+    <Resource Include="ProdImage\139105183.jpg" />
+    <Resource Include="ProdImage\139105185.jpg" />
+    <Resource Include="ProdImage\139105205.jpg" />
+    <Resource Include="ProdImage\139105232.jpg" />
+    <Resource Include="ProdImage\139105245.jpg" />
+    <Resource Include="ProdImage\139105257.jpg" />
+    <Resource Include="ProdImage\139105275.jpg" />
+    <Resource Include="ProdImage\139653870.jpg" />
+    <Resource Include="ProdImage\139653872.jpg" />
+    <Resource Include="ProdImage\139846822.jpg" />
+    <Resource Include="ProdImage\139846823.jpg" />
+    <Resource Include="ProdImage\139846828.jpg" />
+    <Resource Include="ProdImage\139846829.jpg" />
+    <Resource Include="ProdImage\139846834.jpg" />
+    <Resource Include="ProdImage\139885204.jpg" />
+    <Resource Include="ProdImage\139885277.jpg" />
+    <Resource Include="ProdImage\139901008.jpg" />
+    <Resource Include="ProdImage\140225084.jpg" />
+    <Resource Include="ProdImage\140225087.jpg" />
+    <Resource Include="ProdImage\140225089.jpg" />
+    <Resource Include="ProdImage\140460128.jpg" />
+    <Resource Include="ProdImage\140460129.jpg" />
+    <Resource Include="ProdImage\140494064.jpg" />
+    <Resource Include="ProdImage\140494070.jpg" />
+    <Resource Include="ProdImage\140494071.jpg" />
+    <Resource Include="ProdImage\140494073.jpg" />
+    <Resource Include="ProdImage\140494074.jpg" />
+    <Resource Include="ProdImage\140494075.jpg" />
+    <Resource Include="ProdImage\140494077.jpg" />
+    <Resource Include="ProdImage\140494079.jpg" />
+    <Resource Include="ProdImage\140494080.jpg" />
+    <Resource Include="ProdImage\140494083.jpg" />
+    <Resource Include="ProdImage\140494084.jpg" />
+    <Resource Include="ProdImage\140494085.jpg" />
+    <Resource Include="ProdImage\140494086.jpg" />
+    <Resource Include="ProdImage\140494087.jpg" />
+    <Resource Include="ProdImage\140494088.jpg" />
+    <Resource Include="ProdImage\140494090.jpg" />
+    <Resource Include="ProdImage\140494091.jpg" />
+    <Resource Include="ProdImage\140494092.jpg" />
+    <Resource Include="ProdImage\140494093.jpg" />
+    <Resource Include="ProdImage\140494094.jpg" />
+    <Resource Include="ProdImage\140494095.jpg" />
+    <Resource Include="ProdImage\140494096.jpg" />
+    <Resource Include="ProdImage\140494097.jpg" />
+    <Resource Include="ProdImage\140494099.jpg" />
+    <Resource Include="ProdImage\140494100.jpg" />
+    <Resource Include="ProdImage\140494101.jpg" />
+    <Resource Include="ProdImage\140494102.jpg" />
+    <Resource Include="ProdImage\140494103.jpg" />
+    <Resource Include="ProdImage\140494104.jpg" />
+    <Resource Include="ProdImage\140494107.jpg" />
+    <Resource Include="ProdImage\140494108.jpg" />
+    <Resource Include="ProdImage\140494109.jpg" />
+    <Resource Include="ProdImage\140494110.jpg" />
+    <Resource Include="ProdImage\140494111.jpg" />
+    <Resource Include="ProdImage\140494113.jpg" />
+    <Resource Include="ProdImage\140494114.jpg" />
+    <Resource Include="ProdImage\140536168.jpg" />
+    <Resource Include="ProdImage\140547043.jpg" />
+    <Resource Include="ProdImage\140547044.jpg" />
+    <Resource Include="ProdImage\140547049.jpg" />
+    <Resource Include="ProdImage\140547055.jpg" />
+    <Resource Include="ProdImage\140547056.jpg" />
+    <Resource Include="ProdImage\140547063.jpg" />
+    <Resource Include="ProdImage\140547065.jpg" />
+    <Resource Include="ProdImage\140547072.jpg" />
+    <Resource Include="ProdImage\140547074.jpg" />
+    <Resource Include="ProdImage\140547075.jpg" />
+    <Resource Include="ProdImage\140547077.jpg" />
+    <Resource Include="ProdImage\140547079.jpg" />
+    <Resource Include="ProdImage\140547083.jpg" />
+    <Resource Include="ProdImage\140547084.jpg" />
+    <Resource Include="ProdImage\140547085.jpg" />
+    <Resource Include="ProdImage\140547086.jpg" />
+    <Resource Include="ProdImage\140547087.jpg" />
+    <Resource Include="ProdImage\140547089.jpg" />
+    <Resource Include="ProdImage\140547091.jpg" />
+    <Resource Include="ProdImage\140547094.jpg" />
+    <Resource Include="ProdImage\140547095.jpg" />
+    <Resource Include="ProdImage\140547098.jpg" />
+    <Resource Include="ProdImage\140547100.jpg" />
+    <Resource Include="ProdImage\140547103.jpg" />
+    <Resource Include="ProdImage\140547106.jpg" />
+    <Resource Include="ProdImage\140547108.jpg" />
+    <Resource Include="ProdImage\140547109.jpg" />
+    <Resource Include="ProdImage\140547111.jpg" />
+    <Resource Include="ProdImage\140547112.jpg" />
+    <Resource Include="ProdImage\140547319.jpg" />
+    <Resource Include="ProdImage\140547325.jpg" />
+    <Resource Include="ProdImage\140547355.jpg" />
+    <Resource Include="ProdImage\140547356.jpg" />
+    <Resource Include="ProdImage\140547374.jpg" />
+    <Resource Include="ProdImage\140561789.jpg" />
+    <Resource Include="ProdImage\140561790.jpg" />
+    <Resource Include="ProdImage\140561791.jpg" />
+    <Resource Include="ProdImage\140561795.jpg" />
+    <Resource Include="ProdImage\140561796.jpg" />
+    <Resource Include="ProdImage\140561797.jpg" />
+    <Resource Include="ProdImage\140561798.jpg" />
+    <Resource Include="ProdImage\140561799.jpg" />
+    <Resource Include="ProdImage\140561813.jpg" />
+    <Resource Include="ProdImage\140561814.jpg" />
+    <Resource Include="ProdImage\140561815.jpg" />
+    <Resource Include="ProdImage\140561816.jpg" />
+    <Resource Include="ProdImage\140561817.jpg" />
+    <Resource Include="ProdImage\201.458.51.JPG" />
+    <Resource Include="ProdImage\201.635.76.JPG" />
+    <Resource Include="ProdImage\201.639.63.JPG" />
+    <Resource Include="ProdImage\201.903.63.JPG" />
+    <Resource Include="ProdImage\201.904.38.JPG" />
+    <Resource Include="ProdImage\201.906.26.JPG" />
+    <Resource Include="ProdImage\201.906.50.JPG" />
+    <Resource Include="ProdImage\201.906.74.JPG" />
+    <Resource Include="ProdImage\202.127.51.JPG" />
+    <Resource Include="ProdImage\202.578.10.JPG" />
+    <Resource Include="ProdImage\202.602.47.JPG" />
+    <Resource Include="ProdImage\202.958.45.JPG" />
+    <Resource Include="ProdImage\202.964.87.JPG" />
+    <Resource Include="ProdImage\202.988.39.JPG" />
+    <Resource Include="ProdImage\203.130.62.JPG" />
+    <Resource Include="ProdImage\203.240.46.JPG" />
+    <Resource Include="ProdImage\203.240.51.JPG" />
+    <Resource Include="ProdImage\203.335.26.JPG" />
+    <Resource Include="ProdImage\203.352.24.JPG" />
+    <Resource Include="ProdImage\203.495.65.JPG" />
+    <Resource Include="ProdImage\203.512.52.JPG" />
+    <Resource Include="ProdImage\203.582.82.JPG" />
+    <Resource Include="ProdImage\203.723.15.JPG" />
+    <Resource Include="ProdImage\203.723.20.JPG" />
+    <Resource Include="ProdImage\301.499.81.JPG" />
+    <Resource Include="ProdImage\301.598.90.JPG" />
+    <Resource Include="ProdImage\301.635.52.JPG" />
+    <Resource Include="ProdImage\301.635.85.JPG" />
+    <Resource Include="ProdImage\301.904.28.JPG" />
+    <Resource Include="ProdImage\301.906.40.JPG" />
+    <Resource Include="ProdImage\301.906.64.JPG" />
+    <Resource Include="ProdImage\302.127.55.JPG" />
+    <Resource Include="ProdImage\302.524.78.JPG" />
+    <Resource Include="ProdImage\302.958.02.JPG" />
+    <Resource Include="ProdImage\302.988.29.JPG" />
+    <Resource Include="ProdImage\302.988.34.JPG" />
+    <Resource Include="ProdImage\303.495.22.JPG" />
+    <Resource Include="ProdImage\303.583.33.JPG" />
+    <Resource Include="ProdImage\303.724.14.JPG" />
+    <Resource Include="ProdImage\4001016319198.jpg" />
+    <Resource Include="ProdImage\401.903.62.JPG" />
+    <Resource Include="ProdImage\401.903.76.JPG" />
+    <Resource Include="ProdImage\401.904.37.JPG" />
+    <Resource Include="ProdImage\401.906.11.JPG" />
+    <Resource Include="ProdImage\401.906.30.JPG" />
+    <Resource Include="ProdImage\402.112.13.JPG" />
+    <Resource Include="ProdImage\402.777.65.JPG" />
+    <Resource Include="ProdImage\402.896.31.JPG" />
+    <Resource Include="ProdImage\402.976.50.JPG" />
+    <Resource Include="ProdImage\402.988.38.JPG" />
+    <Resource Include="ProdImage\4021000103384.jpg" />
+    <Resource Include="ProdImage\4021446271328.jpg" />
+    <Resource Include="ProdImage\4021446319716.jpg" />
+    <Resource Include="ProdImage\4021612121666.jpg" />
+    <Resource Include="ProdImage\4021623308969.jpg" />
+    <Resource Include="ProdImage\4021624444859.jpg" />
+    <Resource Include="ProdImage\4021626052033.jpg" />
+    <Resource Include="ProdImage\4021626100697.jpg" />
+    <Resource Include="ProdImage\4021626103384.jpg" />
+    <Resource Include="ProdImage\4021626108891.jpg" />
+    <Resource Include="ProdImage\4021626108969.jpg" />
+    <Resource Include="ProdImage\4021626122859.jpg" />
+    <Resource Include="ProdImage\4021626123740.jpg" />
+    <Resource Include="ProdImage\4021626123757.jpg" />
+    <Resource Include="ProdImage\4021626270918.jpg" />
+    <Resource Include="ProdImage\4021626270925.jpg" />
+    <Resource Include="ProdImage\4021626270932.jpg" />
+    <Resource Include="ProdImage\4021626270949.jpg" />
+    <Resource Include="ProdImage\4021626270956.jpg" />
+    <Resource Include="ProdImage\4021626270970.jpg" />
+    <Resource Include="ProdImage\4021626270994.jpg" />
+    <Resource Include="ProdImage\4021626271007.jpg" />
+    <Resource Include="ProdImage\4021626271014.jpg" />
+    <Resource Include="ProdImage\4021626271038.jpg" />
+    <Resource Include="ProdImage\4021626271250.jpg" />
+    <Resource Include="ProdImage\4021626271267.jpg" />
+    <Resource Include="ProdImage\4021626271298.jpg" />
+    <Resource Include="ProdImage\4021626271304.jpg" />
+    <Resource Include="ProdImage\4021626271328.jpg" />
+    <Resource Include="ProdImage\4021626271359.jpg" />
+    <Resource Include="ProdImage\4021626271366.jpg" />
+    <Resource Include="ProdImage\4021626271666.jpg" />
+    <Resource Include="ProdImage\4021626319136.jpg" />
+    <Resource Include="ProdImage\4021626319198.jpg" />
+    <Resource Include="ProdImage\4021626319716.jpg" />
+    <Resource Include="ProdImage\4021626319846.jpg" />
+    <Resource Include="ProdImage\4021626377746.jpg" />
+    <Resource Include="ProdImage\4021626444994.jpg" />
+    <Resource Include="ProdImage\40216265500697.jpg" />
+    <Resource Include="ProdImage\4021629970970.jpg" />
+    <Resource Include="ProdImage\4021898921666.jpg" />
+    <Resource Include="ProdImage\4021898999666.jpg" />
+    <Resource Include="ProdImage\4021926270918.jpg" />
+    <Resource Include="ProdImage\4021999319136.jpg" />
+    <Resource Include="ProdImage\4022221441666.png" />
+    <Resource Include="ProdImage\4029926052033.jpg" />
+    <Resource Include="ProdImage\403.116.13.JPG" />
+    <Resource Include="ProdImage\403.359.06.JPG" />
+    <Resource Include="ProdImage\403.395.51.JPG" />
+    <Resource Include="ProdImage\403.611.27.JPG" />
+    <Resource Include="ProdImage\403.723.24.JPG" />
+    <Resource Include="ProdImage\4093446319198.jpg" />
+    <Resource Include="ProdImage\4099446319198.jpg" />
+    <Resource Include="ProdImage\4099511441666.jpg" />
+    <Resource Include="ProdImage\4099554441666.jpg" />
+    <Resource Include="ProdImage\4099558111666.jpg" />
+    <Resource Include="ProdImage\4099626271038.jpg" />
+    <Resource Include="ProdImage\4099898111666.jpeg" />
+    <Resource Include="ProdImage\4099898999666.jpg" />
+    <Resource Include="ProdImage\4099916319198.jpg" />
+    <Resource Include="ProdImage\4099926108891.jpg" />
+    <Resource Include="ProdImage\501.500.54.JPG" />
+    <Resource Include="ProdImage\501.635.46.JPG" />
+    <Resource Include="ProdImage\501.635.70.JPG" />
+    <Resource Include="ProdImage\501.635.89.JPG" />
+    <Resource Include="ProdImage\501.904.27.JPG" />
+    <Resource Include="ProdImage\501.904.32.JPG" />
+    <Resource Include="ProdImage\502.213.01.JPG" />
+    <Resource Include="ProdImage\502.524.77.JPG" />
+    <Resource Include="ProdImage\502.895.17.JPG" />
+    <Resource Include="ProdImage\502.988.33.JPG" />
+    <Resource Include="ProdImage\502.996.44.JPG" />
+    <Resource Include="ProdImage\503.116.17.JPG" />
+    <Resource Include="ProdImage\503.412.71.JPG" />
+    <Resource Include="ProdImage\503.427.46.JPG" />
+    <Resource Include="ProdImage\503.511.56.JPG" />
+    <Resource Include="ProdImage\503.512.55.JPG" />
+    <Resource Include="ProdImage\503.582.52.JPG" />
+    <Resource Include="ProdImage\503.583.32.JPG" />
+    <Resource Include="ProdImage\503.645.78.JPG" />
+    <Resource Include="ProdImage\503.675.10.JPG" />
+    <Resource Include="ProdImage\601.499.51.JPG" />
+    <Resource Include="ProdImage\601.500.39.JPG" />
+    <Resource Include="ProdImage\601.635.60.JPG" />
+    <Resource Include="ProdImage\601.903.75.JPG" />
+    <Resource Include="ProdImage\601.904.17.JPG" />
+    <Resource Include="ProdImage\602.127.54.JPG" />
+    <Resource Include="ProdImage\602.988.37.JPG" />
+    <Resource Include="ProdImage\603.067.19.JPG" />
+    <Resource Include="ProdImage\603.399.46.JPG" />
+    <Resource Include="ProdImage\603.413.22.JPG" />
+    <Resource Include="ProdImage\603.456.26.JPG" />
+    <Resource Include="ProdImage\603.511.70.JPG" />
+    <Resource Include="ProdImage\603.646.91.JPG" />
+    <Resource Include="ProdImage\603.721.20.JPG" />
+    <Resource Include="ProdImage\6661626271666.jpeg" />
+    <Resource Include="ProdImage\6699626271666.jpg" />
+    <Resource Include="ProdImage\700.756.38.JPG" />
+    <Resource Include="ProdImage\701.500.10.JPG" />
+    <Resource Include="ProdImage\701.903.70.JPG" />
+    <Resource Include="ProdImage\701.904.26.JPG" />
+    <Resource Include="ProdImage\701.906.38.JPG" />
+    <Resource Include="ProdImage\702.034.00.JPG" />
+    <Resource Include="ProdImage\702.355.33.JPG" />
+    <Resource Include="ProdImage\702.446.60.JPG" />
+    <Resource Include="ProdImage\702.524.81.JPG" />
+    <Resource Include="ProdImage\702.896.20.JPG" />
+    <Resource Include="ProdImage\702.988.32.JPG" />
+    <Resource Include="ProdImage\7028231801008.jpg" />
+    <Resource Include="ProdImage\7028231801015.jpg" />
+    <Resource Include="ProdImage\7028231801022.jpg" />
+    <Resource Include="ProdImage\7028231801039.jpg" />
+    <Resource Include="ProdImage\7028231801053.jpg" />
+    <Resource Include="ProdImage\7028231801084.jpg" />
+    <Resource Include="ProdImage\7028231801091.jpg" />
+    <Resource Include="ProdImage\7028231801107.jpg" />
+    <Resource Include="ProdImage\7028231801121.jpg" />
+    <Resource Include="ProdImage\7028231801138.jpg" />
+    <Resource Include="ProdImage\7028231801145.jpg" />
+    <Resource Include="ProdImage\7028238200651.jpg" />
+    <Resource Include="ProdImage\7028238200668.jpg" />
+    <Resource Include="ProdImage\7028238200675.jpg" />
+    <Resource Include="ProdImage\703.069.45.JPG" />
+    <Resource Include="ProdImage\703.116.16.JPG" />
+    <Resource Include="ProdImage\703.335.24.JPG" />
+    <Resource Include="ProdImage\703.370.27.JPG" />
+    <Resource Include="ProdImage\703.378.24.JPG" />
+    <Resource Include="ProdImage\703.399.41.JPG" />
+    <Resource Include="ProdImage\703.412.70.JPG" />
+    <Resource Include="ProdImage\703.427.93.JPG" />
+    <Resource Include="ProdImage\703.511.60.JPG" />
+    <Resource Include="ProdImage\703.675.14.JPG" />
+    <Resource Include="ProdImage\7297400058578.jpg" />
+    <Resource Include="ProdImage\7297400058585.jpg" />
+    <Resource Include="ProdImage\7297400058639.jpg" />
+    <Resource Include="ProdImage\7297400058646.jpg" />
+    <Resource Include="ProdImage\7297400058707.jpg" />
+    <Resource Include="ProdImage\801.458.34.JPG" />
+    <Resource Include="ProdImage\801.635.64.JPG" />
+    <Resource Include="ProdImage\801.635.83.JPG" />
+    <Resource Include="ProdImage\801.903.55.JPG" />
+    <Resource Include="ProdImage\801.904.21.JPG" />
+    <Resource Include="ProdImage\801.906.14.JPG" />
+    <Resource Include="ProdImage\801.906.28.JPG" />
+    <Resource Include="ProdImage\801.906.66.JPG" />
+    <Resource Include="ProdImage\802.667.60.JPG" />
+    <Resource Include="ProdImage\802.958.47.JPG" />
+    <Resource Include="ProdImage\802.964.70.JPG" />
+    <Resource Include="ProdImage\802.988.36.JPG" />
+    <Resource Include="ProdImage\80292124.jpg" />
+    <Resource Include="ProdImage\803.144.88.JPG" />
+    <Resource Include="ProdImage\803.494.64.JPG" />
+    <Resource Include="ProdImage\803.511.69.JPG" />
+    <Resource Include="ProdImage\803.512.54.JPG" />
+    <Resource Include="ProdImage\803.582.55.JPG" />
+    <Resource Include="ProdImage\803.611.30.JPG" />
+    <Resource Include="ProdImage\803.645.67.JPG" />
+    <Resource Include="ProdImage\803.675.18.JPG" />
+    <Resource Include="ProdImage\803.724.16.JPG" />
+    <Resource Include="ProdImage\8690000068203.jpg" />
+    <Resource Include="ProdImage\8690000068234.jpg" />
+    <Resource Include="ProdImage\8690000068241.jpg" />
+    <Resource Include="ProdImage\8690000068258.jpg" />
+    <Resource Include="ProdImage\8690000068265.jpg" />
+    <Resource Include="ProdImage\8690000068470.jpg" />
+    <Resource Include="ProdImage\8900000061204.jpg" />
+    <Resource Include="ProdImage\8900000061327.jpg" />
+    <Resource Include="ProdImage\8900000061334.jpg" />
+    <Resource Include="ProdImage\8900000074990.jpg" />
+    <Resource Include="ProdImage\8900000075003.jpg" />
+    <Resource Include="ProdImage\8900000075010.jpg" />
+    <Resource Include="ProdImage\8900000075027.jpg" />
+    <Resource Include="ProdImage\8900000075034.jpg" />
+    <Resource Include="ProdImage\8900000075041.jpg" />
+    <Resource Include="ProdImage\8900000075058.jpg" />
+    <Resource Include="ProdImage\8900000075065.jpg" />
+    <Resource Include="ProdImage\8900000075072.jpg" />
+    <Resource Include="ProdImage\8900000075089.jpg" />
+    <Resource Include="ProdImage\8900000075096.jpg" />
+    <Resource Include="ProdImage\8900000075102.jpg" />
+    <Resource Include="ProdImage\8900000075119.jpg" />
+    <Resource Include="ProdImage\8900000075126.jpg" />
+    <Resource Include="ProdImage\8900000075133.jpg" />
+    <Resource Include="ProdImage\8900000075140.jpg" />
+    <Resource Include="ProdImage\8900000075157.jpg" />
+    <Resource Include="ProdImage\8900000075164.jpg" />
+    <Resource Include="ProdImage\8900000075171.jpg" />
+    <Resource Include="ProdImage\8900000075188.jpg" />
+    <Resource Include="ProdImage\8900000075195.jpg" />
+    <Resource Include="ProdImage\8900000075201.jpg" />
+    <Resource Include="ProdImage\8900000075218.jpg" />
+    <Resource Include="ProdImage\8900000075225.jpg" />
+    <Resource Include="ProdImage\8900000075232.jpg" />
+    <Resource Include="ProdImage\8900000075249.jpg" />
+    <Resource Include="ProdImage\8900000075256.jpg" />
+    <Resource Include="ProdImage\8900000075263.jpg" />
+    <Resource Include="ProdImage\8900000075270.jpg" />
+    <Resource Include="ProdImage\8900000075287.jpg" />
+    <Resource Include="ProdImage\8900011161327.jpg" />
+    <Resource Include="ProdImage\901.903.50.JPG" />
+    <Resource Include="ProdImage\901.906.42.JPG" />
+    <Resource Include="ProdImage\902.446.59.JPG" />
+    <Resource Include="ProdImage\902.896.38.JPG" />
+    <Resource Include="ProdImage\902.958.04.JPG" />
+    <Resource Include="ProdImage\902.958.42.JPG" />
+    <Resource Include="ProdImage\902.964.98.JPG" />
+    <Resource Include="ProdImage\902.988.31.JPG" />
+    <Resource Include="ProdImage\903.079.96.JPG" />
+    <Resource Include="ProdImage\903.116.15.JPG" />
+    <Resource Include="ProdImage\903.132.28.JPG" />
+    <Resource Include="ProdImage\903.240.43.JPG" />
+    <Resource Include="ProdImage\903.335.23.JPG" />
+    <Resource Include="ProdImage\903.376.63.JPG" />
+    <Resource Include="ProdImage\903.378.23.JPG" />
+    <Resource Include="ProdImage\903.436.83.JPG" />
+    <Resource Include="ProdImage\903.495.19.JPG" />
+    <Resource Include="ProdImage\903.511.64.JPG" />
+    <Resource Include="ProdImage\903.512.63.JPG" />
+    <Resource Include="ProdImage\903.582.88.JPG" />
+    <Resource Include="ProdImage\903.583.06.JPG" />
+    <Resource Include="ProdImage\903.724.11.JPG" />
+    <Resource Include="ProdImage\КЦ-634-734-1250.jpg" />
+    <Resource Include="ProdImage\КЦ-634-734-1584.jpg" />
+    <Resource Include="ProdImage\КЦ-6401-2601-2214.jpg" />
+    <Resource Include="ProdImage\НЦ-2201-116.jpg" />
+    <Resource Include="ProdImage\НЦС-2201-2557.jpg" />
+    <Resource Include="ProdImage\НЦС-2202-2460.jpg" />
+    <Resource Include="ProdImage\НЦС-2202-2556.jpg" />
+    <Resource Include="ProdImage\НЦС-2202-2623.jpg" />
+    <Resource Include="ProdImage\НЦС-2202-2624.jpg" />
+    <Resource Include="ProdImage\НЦС-2202-2823.jpg" />
+    <Resource Include="ProdImage\НЦС-5502-2491.jpg" />
+    <Resource Include="ProdImage\НЦС-5502-2620.jpg" />
+    <Resource Include="ProdImage\НЦС-5502-2622.jpg" />
+    <Resource Include="ProdImage\НЦС-6601-2557.jpg" />
+    <Resource Include="ProdImage\НЦС-901-2490.jpg" />
+    <Resource Include="ProdImage\НЦС-902-1282.jpg" />
+    <Resource Include="ProdImage\НЦС-902-2266.jpg" />
+    <Resource Include="ProdImage\НЦС-902-2267.jpg" />
+    <Resource Include="ProdImage\НЦС-902-2489.jpg" />
+    <Resource Include="ProdImage\НЦС-902-2824.jpg" />
+    <Resource Include="ProdImage\ПЛ-2601-01934.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2275.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2575.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2576.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2577.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2578.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2579.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2580.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2581.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2582.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2583.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2584.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2585.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2586.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2587.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2588.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2602.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2603.jpg" />
+    <Resource Include="ProdImage\ПЛ-2602-2604.jpg" />
+    <Resource Include="ProdImage\ПЛ-2701-01933.jpg" />
+    <Resource Include="ProdImage\ПЦ-103-01797.jpg" />
+    <Resource Include="ProdImage\ПЦ-103-02465.jpg" />
+    <Resource Include="ProdImage\ПЦ-103-02623.jpg" />
+    <Resource Include="ProdImage\ПЦ-1202-2750.jpg" />
+    <Resource Include="ProdImage\ПЦ-1202-2751.jpg" />
+    <Resource Include="ProdImage\ПЦ-1202-2752.jpg" />
+    <Resource Include="ProdImage\ПЦ-1228-2824.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-1979.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-2024-3.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-2033.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-2038-1.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-2139.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-2526.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-2527.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-2529.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-2530.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-2534.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-2535.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-2537.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-2830.jpg" />
+    <Resource Include="ProdImage\ПЦ-2601-993.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1085.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1111.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1563.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1564.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1565.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1569.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1824.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1875.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1939.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1993.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1995.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1998.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-1999.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2113.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2128.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2129.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2140.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2141.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2142.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2293.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2294.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2318.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2479.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2480.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2483.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2485.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2487.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2497.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2498.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2744.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2745.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2746.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2752.jpg" />
+    <Resource Include="ProdImage\ПЦ-2602-2768.jpg" />
+    <Resource Include="ProdImage\ПЦ-2672-2124.jpg" />
+    <Resource Include="ProdImage\ПЦ-2672-2126.jpg" />
+    <Resource Include="ProdImage\ПЦ-2672-2161.jpg" />
+    <Resource Include="ProdImage\ПЦ-3502-2202.jpg" />
+    <Resource Include="ProdImage\ПЦ-3502-2318.jpg" />
+    <Resource Include="ProdImage\ПЦ-3502-2744.jpg" />
+    <Resource Include="ProdImage\ПЦ-3502-2745.jpg" />
+    <Resource Include="ProdImage\ПЦ-3502-2748.jpg" />
+    <Resource Include="ProdImage\ПЦ-3502-2749.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2145.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2712.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2713.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2734.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2735.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2736.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2737.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2738.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2739.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2740.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2741.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2742.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2743.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2747.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2748.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2749.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-2750.jpg" />
+    <Resource Include="ProdImage\ПЦ-502-67.jpg" />
+    <Resource Include="ProdImage\ПЦ-515-02821.jpg" />
+    <Resource Include="ProdImage\ПЦ-515-02823.jpg" />
+    <Resource Include="ProdImage\ПЦ-516-02461.jpg" />
+    <Resource Include="ProdImage\ПЦ-516-02484.jpg" />
+    <Resource Include="ProdImage\ПЦ-516-02558.jpg" />
+    <Resource Include="ProdImage\ПЦ-516-02620.jpg" />
+    <Resource Include="ProdImage\ПЦ-516-02824.jpg" />
+    <Resource Include="ProdImage\ПЦ-602-2460.jpg" />
+    <Resource Include="ProdImage\ПЦ-602-2462.jpg" />
+    <Resource Include="ProdImage\ПЦ-615-2464.jpg" />
+    <Resource Include="ProdImage\ПЦ-615-2621.jpg" />
+    <Resource Include="ProdImage\ПЦ-615-2622.jpg" />
+    <Resource Include="ProdImage\ПЦ-615-2821.jpg" />
+    <Resource Include="ProdImage\ПЦ-615-2823.jpg" />
+    <Resource Include="ProdImage\ПЦ-628-2820.jpg" />
+    <Resource Include="ProdImage\ПЦ-628-2822.jpg" />
+    <Resource Include="ProdImage\ПЦ-634-1250.jpg" />
+    <Resource Include="ProdImage\ПЦ-634-1584.jpg" />
+    <Resource Include="ProdImage\ПЦ-661-1681-1.jpg" />
+    <Resource Include="ProdImage\ПЦ-661-1681-2.jpg" />
+    <Resource Include="ProdImage\ПЦ-661-1681-3.jpg" />
+    <Resource Include="ProdImage\ПЦ-661-1681-4.jpg" />
+    <Resource Include="ProdImage\ПЦ-661-1681-6.jpg" />
+    <Resource Include="ProdImage\ПЦ-661-1681-7.jpg" />
+    <Resource Include="ProdImage\ПЦ-728-2822.jpg" />
+    <Resource Include="ProdImage\ПЦ-7659-175.jpg" />
+    <Resource Include="ProdImage\ПЦ-7660-2828.jpg" />
+    <Resource Include="ProdImage\ПЦ-7660-2829.jpg" />
+    <Resource Include="ProdImage\ПЦС-1202-2115.jpg" />
+    <Resource Include="ProdImage\ПЦС-1202-2463.jpg" />
+    <Resource Include="ProdImage\ПЦС-1202-2477.jpg" />
+    <Resource Include="ProdImage\ПЦС-2601-2525.jpg" />
+    <Resource Include="ProdImage\ПЦС-2601-2528.jpg" />
+    <Resource Include="ProdImage\ПЦС-2601-2532.jpg" />
+    <Resource Include="ProdImage\ПЦС-2601-2533.jpg" />
+    <Resource Include="ProdImage\ПЦС-2601-2867.jpg" />
+    <Resource Include="ProdImage\ПЦС-2601-2868.jpg" />
+    <Resource Include="ProdImage\ПЦС-2602-2605.jpg" />
+    <Resource Include="ProdImage\ПЦС-4002-02478.jpg" />
+    <Resource Include="ProdImage\ПЦС-602-2556.jpg" />
+    <Resource Include="ProdImage\ПЦС-602-2620.jpg" />
+    <Resource Include="ProdImage\ПЦС-602-2621.jpg" />
+    <Resource Include="ProdImage\ПЦС-643-2519.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AboutProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Auth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DirectoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StorekeeperWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MyModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MyModel.Context.cs</LastGenOutput>
+      <DependentUpon>MyModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="MyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyModel.edmx</DependentUpon>
+      <LastGenOutput>MyModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

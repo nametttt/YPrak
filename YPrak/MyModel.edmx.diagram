@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f73af5c7a35a49afbffa937d82bfb16b" Name="Diagram1">
+        <EntityTypeShape EntityType="prak1Model.Color" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Consist" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Fabric_Fyr" Width="1.5" PointX="11" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Fabric_Textile" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Fyr" Width="1.5" PointX="8.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Fyr_Product" Width="1.5" PointX="11" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Fyr_Type" Width="1.5" PointX="11" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Order" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Ordered_Products" Width="1.5" PointX="12.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Picture" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Product" Width="1.5" PointX="6" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Textile" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Textile_Color" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Textile_Consist" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Textile_Product" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.Type" Width="1.5" PointX="8.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="prak1Model.User" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="prak1Model.FK_Textile_Color_Color" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Textile_Consist_Consist" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Fabric_Fyr_Fyr" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Fabric_Textile_Textile" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Fyr_Product_Fyr" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Fyr_Type_Fyr" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Fyr_Product_Product1" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Fyr_Type_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Order_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Order_User2" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Ordered_Products_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Ordered_Products_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Textile_Picture" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Textile_Product_Product1" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Textile_Color_Textile1" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Textile_Consist_Textile" ManuallyRouted="false" />
+        <AssociationConnector Association="prak1Model.FK_Textile_Product_Textile1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

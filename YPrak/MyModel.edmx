@@ -1,0 +1,1116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище prak1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Color_Id" />
+          </Key>
+          <Property Name="Color_Id" Type="int" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Consist">
+          <Key>
+            <PropertyRef Name="Consist_Id" />
+          </Key>
+          <Property Name="Consist_Id" Type="int" Nullable="false" />
+          <Property Name="Consist" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fabric_Fyr">
+          <Key>
+            <PropertyRef Name="Party" />
+          </Key>
+          <Property Name="Fyr_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="Party" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fabric_Textile">
+          <Key>
+            <PropertyRef Name="Party" />
+          </Key>
+          <Property Name="Party" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Roll" Type="int" Nullable="false" />
+          <Property Name="Textile_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lenght" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fyr">
+          <Key>
+            <PropertyRef Name="Fyr_Id" />
+          </Key>
+          <Property Name="Fyr_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Width" Type="float" Nullable="false" />
+          <Property Name="Lenght" Type="float" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fyr-Product">
+          <Key>
+            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="Fyr_Id" />
+          </Key>
+          <Property Name="Product_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fyr_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Plecement" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Turn" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fyr-Type">
+          <Key>
+            <PropertyRef Name="Fyr-Type_Id" />
+          </Key>
+          <Property Name="Fyr_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type_Id" Type="int" Nullable="false" />
+          <Property Name="Fyr-Type_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Customer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Manager" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ordered_Products">
+          <Key>
+            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Product_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Order_Id" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Picture_Id" />
+          </Key>
+          <Property Name="Picture_Id" Type="int" Nullable="false" />
+          <Property Name="Picture" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Product_Id" />
+          </Key>
+          <Property Name="Product_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Width" Type="int" Nullable="false" />
+          <Property Name="Lenght" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" />
+        </EntityType>
+        <EntityType Name="Textile">
+          <Key>
+            <PropertyRef Name="Textile_Id" />
+          </Key>
+          <Property Name="Textile_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Picture_Id" Type="int" Nullable="false" />
+          <Property Name="Width" Type="int" Nullable="false" />
+          <Property Name="Lenght" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Textile-Color">
+          <Key>
+            <PropertyRef Name="Textile-Color_Id" />
+          </Key>
+          <Property Name="Textile_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Color_Id" Type="int" Nullable="false" />
+          <Property Name="Textile-Color_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Textile-Consist">
+          <Key>
+            <PropertyRef Name="Textile-Consist_Id" />
+          </Key>
+          <Property Name="Textile_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Consist_Id" Type="int" Nullable="false" />
+          <Property Name="Textile-Consist_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Textile-Product">
+          <Key>
+            <PropertyRef Name="Textile_Id" />
+            <PropertyRef Name="Product_Id" />
+          </Key>
+          <Property Name="Textile_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Type_Id" />
+          </Key>
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Fabric_Fyr_Fyr">
+          <End Role="Fyr" Type="Self.Fyr" Multiplicity="1" />
+          <End Role="Fabric_Fyr" Type="Self.Fabric_Fyr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fyr">
+              <PropertyRef Name="Fyr_Id" />
+            </Principal>
+            <Dependent Role="Fabric_Fyr">
+              <PropertyRef Name="Fyr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fabric_Textile_Textile">
+          <End Role="Textile" Type="Self.Textile" Multiplicity="1" />
+          <End Role="Fabric_Textile" Type="Self.Fabric_Textile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Textile">
+              <PropertyRef Name="Textile_Id" />
+            </Principal>
+            <Dependent Role="Fabric_Textile">
+              <PropertyRef Name="Textile_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fyr-Product_Fyr">
+          <End Role="Fyr" Type="Self.Fyr" Multiplicity="1" />
+          <End Role="Fyr-Product" Type="Self.Fyr-Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fyr">
+              <PropertyRef Name="Fyr_Id" />
+            </Principal>
+            <Dependent Role="Fyr-Product">
+              <PropertyRef Name="Fyr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fyr-Product_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Fyr-Product" Type="Self.Fyr-Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="Fyr-Product">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fyr-Type_Fyr">
+          <End Role="Fyr" Type="Self.Fyr" Multiplicity="1" />
+          <End Role="Fyr-Type" Type="Self.Fyr-Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fyr">
+              <PropertyRef Name="Fyr_Id" />
+            </Principal>
+            <Dependent Role="Fyr-Type">
+              <PropertyRef Name="Fyr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fyr-Type_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Fyr-Type" Type="Self.Fyr-Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Type_Id" />
+            </Principal>
+            <Dependent Role="Fyr-Type">
+              <PropertyRef Name="Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User2">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Manager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ordered_Products_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Ordered_Products" Type="Self.Ordered_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Order_Id" />
+            </Principal>
+            <Dependent Role="Ordered_Products">
+              <PropertyRef Name="Order_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ordered_Products_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Ordered_Products" Type="Self.Ordered_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="Ordered_Products">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile_Picture">
+          <End Role="Picture" Type="Self.Picture" Multiplicity="1" />
+          <End Role="Textile" Type="Self.Textile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Picture">
+              <PropertyRef Name="Picture_Id" />
+            </Principal>
+            <Dependent Role="Textile">
+              <PropertyRef Name="Picture_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile-Color_Color">
+          <End Role="Color" Type="Self.Color" Multiplicity="1" />
+          <End Role="Textile-Color" Type="Self.Textile-Color" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="Color_Id" />
+            </Principal>
+            <Dependent Role="Textile-Color">
+              <PropertyRef Name="Color_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile-Color_Textile1">
+          <End Role="Textile" Type="Self.Textile" Multiplicity="1" />
+          <End Role="Textile-Color" Type="Self.Textile-Color" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Textile">
+              <PropertyRef Name="Textile_Id" />
+            </Principal>
+            <Dependent Role="Textile-Color">
+              <PropertyRef Name="Textile_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile-Consist_Consist">
+          <End Role="Consist" Type="Self.Consist" Multiplicity="1" />
+          <End Role="Textile-Consist" Type="Self.Textile-Consist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consist">
+              <PropertyRef Name="Consist_Id" />
+            </Principal>
+            <Dependent Role="Textile-Consist">
+              <PropertyRef Name="Consist_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile-Consist_Textile">
+          <End Role="Textile" Type="Self.Textile" Multiplicity="1" />
+          <End Role="Textile-Consist" Type="Self.Textile-Consist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Textile">
+              <PropertyRef Name="Textile_Id" />
+            </Principal>
+            <Dependent Role="Textile-Consist">
+              <PropertyRef Name="Textile_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile-Product_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Textile-Product" Type="Self.Textile-Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="Textile-Product">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile-Product_Textile1">
+          <End Role="Textile" Type="Self.Textile" Multiplicity="1" />
+          <End Role="Textile-Product" Type="Self.Textile-Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Textile">
+              <PropertyRef Name="Textile_Id" />
+            </Principal>
+            <Dependent Role="Textile-Product">
+              <PropertyRef Name="Textile_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище prak1ModelContainer">
+          <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consist" EntityType="Self.Consist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fabric_Fyr" EntityType="Self.Fabric_Fyr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fabric_Textile" EntityType="Self.Fabric_Textile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fyr" EntityType="Self.Fyr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fyr-Product" EntityType="Self.Fyr-Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fyr-Type" EntityType="Self.Fyr-Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ordered_Products" EntityType="Self.Ordered_Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Textile" EntityType="Self.Textile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Textile-Color" EntityType="Self.Textile-Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Textile-Consist" EntityType="Self.Textile-Consist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Textile-Product" EntityType="Self.Textile-Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Fabric_Fyr_Fyr" Association="Self.FK_Fabric_Fyr_Fyr">
+            <End Role="Fyr" EntitySet="Fyr" />
+            <End Role="Fabric_Fyr" EntitySet="Fabric_Fyr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fabric_Textile_Textile" Association="Self.FK_Fabric_Textile_Textile">
+            <End Role="Textile" EntitySet="Textile" />
+            <End Role="Fabric_Textile" EntitySet="Fabric_Textile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fyr-Product_Fyr" Association="Self.FK_Fyr-Product_Fyr">
+            <End Role="Fyr" EntitySet="Fyr" />
+            <End Role="Fyr-Product" EntitySet="Fyr-Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fyr-Product_Product1" Association="Self.FK_Fyr-Product_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Fyr-Product" EntitySet="Fyr-Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fyr-Type_Fyr" Association="Self.FK_Fyr-Type_Fyr">
+            <End Role="Fyr" EntitySet="Fyr" />
+            <End Role="Fyr-Type" EntitySet="Fyr-Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fyr-Type_Type" Association="Self.FK_Fyr-Type_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Fyr-Type" EntitySet="Fyr-Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User1" Association="Self.FK_Order_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User2" Association="Self.FK_Order_User2">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ordered_Products_Order" Association="Self.FK_Ordered_Products_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Ordered_Products" EntitySet="Ordered_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ordered_Products_Product" Association="Self.FK_Ordered_Products_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Ordered_Products" EntitySet="Ordered_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile_Picture" Association="Self.FK_Textile_Picture">
+            <End Role="Picture" EntitySet="Picture" />
+            <End Role="Textile" EntitySet="Textile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile-Color_Color" Association="Self.FK_Textile-Color_Color">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="Textile-Color" EntitySet="Textile-Color" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile-Color_Textile1" Association="Self.FK_Textile-Color_Textile1">
+            <End Role="Textile" EntitySet="Textile" />
+            <End Role="Textile-Color" EntitySet="Textile-Color" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile-Consist_Consist" Association="Self.FK_Textile-Consist_Consist">
+            <End Role="Consist" EntitySet="Consist" />
+            <End Role="Textile-Consist" EntitySet="Textile-Consist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile-Consist_Textile" Association="Self.FK_Textile-Consist_Textile">
+            <End Role="Textile" EntitySet="Textile" />
+            <End Role="Textile-Consist" EntitySet="Textile-Consist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile-Product_Product1" Association="Self.FK_Textile-Product_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Textile-Product" EntitySet="Textile-Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile-Product_Textile1" Association="Self.FK_Textile-Product_Textile1">
+            <End Role="Textile" EntitySet="Textile" />
+            <End Role="Textile-Product" EntitySet="Textile-Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="prak1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Color_Id" />
+          </Key>
+          <Property Name="Color_Id" Type="Int32" Nullable="false" />
+          <Property Name="Color1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Textile_Color" Relationship="Self.FK_Textile_Color_Color" FromRole="Color" ToRole="Textile_Color" />
+        </EntityType>
+        <EntityType Name="Consist">
+          <Key>
+            <PropertyRef Name="Consist_Id" />
+          </Key>
+          <Property Name="Consist_Id" Type="Int32" Nullable="false" />
+          <Property Name="Consist1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Textile_Consist" Relationship="Self.FK_Textile_Consist_Consist" FromRole="Consist" ToRole="Textile_Consist" />
+        </EntityType>
+        <EntityType Name="Fabric_Fyr">
+          <Key>
+            <PropertyRef Name="Party" />
+          </Key>
+          <Property Name="Fyr_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Party" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Fyr" Relationship="Self.FK_Fabric_Fyr_Fyr" FromRole="Fabric_Fyr" ToRole="Fyr" />
+        </EntityType>
+        <EntityType Name="Fabric_Textile">
+          <Key>
+            <PropertyRef Name="Party" />
+          </Key>
+          <Property Name="Party" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Roll" Type="Int32" Nullable="false" />
+          <Property Name="Textile_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lenght" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Textile" Relationship="Self.FK_Fabric_Textile_Textile" FromRole="Fabric_Textile" ToRole="Textile" />
+        </EntityType>
+        <EntityType Name="Fyr">
+          <Key>
+            <PropertyRef Name="Fyr_Id" />
+          </Key>
+          <Property Name="Fyr_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Width" Type="Double" Nullable="false" />
+          <Property Name="Lenght" Type="Double" Nullable="false" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Fabric_Fyr" Relationship="Self.FK_Fabric_Fyr_Fyr" FromRole="Fyr" ToRole="Fabric_Fyr" />
+          <NavigationProperty Name="Fyr_Product" Relationship="Self.FK_Fyr_Product_Fyr" FromRole="Fyr" ToRole="Fyr_Product" />
+          <NavigationProperty Name="Fyr_Type" Relationship="Self.FK_Fyr_Type_Fyr" FromRole="Fyr" ToRole="Fyr_Type" />
+        </EntityType>
+        <EntityType Name="Fyr_Product">
+          <Key>
+            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="Fyr_Id" />
+          </Key>
+          <Property Name="Product_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fyr_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Plecement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Turn" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Fyr" Relationship="Self.FK_Fyr_Product_Fyr" FromRole="Fyr_Product" ToRole="Fyr" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Fyr_Product_Product1" FromRole="Fyr_Product" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Fyr_Type">
+          <Key>
+            <PropertyRef Name="Fyr_Type_Id" />
+          </Key>
+          <Property Name="Fyr_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="Fyr_Type_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Fyr" Relationship="Self.FK_Fyr_Type_Fyr" FromRole="Fyr_Type" ToRole="Fyr" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_Fyr_Type_Type" FromRole="Fyr_Type" ToRole="Type" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Order_User1" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Order_User2" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="Ordered_Products" Relationship="Self.FK_Ordered_Products_Order" FromRole="Order" ToRole="Ordered_Products" />
+        </EntityType>
+        <EntityType Name="Ordered_Products">
+          <Key>
+            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Product_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Order_Id" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Ordered_Products_Order" FromRole="Ordered_Products" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Ordered_Products_Product" FromRole="Ordered_Products" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Picture_Id" />
+          </Key>
+          <Property Name="Picture_Id" Type="Int32" Nullable="false" />
+          <Property Name="Picture1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Textile" Relationship="Self.FK_Textile_Picture" FromRole="Picture" ToRole="Textile" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Product_Id" />
+          </Key>
+          <Property Name="Product_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Width" Type="Int32" Nullable="false" />
+          <Property Name="Lenght" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" />
+          <NavigationProperty Name="Fyr_Product" Relationship="Self.FK_Fyr_Product_Product1" FromRole="Product" ToRole="Fyr_Product" />
+          <NavigationProperty Name="Ordered_Products" Relationship="Self.FK_Ordered_Products_Product" FromRole="Product" ToRole="Ordered_Products" />
+          <NavigationProperty Name="Textile_Product" Relationship="Self.FK_Textile_Product_Product1" FromRole="Product" ToRole="Textile_Product" />
+        </EntityType>
+        <EntityType Name="Textile">
+          <Key>
+            <PropertyRef Name="Textile_Id" />
+          </Key>
+          <Property Name="Textile_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Picture_Id" Type="Int32" Nullable="false" />
+          <Property Name="Width" Type="Int32" Nullable="false" />
+          <Property Name="Lenght" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Fabric_Textile" Relationship="Self.FK_Fabric_Textile_Textile" FromRole="Textile" ToRole="Fabric_Textile" />
+          <NavigationProperty Name="Picture" Relationship="Self.FK_Textile_Picture" FromRole="Textile" ToRole="Picture" />
+          <NavigationProperty Name="Textile_Color" Relationship="Self.FK_Textile_Color_Textile1" FromRole="Textile" ToRole="Textile_Color" />
+          <NavigationProperty Name="Textile_Consist" Relationship="Self.FK_Textile_Consist_Textile" FromRole="Textile" ToRole="Textile_Consist" />
+          <NavigationProperty Name="Textile_Product" Relationship="Self.FK_Textile_Product_Textile1" FromRole="Textile" ToRole="Textile_Product" />
+        </EntityType>
+        <EntityType Name="Textile_Color">
+          <Key>
+            <PropertyRef Name="Textile_Color_Id" />
+          </Key>
+          <Property Name="Textile_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Color_Id" Type="Int32" Nullable="false" />
+          <Property Name="Textile_Color_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Color" Relationship="Self.FK_Textile_Color_Color" FromRole="Textile_Color" ToRole="Color" />
+          <NavigationProperty Name="Textile" Relationship="Self.FK_Textile_Color_Textile1" FromRole="Textile_Color" ToRole="Textile" />
+        </EntityType>
+        <EntityType Name="Textile_Consist">
+          <Key>
+            <PropertyRef Name="Textile_Consist_Id" />
+          </Key>
+          <Property Name="Textile_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Consist_Id" Type="Int32" Nullable="false" />
+          <Property Name="Textile_Consist_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Consist" Relationship="Self.FK_Textile_Consist_Consist" FromRole="Textile_Consist" ToRole="Consist" />
+          <NavigationProperty Name="Textile" Relationship="Self.FK_Textile_Consist_Textile" FromRole="Textile_Consist" ToRole="Textile" />
+        </EntityType>
+        <EntityType Name="Textile_Product">
+          <Key>
+            <PropertyRef Name="Textile_Id" />
+            <PropertyRef Name="Product_Id" />
+          </Key>
+          <Property Name="Textile_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Product_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Textile_Product_Product1" FromRole="Textile_Product" ToRole="Product" />
+          <NavigationProperty Name="Textile" Relationship="Self.FK_Textile_Product_Textile1" FromRole="Textile_Product" ToRole="Textile" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Type_Id" />
+          </Key>
+          <Property Name="Type1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Fyr_Type" Relationship="Self.FK_Fyr_Type_Type" FromRole="Type" ToRole="Fyr_Type" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_User1" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Order1" Relationship="Self.FK_Order_User2" FromRole="User" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_Textile_Color_Color">
+          <End Role="Color" Type="Self.Color" Multiplicity="1" />
+          <End Role="Textile_Color" Type="Self.Textile_Color" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="Color_Id" />
+            </Principal>
+            <Dependent Role="Textile_Color">
+              <PropertyRef Name="Color_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile_Consist_Consist">
+          <End Role="Consist" Type="Self.Consist" Multiplicity="1" />
+          <End Role="Textile_Consist" Type="Self.Textile_Consist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consist">
+              <PropertyRef Name="Consist_Id" />
+            </Principal>
+            <Dependent Role="Textile_Consist">
+              <PropertyRef Name="Consist_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fabric_Fyr_Fyr">
+          <End Role="Fyr" Type="Self.Fyr" Multiplicity="1" />
+          <End Role="Fabric_Fyr" Type="Self.Fabric_Fyr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fyr">
+              <PropertyRef Name="Fyr_Id" />
+            </Principal>
+            <Dependent Role="Fabric_Fyr">
+              <PropertyRef Name="Fyr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fabric_Textile_Textile">
+          <End Role="Textile" Type="Self.Textile" Multiplicity="1" />
+          <End Role="Fabric_Textile" Type="Self.Fabric_Textile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Textile">
+              <PropertyRef Name="Textile_Id" />
+            </Principal>
+            <Dependent Role="Fabric_Textile">
+              <PropertyRef Name="Textile_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fyr_Product_Fyr">
+          <End Role="Fyr" Type="Self.Fyr" Multiplicity="1" />
+          <End Role="Fyr_Product" Type="Self.Fyr_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fyr">
+              <PropertyRef Name="Fyr_Id" />
+            </Principal>
+            <Dependent Role="Fyr_Product">
+              <PropertyRef Name="Fyr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fyr_Type_Fyr">
+          <End Role="Fyr" Type="Self.Fyr" Multiplicity="1" />
+          <End Role="Fyr_Type" Type="Self.Fyr_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fyr">
+              <PropertyRef Name="Fyr_Id" />
+            </Principal>
+            <Dependent Role="Fyr_Type">
+              <PropertyRef Name="Fyr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fyr_Product_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Fyr_Product" Type="Self.Fyr_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="Fyr_Product">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fyr_Type_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Fyr_Type" Type="Self.Fyr_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Type_Id" />
+            </Principal>
+            <Dependent Role="Fyr_Type">
+              <PropertyRef Name="Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User2">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Manager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ordered_Products_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Ordered_Products" Type="Self.Ordered_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Order_Id" />
+            </Principal>
+            <Dependent Role="Ordered_Products">
+              <PropertyRef Name="Order_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ordered_Products_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Ordered_Products" Type="Self.Ordered_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="Ordered_Products">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile_Picture">
+          <End Role="Picture" Type="Self.Picture" Multiplicity="1" />
+          <End Role="Textile" Type="Self.Textile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Picture">
+              <PropertyRef Name="Picture_Id" />
+            </Principal>
+            <Dependent Role="Textile">
+              <PropertyRef Name="Picture_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile_Product_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Textile_Product" Type="Self.Textile_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="Textile_Product">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile_Color_Textile1">
+          <End Role="Textile" Type="Self.Textile" Multiplicity="1" />
+          <End Role="Textile_Color" Type="Self.Textile_Color" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Textile">
+              <PropertyRef Name="Textile_Id" />
+            </Principal>
+            <Dependent Role="Textile_Color">
+              <PropertyRef Name="Textile_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile_Consist_Textile">
+          <End Role="Textile" Type="Self.Textile" Multiplicity="1" />
+          <End Role="Textile_Consist" Type="Self.Textile_Consist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Textile">
+              <PropertyRef Name="Textile_Id" />
+            </Principal>
+            <Dependent Role="Textile_Consist">
+              <PropertyRef Name="Textile_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textile_Product_Textile1">
+          <End Role="Textile" Type="Self.Textile" Multiplicity="1" />
+          <End Role="Textile_Product" Type="Self.Textile_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Textile">
+              <PropertyRef Name="Textile_Id" />
+            </Principal>
+            <Dependent Role="Textile_Product">
+              <PropertyRef Name="Textile_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="prak1Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Color" EntityType="Self.Color" />
+          <EntitySet Name="Consist" EntityType="Self.Consist" />
+          <EntitySet Name="Fabric_Fyr" EntityType="Self.Fabric_Fyr" />
+          <EntitySet Name="Fabric_Textile" EntityType="Self.Fabric_Textile" />
+          <EntitySet Name="Fyr" EntityType="Self.Fyr" />
+          <EntitySet Name="Fyr_Product" EntityType="Self.Fyr_Product" />
+          <EntitySet Name="Fyr_Type" EntityType="Self.Fyr_Type" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="Ordered_Products" EntityType="Self.Ordered_Products" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="Textile" EntityType="Self.Textile" />
+          <EntitySet Name="Textile_Color" EntityType="Self.Textile_Color" />
+          <EntitySet Name="Textile_Consist" EntityType="Self.Textile_Consist" />
+          <EntitySet Name="Textile_Product" EntityType="Self.Textile_Product" />
+          <EntitySet Name="Type" EntityType="Self.Type" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Textile_Color_Color" Association="Self.FK_Textile_Color_Color">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="Textile_Color" EntitySet="Textile_Color" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile_Consist_Consist" Association="Self.FK_Textile_Consist_Consist">
+            <End Role="Consist" EntitySet="Consist" />
+            <End Role="Textile_Consist" EntitySet="Textile_Consist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fabric_Fyr_Fyr" Association="Self.FK_Fabric_Fyr_Fyr">
+            <End Role="Fyr" EntitySet="Fyr" />
+            <End Role="Fabric_Fyr" EntitySet="Fabric_Fyr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fabric_Textile_Textile" Association="Self.FK_Fabric_Textile_Textile">
+            <End Role="Textile" EntitySet="Textile" />
+            <End Role="Fabric_Textile" EntitySet="Fabric_Textile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fyr_Product_Fyr" Association="Self.FK_Fyr_Product_Fyr">
+            <End Role="Fyr" EntitySet="Fyr" />
+            <End Role="Fyr_Product" EntitySet="Fyr_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fyr_Type_Fyr" Association="Self.FK_Fyr_Type_Fyr">
+            <End Role="Fyr" EntitySet="Fyr" />
+            <End Role="Fyr_Type" EntitySet="Fyr_Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fyr_Product_Product1" Association="Self.FK_Fyr_Product_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Fyr_Product" EntitySet="Fyr_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fyr_Type_Type" Association="Self.FK_Fyr_Type_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Fyr_Type" EntitySet="Fyr_Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User1" Association="Self.FK_Order_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User2" Association="Self.FK_Order_User2">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ordered_Products_Order" Association="Self.FK_Ordered_Products_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Ordered_Products" EntitySet="Ordered_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ordered_Products_Product" Association="Self.FK_Ordered_Products_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Ordered_Products" EntitySet="Ordered_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile_Picture" Association="Self.FK_Textile_Picture">
+            <End Role="Picture" EntitySet="Picture" />
+            <End Role="Textile" EntitySet="Textile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile_Product_Product1" Association="Self.FK_Textile_Product_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Textile_Product" EntitySet="Textile_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile_Color_Textile1" Association="Self.FK_Textile_Color_Textile1">
+            <End Role="Textile" EntitySet="Textile" />
+            <End Role="Textile_Color" EntitySet="Textile_Color" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile_Consist_Textile" Association="Self.FK_Textile_Consist_Textile">
+            <End Role="Textile" EntitySet="Textile" />
+            <End Role="Textile_Consist" EntitySet="Textile_Consist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textile_Product_Textile1" Association="Self.FK_Textile_Product_Textile1">
+            <End Role="Textile" EntitySet="Textile" />
+            <End Role="Textile_Product" EntitySet="Textile_Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище prak1ModelContainer" CdmEntityContainer="prak1Entities1">
+          <EntitySetMapping Name="Color">
+            <EntityTypeMapping TypeName="prak1Model.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="Color_Id" ColumnName="Color_Id" />
+                <ScalarProperty Name="Color1" ColumnName="Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consist">
+            <EntityTypeMapping TypeName="prak1Model.Consist">
+              <MappingFragment StoreEntitySet="Consist">
+                <ScalarProperty Name="Consist_Id" ColumnName="Consist_Id" />
+                <ScalarProperty Name="Consist1" ColumnName="Consist" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fabric_Fyr">
+            <EntityTypeMapping TypeName="prak1Model.Fabric_Fyr">
+              <MappingFragment StoreEntitySet="Fabric_Fyr">
+                <ScalarProperty Name="Fyr_Id" ColumnName="Fyr_Id" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Party" ColumnName="Party" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fabric_Textile">
+            <EntityTypeMapping TypeName="prak1Model.Fabric_Textile">
+              <MappingFragment StoreEntitySet="Fabric_Textile">
+                <ScalarProperty Name="Party" ColumnName="Party" />
+                <ScalarProperty Name="Roll" ColumnName="Roll" />
+                <ScalarProperty Name="Textile_Id" ColumnName="Textile_Id" />
+                <ScalarProperty Name="Lenght" ColumnName="Lenght" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fyr">
+            <EntityTypeMapping TypeName="prak1Model.Fyr">
+              <MappingFragment StoreEntitySet="Fyr">
+                <ScalarProperty Name="Fyr_Id" ColumnName="Fyr_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Lenght" ColumnName="Lenght" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fyr_Product">
+            <EntityTypeMapping TypeName="prak1Model.Fyr_Product">
+              <MappingFragment StoreEntitySet="Fyr-Product">
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Fyr_Id" ColumnName="Fyr_Id" />
+                <ScalarProperty Name="Plecement" ColumnName="Plecement" />
+                <ScalarProperty Name="Turn" ColumnName="Turn" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fyr_Type">
+            <EntityTypeMapping TypeName="prak1Model.Fyr_Type">
+              <MappingFragment StoreEntitySet="Fyr-Type">
+                <ScalarProperty Name="Fyr_Id" ColumnName="Fyr_Id" />
+                <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+                <ScalarProperty Name="Fyr_Type_Id" ColumnName="Fyr-Type_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="prak1Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ordered_Products">
+            <EntityTypeMapping TypeName="prak1Model.Ordered_Products">
+              <MappingFragment StoreEntitySet="Ordered_Products">
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Picture">
+            <EntityTypeMapping TypeName="prak1Model.Picture">
+              <MappingFragment StoreEntitySet="Picture">
+                <ScalarProperty Name="Picture_Id" ColumnName="Picture_Id" />
+                <ScalarProperty Name="Picture1" ColumnName="Picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="prak1Model.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Lenght" ColumnName="Lenght" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Textile">
+            <EntityTypeMapping TypeName="prak1Model.Textile">
+              <MappingFragment StoreEntitySet="Textile">
+                <ScalarProperty Name="Textile_Id" ColumnName="Textile_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Picture_Id" ColumnName="Picture_Id" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Lenght" ColumnName="Lenght" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Textile_Color">
+            <EntityTypeMapping TypeName="prak1Model.Textile_Color">
+              <MappingFragment StoreEntitySet="Textile-Color">
+                <ScalarProperty Name="Textile_Id" ColumnName="Textile_Id" />
+                <ScalarProperty Name="Color_Id" ColumnName="Color_Id" />
+                <ScalarProperty Name="Textile_Color_Id" ColumnName="Textile-Color_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Textile_Consist">
+            <EntityTypeMapping TypeName="prak1Model.Textile_Consist">
+              <MappingFragment StoreEntitySet="Textile-Consist">
+                <ScalarProperty Name="Textile_Id" ColumnName="Textile_Id" />
+                <ScalarProperty Name="Consist_Id" ColumnName="Consist_Id" />
+                <ScalarProperty Name="Textile_Consist_Id" ColumnName="Textile-Consist_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Textile_Product">
+            <EntityTypeMapping TypeName="prak1Model.Textile_Product">
+              <MappingFragment StoreEntitySet="Textile-Product">
+                <ScalarProperty Name="Textile_Id" ColumnName="Textile_Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type">
+            <EntityTypeMapping TypeName="prak1Model.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="Type1" ColumnName="Type" />
+                <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="prak1Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
