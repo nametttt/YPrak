@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YPrak"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-         Title="Экран директора" Height="650" Width="800" MinHeight="650" MinWidth="800" Icon="Logo\logo-02.jpg" Closed="Window_Closed">
+         Title="Экран директора" Height="650" Width="800" MinHeight="650" MinWidth="800" Icon="Logo/logo-02.jpg" Closed="Window_Closed">
     <Window.Resources>
         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
         <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />

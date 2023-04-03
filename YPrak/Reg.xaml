@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YPrak"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-       Title="Регистрация" Height="320" Width="450" MinHeight="300" MinWidth="350" Icon="Logo\logo-02.jpg" Closed="Window_Closed" BorderThickness="0,1,0,0">
+       Title="Регистрация" Height="320" Width="450" MinHeight="300" MinWidth="350" Icon="Logo/logo-02.jpg" Closed="Window_Closed" BorderThickness="0,1,0,0">
     <StackPanel HorizontalAlignment="Center">
 
         <TextBlock Text="Регистрация" FontSize="36" Margin="0,40,0,30" HorizontalAlignment="Center"/>

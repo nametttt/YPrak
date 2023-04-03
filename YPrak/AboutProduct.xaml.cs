@@ -23,5 +23,27 @@ namespace YPrak
         {
             InitializeComponent();
         }
+        
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            if (button.Content.ToString() == "+")
+            {
+                int c1 = Convert.ToInt32(Count.Text);
+                c1++;
+                Count.Text = c1.ToString();
+            }
+            else if (button.Content.ToString() == "-" && Convert.ToInt32(Count.Text) > 0)
+            {
+                int c1 = Convert.ToInt32(Count.Text);
+                c1--;
+                Count.Text = c1.ToString();
+            }
+        }
     }
 }

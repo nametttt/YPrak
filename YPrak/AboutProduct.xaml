@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YPrak"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-         Title="Подробнее о товаре" Height="450" Width="450" MinHeight="450" MinWidth="420">
+         Title="Подробнее о товаре" Height="450" Width="450" MinHeight="450" MinWidth="420" Icon="Logo/logo-02.jpg" Closed="Window_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

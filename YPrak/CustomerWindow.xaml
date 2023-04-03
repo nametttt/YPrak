@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YPrak"
         mc:Ignorable="d"
-        Title="Экран заказчика" Height="700" Width="700" MinHeight="600" MinWidth="700" Icon="Logo\logo-02.jpg" Closed="Window_Closed">
+        Title="Экран заказчика" Height="700" Width="700" MinHeight="600" MinWidth="700" Icon="Logo/logo-02.jpg" Closed="Window_Closed">
     <Window.Resources>
         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
         <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
