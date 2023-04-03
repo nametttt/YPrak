@@ -245,12 +245,12 @@ namespace YPrak
                 foreach (Textile textile in prak.Textile)
                 {
                     sptkani.Items.Add(textile.Name);
-                    posttkani.Items.Add(textile.Name);
+                    //posttkani.Items.Add(textile.Name);
                 }
                 foreach (Fyr fyr in prak.Fyr)
                 {
                     spfyr.Items.Add(fyr.Name);
-                    postfyr.Items.Add(fyr.Name);
+                    //postfyr.Items.Add(fyr.Name);
                 }
 
             }
@@ -405,92 +405,92 @@ namespace YPrak
 
         private void PostNewFyr(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                if (fartic.Text != "" || fname.Text != "" || fweight.Text != "" || flenght.Text != "")
-                    using (prak1Entities1 prak = new prak1Entities1())
-                    {
-                        Fyr fyr = new Fyr()
-                        {
-                            Fyr_Id = fartic.Text,
-                            Name = fname.Text,
-                            Weight = Convert.ToInt32(fweight.Text),
-                            Lenght = Convert.ToInt32(flenght.Text)
-                        };
-                        prak.SaveChanges();
-                        MessageBox.Show("Фурнитура добавлена!");
-                    }
-            }
-            catch
-            {
-                MessageBox.Show("Произошла ошибка!");
-            }
+            //try
+            //{
+            //    if (fartic.Text != "" || fname.Text != "" || fweight.Text != "" || flenght.Text != "")
+            //        using (prak1Entities1 prak = new prak1Entities1())
+            //        {
+            //            Fyr fyr = new Fyr()
+            //            {
+            //                Fyr_Id = fartic.Text,
+            //                Name = fname.Text,
+            //                Weight = Convert.ToInt32(fweight.Text),
+            //                Lenght = Convert.ToInt32(flenght.Text)
+            //            };
+            //            prak.SaveChanges();
+            //            MessageBox.Show("Фурнитура добавлена!");
+            //        }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Произошла ошибка!");
+            //}
         }
 
         private void PostFyr(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                using (prak1Entities1 prak = new prak1Entities1())
-                {
-                    string str = Convert.ToString(postfyr.SelectedItem);
-                    foreach (Fyr fab in prak.Fyr)
-                    {
-                        if (str == fab.Name)
-                            fyrId = fab.Fyr_Id;
-                    }
-                    int count = Convert.ToInt32(count1.Text);
-                    int cost = Convert.ToInt32(cost1.Text);
-                    int newcost = count * cost;
-                    allcost1.Text = newcost.ToString();
-                    foreach (Fabric_Fyr fab_fyr in prak.Fabric_Fyr)
-                    {
-                        if (fyrId == fab_fyr.Fyr_Id)
-                        {
-                            fab_fyr.Count += count;
-                        }
-                    }
-                    prak.SaveChanges();
-                    MessageBox.Show("Запись обновлена!");
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Произошла ошибка!");
-            }
+            //try
+            //{
+            //    using (prak1Entities1 prak = new prak1Entities1())
+            //    {
+            //        string str = Convert.ToString(postfyr.SelectedItem);
+            //        foreach (Fyr fab in prak.Fyr)
+            //        {
+            //            if (str == fab.Name)
+            //                fyrId = fab.Fyr_Id;
+            //        }
+            //        int count = Convert.ToInt32(count1.Text);
+            //        int cost = Convert.ToInt32(cost1.Text);
+            //        int newcost = count * cost;
+            //        allcost1.Text = newcost.ToString();
+            //        foreach (Fabric_Fyr fab_fyr in prak.Fabric_Fyr)
+            //        {
+            //            if (fyrId == fab_fyr.Fyr_Id)
+            //            {
+            //                fab_fyr.Count += count;
+            //            }
+            //        }
+            //        prak.SaveChanges();
+            //        MessageBox.Show("Запись обновлена!");
+            //    }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Произошла ошибка!");
+            //}
         }
         private void PostTkani(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                using (prak1Entities1 prak = new prak1Entities1())
-                {
-                    string str = Convert.ToString(posttkani.SelectedItem);
-                    foreach (Textile textile in prak.Textile)
-                    {
-                        if (str == textile.Name)
-                            textileId = textile.Textile_Id;
-                    }
-                    int count1 = Convert.ToInt32(count.Text);
-                    int cost1 = Convert.ToInt32(cost.Text);
-                    int newcost = count1 * cost1;
-                    allcost.Text = newcost.ToString();
-                    foreach (Fabric_Textile fab_textile in prak.Fabric_Textile)
-                    {
-                        if (textileId == fab_textile.Textile_Id)
-                        {
-                            fab_textile.Roll += count1;
-                            fab_textile.Lenght += Convert.ToDouble(lenght.Text);
-                        }
-                    }
-                    prak.SaveChanges();
-                    MessageBox.Show("Запись обновлена!");
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Запись обновлена!");
-            }
+            //try
+            //{
+            //    using (prak1Entities1 prak = new prak1Entities1())
+            //    {
+            //        string str = Convert.ToString(posttkani.SelectedItem);
+            //        foreach (Textile textile in prak.Textile)
+            //        {
+            //            if (str == textile.Name)
+            //                textileId = textile.Textile_Id;
+            //        }
+            //        int count1 = Convert.ToInt32(count.Text);
+            //        int cost1 = Convert.ToInt32(cost.Text);
+            //        int newcost = count1 * cost1;
+            //        allcost.Text = newcost.ToString();
+            //        foreach (Fabric_Textile fab_textile in prak.Fabric_Textile)
+            //        {
+            //            if (textileId == fab_textile.Textile_Id)
+            //            {
+            //                fab_textile.Roll += count1;
+            //                fab_textile.Lenght += Convert.ToDouble(lenght.Text);
+            //            }
+            //        }
+            //        prak.SaveChanges();
+            //        MessageBox.Show("Запись обновлена!");
+            //    }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Запись обновлена!");
+            //}
         }
     }
 }

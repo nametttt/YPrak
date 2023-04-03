@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YPrak"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Экран кладовщика" Height="500" Width="800" MinHeight="950" MinWidth="800" Icon="Logo/logo-02.jpg" Closed="Window_Closed" Loaded="Window_Loaded">
+        Title="Экран кладовщика" Height="550" Width="800" MinHeight="550" MinWidth="800" Icon="Logo/logo-02.jpg" Closed="Window_Closed" Loaded="Window_Loaded">
     <Window.Resources>
         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
         <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
@@ -19,10 +19,10 @@
             <TabControl>
                 <TabItem Header="Поступление тканей">
                     <StackPanel>
-                        <TextBlock Text="Поступление тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
-                        <Grid Height="300">
+                        <TextBlock Text="Поступление ткани" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,20"/>
+                        <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.5*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -32,79 +32,47 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Укажите ткань:" />
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Укажите количество рулонов:"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Укажите стоимость:" />
-                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Укажите длину рулона:" />
-                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Итоговая стоимость:" />
-                            <ComboBox Grid.Row="0" Grid.Column="1" Margin="10" x:Name="posttkani" FontSize="16"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" x:Name="count"/>
-                            <TextBox Grid.Row="3" Grid.Column="1" Margin="10" x:Name="lenght"/>
-                            <TextBox Grid.Row="4" Grid.Column="1" x:Name="allcost" Margin="10" IsEnabled="False"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" Margin="10" x:Name="cost"/>
-                            <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostTkani"/>
-                        </Grid>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
 
-                        <TextBlock Text="Поступление новой ткани" FontSize="24" HorizontalAlignment="Center" Margin="10"/>
-                        <Grid Height="300" Margin="0,0,0.333,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,0,5" Text="Укажите артикул:" />
                             <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,0,5" Text="Укажите название:" />
-                            <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,0,5" Text="Укажите ширину:" />
-                            <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,0,5" Text="Укажите длину:" />
-                            <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,0,5" Text="Укажите вес:" />
-                            <TextBox Grid.Row="0" Grid.Column="1" Margin="10" x:Name="tartic"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" x:Name="tname"/>
-                            <TextBox Grid.Row="3" Grid.Column="1" Margin="10" x:Name="tweight"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" Margin="10" x:Name="tlenght"/>
-                            <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostNewFyr"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,0,5" Text="Укажите рисунок:" />
+                            <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,0,5" Text="Укажите состав:" />
+                            <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,0,5" Text="Укажите цвет:" />
+                            <TextBlock Grid.Row="5" Grid.Column="0" Margin="10,0,0,5" Text="Укажите длину:" />
+                            <TextBlock Grid.Row="6" Grid.Column="0" Margin="10,0,0,5" Text="Укажите цену:" />
+                            <TextBlock Grid.Row="7" Grid.Column="0" Margin="10,0,0,5" Text="Укажите количество:" />
+                            <TextBlock Grid.Row="8" Grid.Column="0" Margin="10,0,0,5" Text="Итоговая стоимость:" />
+
+                            <TextBox Grid.Row="0" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" />
+                            <ComboBox Grid.Row="2" Grid.Column="1" Margin="10" />
+
+                            <ComboBox Grid.Row="3" Grid.Column="1" Margin="10"/>
+                            <ComboBox Grid.Row="4" Grid.Column="1" Margin="10" />
+
+                            <TextBox Grid.Row="5" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="6" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="7" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="8" Grid.Column="1" Margin="10" />
+
+
+                            <Button Grid.Row="9" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostTkani"/>
                         </Grid>
+
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Поступление фурнитуры">
                     <StackPanel>
                         <TextBlock Text="Поступление фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,20"/>
-
-                        <TextBlock Text="Поступление на склад" FontSize="24" HorizontalAlignment="Center" Margin="10"/>
-                        <Grid Height="264">
+                        <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,0,5" Text="Укажите фурнитуру:" />
-                            <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,0,5" Text="Укажите количество:" />
-                            <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,0,5" Text="Укажите стоимость:" />
-                            <TextBlock Grid.Row="3" Grid.Column="0" Margin="10,0,0,5" Text="Итоговая стоимость:" />
-                            <ComboBox Grid.Row="0" Grid.Column="1" Margin="10" x:Name="postfyr"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" x:Name="count1"/>
-                            <TextBox Grid.Row="3" Grid.Column="1" Margin="10" x:Name="allcost1" IsEnabled="False" />
-                            <TextBox Grid.Row="2" Grid.Column="1" Margin="10" x:Name="cost1"/>
-                            <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostFyr"/>
-                        </Grid>
-
-                        <TextBlock Text="Поступление новой фурнитуры" FontSize="24" HorizontalAlignment="Center" Margin="10"/>
-                        <Grid Height="300" Margin="0,0,0.333,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.5*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -114,17 +82,33 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,0,5" Text="Укажите артикул:" />
                             <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,0,5" Text="Укажите название:" />
                             <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,0,5" Text="Укажите ширину:" />
-                            <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,0,5" Text="Укажите длину:" />
-                            <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,0,5" Text="Укажите вес:" />
-                            <TextBox Grid.Row="0" Grid.Column="1" Margin="10" x:Name="fartic"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" x:Name="fname"/>
-                            <TextBox Grid.Row="3" Grid.Column="1" Margin="10" x:Name="fweight"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" Margin="10" x:Name="flenght"/>
-                            <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostNewFyr"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Margin="10,0,0,5" Text="Укажите длину:" />
+                            <TextBlock Grid.Row="4" Grid.Column="0" Margin="10,0,0,5" Text="Укажите вес:" />
+                            <TextBlock Grid.Row="5" Grid.Column="0" Margin="10,0,0,5" Text="Укажите цену:" />
+                            <TextBlock Grid.Row="6" Grid.Column="0" Margin="10,0,0,5" Text="Укажите количество:" />
+                            <TextBlock Grid.Row="7" Grid.Column="0" Margin="10,0,0,5" Text="Итоговая стоимость:" />
+
+                            <TextBox Grid.Row="0" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="2" Grid.Column="1" Margin="10" />
+
+                            <TextBox Grid.Row="3" Grid.Column="1" Margin="10"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" Margin="10" />
+
+                            <TextBox Grid.Row="5" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="6" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="7" Grid.Column="1" Margin="10" />
+
+                            <Button Grid.Row="8" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostFyr"/>
                         </Grid>
 
                     </StackPanel>
@@ -132,10 +116,44 @@
                 <TabItem Header="Инвентаризация">
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="Инвентаризация" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
-                        <Grid Height="250">
+                        <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="181*"/>
-                                <ColumnDefinition Width="216*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Text="Выберите вид материала:"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Выберите материал:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Пересчитанные данные:"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Пересчитанные данные:"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Расхождения:"/>
+                            <ComboBox Grid.Column="1" Margin="10" x:Name="combobox1" SelectionChanged="ComboBox_SelectionChanged" Height="28">
+                                <ComboBoxItem Content="Ткани"/>
+                                <ComboBoxItem Content="Фурнитура"/>
+                            </ComboBox>
+                            <ComboBox Grid.Row="1" Grid.Column="1" x:Name="combobox2" Margin="10" SelectionChanged="combobox2_SelectionChanged" Height="28"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="textbox" Margin="10" KeyDown="textbox_KeyDown"/>
+
+                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="textbox1" Margin="10" KeyDown="textbox_KeyDown"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" x:Name="textbox2" Margin="10" IsReadOnly="True"/>
+                            <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Отправить на утверждение" Margin="10,10,10,10" Click="Button_Click_1"/>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Списание тканей">
+                    <StackPanel>
+                        <TextBlock Text="Списание тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
@@ -144,72 +162,53 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Column="0" Text="Выберите вид материала:" HorizontalAlignment="Right"/>
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Выберите материал:" HorizontalAlignment="Right"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Пересчитанные данные:" HorizontalAlignment="Right"/>
-                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Расхождения:" HorizontalAlignment="Right"/>
-                            <ComboBox Grid.Column="1" Margin="10,0,10,0" x:Name="combobox1" SelectionChanged="ComboBox_SelectionChanged" Height="28">
-                                <ComboBoxItem Content="Ткани"/>
-                                <ComboBoxItem Content="Фурнитура"/>
-                            </ComboBox>
-                            <ComboBox Grid.Row="1" Grid.Column="1" x:Name="combobox2" Margin="10,0,10,0" SelectionChanged="combobox2_SelectionChanged" Height="28"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="textbox" Margin="10,10,10,10" KeyDown="textbox_KeyDown"/>
-                            <TextBox FontSize="16" Grid.Row="3" Grid.Column="1" x:Name="textbox2" Margin="10,10,10,10" IsEnabled="False"/>
-                            <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Отправить на утверждение" Margin="10,10,10,10" Click="Button_Click_1"/>
-                        </Grid>
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="Списание тканей">
-                    <StackPanel HorizontalAlignment="Center">
-                        <TextBlock Text="Списание тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
-                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label Content="Название ткани"/>
-                            <ComboBox x:Name="sptkani" Margin="10, 0, 0, 0" MinWidth="460"/>
-                        </WrapPanel>
-
-                        <WrapPanel Orientation="Horizontal"  Margin="0, 20, 0, 0">
-                            <Label Content="Поиск по названию"/>
-                            <TextBox Margin="10, 0, 0, 0" MinWidth="460" Name="Search1" KeyDown="Search1_KeyDown"/>
-                        </WrapPanel>
-
-                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 20, 0, 10">
-                            <Label Content="Единица измерения"/>
-                            <ComboBox Margin="10, 0, 0, 0" MinWidth="460" Name="Edin1" SelectionChanged="Edin1_SelectionChanged">
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Название ткани:" />
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Поиск по названию:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Единица измерения:" />
+                            <ComboBox x:Name="sptkani" Margin="10" Grid.Row="0" Grid.Column="1"/>
+                            <TextBox Margin="10" Grid.Row="1" Grid.Column="1"  Name="Search1" KeyDown="Search1_KeyDown"/>
+                            <ComboBox Margin="10" Grid.Row="2" Grid.Column="1" Name="Edin1" SelectionChanged="Edin1_SelectionChanged">
                                 <ComboBoxItem Content="мм"/>
                                 <ComboBoxItem Content="см"/>
                                 <ComboBoxItem Content="дм"/>
                                 <ComboBoxItem Content="м"/>
                             </ComboBox>
-                        </WrapPanel>
-                        <Button Content="Списать" Click="SpTkani"  Margin="10, 0, 0, 10"/>
+                            <Button Margin="10" Content="Списать" Grid.Row="3" Grid.ColumnSpan="2" Click="SpTkani"/>
+                            <DataGrid Height="500" Grid.Row="4" Grid.ColumnSpan="2"  Margin="10" x:Name="datagrid1" BorderBrush="Black"></DataGrid>
+                        </Grid>
 
-                        <DataGrid Height="300" Margin="10,10" x:Name="datagrid1" BorderBrush="Black"></DataGrid>
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Списание фурнитуры">
-                    <StackPanel HorizontalAlignment="Center">
+                    <StackPanel>
                         <TextBlock Text="Списание фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
-                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Label Content="Название фурнитуры"/>
-                            <ComboBox x:Name="spfyr" MinWidth="450"/>
-                        </WrapPanel>
-
-                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0, 20, 0, 0">
-                            <Label Content="Поиск по названию"/>
-                            <TextBox Margin="10, 0, 0, 0" MinWidth="450" Name="Search2" KeyDown="Search2_KeyDown"/>
-                        </WrapPanel>
-                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 20, 0, 10">
-                            <Label Content="Единица измерения"/>
-                            <ComboBox Margin="10, 0, 0, 0" MinWidth="450" Name="Edin2" Text="Единица измерения" SelectionChanged="Edin2_SelectionChanged">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Название фурнитуры:" />
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Поиск по названию:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Единица измерения:" />
+                            <ComboBox x:Name="spfyr" Margin="10" Grid.Row="0" Grid.Column="1"/>
+                            <TextBox Margin="10" Grid.Row="1" Grid.Column="1"  Name="Search2" KeyDown="Search2_KeyDown"/>
+                            <ComboBox Margin="10" Grid.Row="2" Grid.Column="1" Name="Edin2" SelectionChanged="Edin2_SelectionChanged">
                                 <ComboBoxItem Content="мм"/>
                                 <ComboBoxItem Content="см"/>
                                 <ComboBoxItem Content="дм"/>
                                 <ComboBoxItem Content="м"/>
                             </ComboBox>
-                        </WrapPanel>
-                        <Button Content="Списать" Click="SpFyr"/>
-                        <DataGrid Height="300" Margin="0,10" FontSize="16" x:Name="datagrid2">
-                        </DataGrid>
+                            <Button Margin="10" Content="Списать" Grid.Row="3" Grid.ColumnSpan="2" Click="SpFyr"/>
+                            <DataGrid Height="500" Grid.Row="4" Grid.ColumnSpan="2"  Margin="10" x:Name="datagrid2"></DataGrid>
+                        </Grid>
+
                     </StackPanel>
                 </TabItem>
             </TabControl>
