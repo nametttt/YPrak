@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using Path = System.IO.Path;
 
 namespace YPrak
@@ -222,6 +223,11 @@ namespace YPrak
             {
                 MessageBox.Show("Введите все данные!");
             }
+            combobox1.Text = string.Empty;
+            combobox2.Text = string.Empty;
+            sklad.Text = string.Empty;
+            textbox1.Text = string.Empty;
+            textbox2.Text = string.Empty;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -428,61 +434,55 @@ namespace YPrak
             }
         }
 
-        private void PostNewFyr(object sender, RoutedEventArgs e)
+        private void fyrnCount_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //try
-            //{
-            //    if (fartic.Text != "" || fname.Text != "" || fweight.Text != "" || flenght.Text != "")
-            //        using (prak1Entities1 prak = new prak1Entities1())
-            //        {
-            //            Fyr fyr = new Fyr()
-            //            {
-            //                Fyr_Id = fartic.Text,
-            //                Name = fname.Text,
-            //                Weight = Convert.ToInt32(fweight.Text),
-            //                Lenght = Convert.ToInt32(flenght.Text)
-            //            };
-            //            prak.SaveChanges();
-            //            MessageBox.Show("Фурнитура добавлена!");
-            //        }
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Произошла ошибка!");
-            //}
+            try
+            {
+                if (fyrnCost.Text != "" && fyrnCount.Text != "")
+                {
+                    int count = Convert.ToInt32(fyrnCount.Text);
+                    int cost = Convert.ToInt32(fyrnCost.Text);
+                    int newcost = count * cost;
+                    fyrnAllCost.Text = newcost.ToString();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Произошла ошибка!");
+            }
         }
 
         private void PostFyr(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    using (prak1Entities1 prak = new prak1Entities1())
-            //    {
-            //        string str = Convert.ToString(postfyr.SelectedItem);
-            //        foreach (Fyr fab in prak.Fyr)
-            //        {
-            //            if (str == fab.Name)
-            //                fyrId = fab.Fyr_Id;
-            //        }
-            //        int count = Convert.ToInt32(count1.Text);
-            //        int cost = Convert.ToInt32(cost1.Text);
-            //        int newcost = count * cost;
-            //        allcost1.Text = newcost.ToString();
-            //        foreach (Fabric_Fyr fab_fyr in prak.Fabric_Fyr)
-            //        {
-            //            if (fyrId == fab_fyr.Fyr_Id)
-            //            {
-            //                fab_fyr.Count += count;
-            //            }
-            //        }
-            //        prak.SaveChanges();
-            //        MessageBox.Show("Запись обновлена!");
-            //    }
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Произошла ошибка!");
-            //}
+            try
+            {
+                if (fyrnId.Text != "" || fyrnName.Text != "" || fyrnWidth.Text != "" || fyrnLenght.Text != "" || fyrnCost.Text != "" || fyrnCount.Text != "" || fyrnWeight.Text != "")
+                    using (prak1Entities1 prak = new prak1Entities1())
+                    {
+                        Fyr fyr = new Fyr()
+                        {
+                            Fyr_Id = fyrnId.Text,
+                            Name = fyrnName.Text,
+                            Weight = Convert.ToInt32(fyrnWeight.Text),
+                            Lenght = Convert.ToInt32(fyrnLenght.Text),
+                            Width = Convert.ToInt32(fyrnWidth.Text),
+                            Cost = Convert.ToInt32(fyrnCost.Text)
+                        };
+
+                        Fabric_Fyr fabric = new Fabric_Fyr()
+                        { 
+                            Fyr_Id = fyrnId.Text,
+                            Count = Convert.ToInt32(fyrnCount.Text)
+                        };
+
+                        prak.SaveChanges();
+                        MessageBox.Show("Фурнитура добавлена!");
+                    }
+            }
+            catch
+            {
+                MessageBox.Show("Произошла ошибка!");
+            }
         }
         private void PostTkani(object sender, RoutedEventArgs e)
         {

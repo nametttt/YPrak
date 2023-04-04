@@ -34,35 +34,27 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
 
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,0,5" Text="Укажите артикул:" />
                             <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,0,5" Text="Укажите название:" />
                             <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,0,5" Text="Укажите рисунок:" />
-                            <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,0,5" Text="Укажите состав:" />
-                            <TextBlock Grid.Row="4" Grid.Column="0" Margin="0,0,0,5" Text="Укажите цвет:" />
-                            <TextBlock Grid.Row="5" Grid.Column="0" Margin="10,0,0,5" Text="Укажите длину:" />
-                            <TextBlock Grid.Row="6" Grid.Column="0" Margin="10,0,0,5" Text="Укажите цену:" />
-                            <TextBlock Grid.Row="7" Grid.Column="0" Margin="10,0,0,5" Text="Укажите количество:" />
-                            <TextBlock Grid.Row="8" Grid.Column="0" Margin="10,0,0,5" Text="Итоговая стоимость:" />
+                            <TextBlock Grid.Row="3" Grid.Column="0" Margin="10,0,0,5" Text="Укажите длину:" />
+                            <TextBlock Grid.Row="4" Grid.Column="0" Margin="10,0,0,5" Text="Укажите цену:" />
+                            <TextBlock Grid.Row="5" Grid.Column="0" Margin="10,0,0,5" Text="Укажите количество:" />
+                            <TextBlock Grid.Row="6" Grid.Column="0" Margin="10,0,0,5" Text="Итоговая стоимость:" />
 
-                            <TextBox Grid.Row="0" Grid.Column="1" Margin="10" />
-                            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" />
-                            <ComboBox Grid.Row="2" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="0" Grid.Column="1" Margin="10" x:Name="textilId" />
+                            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" x:Name="textilName" />
+                            <ComboBox Grid.Row="2" Grid.Column="1" Margin="10" x:Name="textilePicture"/>
 
-                            <ComboBox Grid.Row="3" Grid.Column="1" Margin="10"/>
-                            <ComboBox Grid.Row="4" Grid.Column="1" Margin="10" />
-
+                            <TextBox Grid.Row="3" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="4" Grid.Column="1" Margin="10" />
                             <TextBox Grid.Row="5" Grid.Column="1" Margin="10" />
                             <TextBox Grid.Row="6" Grid.Column="1" Margin="10" />
-                            <TextBox Grid.Row="7" Grid.Column="1" Margin="10" />
-                            <TextBox Grid.Row="8" Grid.Column="1" Margin="10" />
 
 
-                            <Button Grid.Row="9" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostTkani"/>
+                            <Button Grid.Row="7" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostTkani"/>
                         </Grid>
 
                     </StackPanel>
@@ -97,16 +89,16 @@
                             <TextBlock Grid.Row="6" Grid.Column="0" Margin="10,0,0,5" Text="Укажите количество:" />
                             <TextBlock Grid.Row="7" Grid.Column="0" Margin="10,0,0,5" Text="Итоговая стоимость:" />
 
-                            <TextBox Grid.Row="0" Grid.Column="1" Margin="10" />
-                            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" />
-                            <TextBox Grid.Row="2" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="0" Grid.Column="1" Margin="10" x:Name="fyrnId" />
+                            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" x:Name="fyrnName"  />
+                            <TextBox Grid.Row="2" Grid.Column="1" Margin="10" x:Name="fyrnWidth"  />
 
-                            <TextBox Grid.Row="3" Grid.Column="1" Margin="10"/>
-                            <TextBox Grid.Row="4" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="3" Grid.Column="1" Margin="10" x:Name="fyrnLenght"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" Margin="10" x:Name="fyrnWeight"/>
 
-                            <TextBox Grid.Row="5" Grid.Column="1" Margin="10" />
-                            <TextBox Grid.Row="6" Grid.Column="1" Margin="10" />
-                            <TextBox Grid.Row="7" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="5" Grid.Column="1" Margin="10" x:Name="fyrnCost" />
+                            <TextBox Grid.Row="6" Grid.Column="1" Margin="10" x:Name="fyrnCount" TextChanged="fyrnCount_TextChanged"/>
+                            <TextBox Grid.Row="7" Grid.Column="1" Margin="10" x:Name="fyrnAllCost" IsReadOnly="True" />
 
                             <Button Grid.Row="8" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostFyr"/>
                         </Grid>
@@ -139,7 +131,7 @@
                                 <ComboBoxItem Content="Фурнитура"/>
                             </ComboBox>
                             <ComboBox Grid.Row="1" Grid.Column="1" x:Name="combobox2" Margin="10" SelectionChanged="combobox2_SelectionChanged" Height="28"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="sklad" Margin="10" KeyDown="textbox_KeyDown" IsReadOnly="True"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="sklad" Margin="10" IsReadOnly="True"/>
 
                             <TextBox Grid.Row="3" Grid.Column="1" x:Name="textbox1" Margin="10" KeyDown="textbox_KeyDown"/>
                             <TextBox Grid.Row="4" Grid.Column="1" x:Name="textbox2" Margin="10" IsReadOnly="True"/>
