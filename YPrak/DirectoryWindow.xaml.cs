@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -80,25 +82,42 @@ namespace YPrak
         {
             using (prak1Entities1 prak = new prak1Entities1())
             {
-                var query1 = from Textile in prak.Textile
-                             join Picture in prak.Picture on Textile.Picture_Id equals Picture.Picture_Id
-                             join Textile_Color in prak.Textile_Color on Textile.Textile_Id equals Textile_Color.Textile_Id
-                             join Color in prak.Color on Textile_Color.Color_Id equals Color.Color_Id
-                             join Textile_Consist in prak.Textile_Consist on Textile.Textile_Id equals Textile_Consist.Textile_Id
-                             join Consist in prak.Consist on Textile_Consist.Consist_Id equals Consist.Consist_Id
+                var query = from Textile in prak.Textile
                              join Fabric_Textile in prak.Fabric_Textile on Textile.Textile_Id equals Fabric_Textile.Textile_Id
-                             where Fabric_Textile.Lenght == 0
                              select new
                              {
                                  Артикул = Textile.Textile_Id,
                                  Название = Textile.Name,
-                                 Рисунок = Picture.Picture1,
-                                 Состав = Consist.Consist1,
-                                 Цвет = Color.Color1,
-                                 Количество = Fabric_Textile.Lenght
+                                 Рулон = Fabric_Textile.Roll,
+                                 Длина = Fabric_Textile.Lenght
                              };
-                //datagrid3.ItemsSource = query1.ToList();
+
+                // Создаем FlowDocument
+                FlowDocument doc = new FlowDocument();
+                Table table = new Table();
+
+                // Добавляем столбцы в таблицу
+                table.Columns.Add(new TableColumn { Width = new GridLength(1, GridUnitType.Auto) });
+                table.Columns.Add(new TableColumn { Width = new GridLength(1, GridUnitType.Auto) });
+
+                // Добавляем строки в таблицу
+                foreach (var item in query)
+                {
+                    table.RowGroups[0].Rows.Add(new TableRow
+                    {
+                        Cells = {
+                new TableCell(new Paragraph(new Run(item.Название.ToString()))),
+                new TableCell(new Paragraph(new Run(item.Артикул.ToString())))
             }
+                    });
+                }
+
+                // Добавляем таблицу в документ
+                doc.Blocks.Add(table);
+
+                // Отображаем документ в элементе управления FlowDocumentReader
+                flow.Document = doc;
+        }
         }
 
         private void UpdateSpFyr()

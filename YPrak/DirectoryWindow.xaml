@@ -25,61 +25,16 @@
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <!--<FlowDocumentScrollViewer>
-                                <FlowDocument>
-                                    <BlockUIContainer>
-                                        <StackPanel
-                                            Grid.Row="3"
-                                            Orientation="Vertical">
-                                            <ListView
-                                                ItemsSource="{Binding NewClothesList}"
-                                                SizeChanged="ListView_OnSizeChanged">
-                                                <ListView.View>
-                                                    <GridView>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=c_code}"
-                                                            Width="90">
-                                                            Артикул
-                                                        </GridViewColumn>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=c_name}"
-                                                            Width="90">
-                                                            Название
-                                                        </GridViewColumn>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=c_width}"
-                                                            Width="90">
-                                                            Ширина
-                                                        </GridViewColumn>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=c_height}"
-                                                            Width="90">
-                                                            Длина
-                                                        </GridViewColumn>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=c_price}"
-                                                            Width="90">
-                                                            Цена
-                                                        </GridViewColumn>
-                                                    </GridView>
-                                                </ListView.View>
-                                                <ListView.ItemContainerStyle>
-                                                    <Style TargetType="ListViewItem"
-                                                           BasedOn="{StaticResource {x:Type ListBoxItem}}">
-
-                                                    </Style>
-                                                </ListView.ItemContainerStyle>
-                                            </ListView>
-                                        </StackPanel>
-                                    </BlockUIContainer>
+                            <FlowDocumentScrollViewer x:Name="flow">
+                                <FlowDocument x:Name="document">
                                 </FlowDocument>
-                            </FlowDocumentScrollViewer>-->
+                            </FlowDocumentScrollViewer>
                             <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
                                 <Button Content="Сохранить" MinWidth="370"
-                                    Click="Save_Click" />
+                                     />
                                 <Button
                                 Content="Загрузить" Margin="20,0,0,0" MinWidth="370"
-                                Click="Load_Click"/>
+                                />
                             </StackPanel>
                         </Grid>
         </StackPanel>

@@ -20,62 +20,6 @@
                 <TabItem Header="Поступление ткани">
                     <StackPanel>
                         
-                        <Grid Margin="0,20,0,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <FlowDocumentScrollViewer x:Name="textilDoc">
-                                <FlowDocument>
-                                    <Paragraph TextAlignment="Center">
-                                        Отчет по поступлению ткани
-                                    </Paragraph>
-                                    <BlockUIContainer>
-                                        <StackPanel
-                                            Grid.Row="3"
-                                            Orientation="Vertical">
-                                            <ListView
-                                                x:Name="Postkani"
-                                                ItemsSource="{Binding PostTextile}">
-                                                <ListView.View>
-                                                    <GridView>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=Textile_Id}"
-                                                            x:Name="Id"
-                                                            Width="90">
-                                                            Артикул
-                                                        </GridViewColumn>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=Name}"
-                                                            x:Name="NameT"
-                                                            Width="90">
-                                                            Название
-                                                        </GridViewColumn>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=Width}"
-                                                            x:Name="Width"
-                                                            Width="90">
-                                                            Ширина
-                                                        </GridViewColumn>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=Lenght}"
-                                                            x:Name="Lenght"
-                                                            Width="90">
-                                                            Длина
-                                                        </GridViewColumn>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=Cost}"
-                                                            x:Name="Cost"
-                                                            Width="90">
-                                                            Цена
-                                                        </GridViewColumn>
-                                                    </GridView>
-                                                </ListView.View>
-                                            </ListView>
-                                        </StackPanel>
-                                    </BlockUIContainer>
-                                </FlowDocument>
-                            </FlowDocumentScrollViewer>
                             <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
                                 <Button Content="Сохранить" MinWidth="370"
                                      />
@@ -83,7 +27,6 @@
                                 Content="Загрузить" Margin="20,0,0,0" MinWidth="370"
                                 />
                             </StackPanel>
-                        </Grid>
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Поступление фурнитуры">

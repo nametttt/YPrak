@@ -1,21 +1,17 @@
-﻿using Microsoft.Win32;
+﻿
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Xml.Linq;
-using Path = System.IO.Path;
+using Microsoft.Office.Interop.Word;
+using Table = Microsoft.Office.Interop.Word.Table;
+using Document = Microsoft.Office.Interop.Word.Document;
+using Window = System.Windows.Window;
+using Application = Microsoft.Office.Interop.Word.Application;
+using System.IO;
 
 namespace YPrak
 {
@@ -94,7 +90,7 @@ namespace YPrak
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Application.Current.Shutdown();
+            System.Windows.Application.Current.Shutdown();
         }
 
         private void Edin1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -270,11 +266,9 @@ namespace YPrak
                     spfyr.Items.Add(fyr.Name);
                     //postfyr.Items.Add(fyr.Name);
                 }
-
-                foreach (Picture picture in prak.Picture)
+                foreach (Picture pic in prak.Picture)
                 {
-                    textilPicture.Items.Add(picture.Picture1);
-                    //posttkani.Items.Add(textile.Name);
+                    textilPicture.Items.Add(pic.Picture1);
                 }
 
             }
@@ -548,14 +542,62 @@ namespace YPrak
                         };
                         prak.Fabric_Textile.Add(fabric);
 
+                        CreateWordDocument();
+
                         prak.SaveChanges();
                         MessageBox.Show("Ткань добавлена!");
                     }
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Произошла ошибка!");
+                Clipboard.SetText(ex.ToString());
+                MessageBox.Show(ex.ToString());
             }
+        }
+        private void CreateWordDocument()
+        {
+            Application wordApp = new Application();
+
+            // Создание нового документа
+            Document wordDoc = wordApp.Documents.Add();
+
+            // Создание таблицы в документе
+            Table wordTable = wordDoc.Tables.Add(
+                wordDoc.Paragraphs[1].Range, // Добавляем таблицу в начало документа
+                1, // Количество строк
+                6, // Количество столбцов
+                WdDefaultTableBehavior.wdWord9TableBehavior, // Поведение таблицы по умолчанию
+                WdAutoFitBehavior.wdAutoFitWindow); // Подгонка размеров таблицы под содержимое
+
+            // Заголовки столбцов таблицы
+            wordTable.Cell(1, 1).Range.Text = "артикул";
+            wordTable.Cell(1, 2).Range.Text = "название";
+            wordTable.Cell(1, 3).Range.Text = "длина";
+            wordTable.Cell(1, 4).Range.Text = "ширина";
+            wordTable.Cell(1, 5).Range.Text = "цена";
+            wordTable.Cell(1, 6).Range.Text = "количество";
+
+            // Добавление данных из текстовых полей в таблицу
+            wordTable.Rows.Add(); // Добавляем новую строку в таблицу
+            wordTable.Cell(2, 1).Range.Text = textilId.Text;
+            wordTable.Cell(2, 2).Range.Text = textilName.Text;
+            wordTable.Cell(2, 3).Range.Text = textilLenght.Text;
+            wordTable.Cell(2, 4).Range.Text = textilWidth.Text;
+            wordTable.Cell(2, 5).Range.Text = textilCost.Text;
+            wordTable.Cell(2, 6).Range.Text = textilCount.Text;
+
+            // Отображение диалогового окна сохранения файла
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Документ Word (*.docx)|*.docx|Все файлы (*.*)|*.*";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                // Сохранение документа
+                wordDoc.SaveAs2(Path.GetFullPath(saveFileDialog.FileName));
+            }
+
+            // Закрытие документа и приложения Word
+            wordDoc.Close();
+            wordApp.Quit();
         }
     }
 }
