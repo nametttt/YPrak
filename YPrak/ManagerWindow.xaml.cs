@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,8 @@ namespace YPrak
     {
         public ManagerWindow()
         {
-            InitializeComponent(); Edin.SelectedIndex = 1;
+            InitializeComponent(); 
+            Edin.SelectedIndex = 1;
             UpdateZakaz();
         }
 
@@ -221,8 +223,76 @@ namespace YPrak
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            UpdateZakaz();
+                    string sql = "";
+                    string connectionString = "Data Source=LAPTOP-KH7CD52O;Initial Catalog=prak1;Integrated security=True";
+                    using (prak1Entities1 prak = new prak1Entities1())
+                    {
+                        List<Order> orders = new List<Order>();
+                        List<Ordered_Products> products = new List<Ordered_Products>();
+                        User selectedUser = null;
+                        foreach (User user in prak.User)
+                        {
+                            selectedUser = user;
+                            break;
+                        }
+
+                        foreach (var i in prak.Product)
+                        {
+                            if (Convert.ToInt32(i.Count) > 0)
+                            {
+
+                                SqlConnection connection = new SqlConnection(connectionString);
+                                Order order = new Order()
+                                {
+                                    Date = DateTime.Now,
+                                    Status = "Новый",
+                                    Customer = "Я",
+                                    Manager = "3"
+                                };
+
+                                prak.Order.Add(order);
+
+                                Ordered_Products ordered = new Ordered_Products()
+                                {
+                                    Order_Id = order.Order_Id,
+                                    Product_Id = i.Product_Id.ToString(),
+                                    Count = Convert.ToInt32(i.Count)
+                                };
+                                products.Add(ordered);
+
+                            }
+
+                            using (SqlConnection connection = new SqlConnection(connectionString))
+                            {
+
+                                connection.Open();
+                                foreach (Ordered_Products order in products)
+                                {
+                                    sql = $"INSERT INTO \"Order\"VALUES   ({DateTime.Now}, \"Новый\", {Customer.Text}, \"3\")";
+                                    SqlCommand command = new SqlCommand(sql, connection);
+                                }
+
+                                foreach (Order ord in orders)
+                                {
+                                    sql = $"INSERT INTO \"Order\"VALUES   ({DateTime.Now}, \"Новый\", {Customer.Text}, {Convert.ToInt32(i.Count)})";
+                                    SqlCommand command = new SqlCommand(sql, connection);
+
+                                }
+                            }
+
+                        }
+
+
+                        foreach (Product product in prak.Product)
+                        {
+                            product.Count = 0;
+                        }
+                        UpdateIz(1);
+                        prak.SaveChanges();
+
+                        MessageBox.Show("Успешное оформление заказа!");
+                    }
+                }
+            }
         }
-    }
-}
 

@@ -25,51 +25,264 @@
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <FlowDocumentScrollViewer x:Name="docViewer">
+                            <!--<FlowDocumentScrollViewer>
                                 <FlowDocument>
-                                    <Paragraph TextAlignment="Left" FontSize="15">
+                                    <BlockUIContainer>
+                                        <StackPanel
+                                            Grid.Row="3"
+                                            Orientation="Vertical">
+                                            <ListView
+                                                ItemsSource="{Binding NewClothesList}"
+                                                SizeChanged="ListView_OnSizeChanged">
+                                                <ListView.View>
+                                                    <GridView>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_code}"
+                                                            Width="90">
+                                                            Артикул
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_name}"
+                                                            Width="90">
+                                                            Название
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_width}"
+                                                            Width="90">
+                                                            Ширина
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_height}"
+                                                            Width="90">
+                                                            Длина
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_price}"
+                                                            Width="90">
+                                                            Цена
+                                                        </GridViewColumn>
+                                                    </GridView>
+                                                </ListView.View>
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="ListViewItem"
+                                                           BasedOn="{StaticResource {x:Type ListBoxItem}}">
 
-                                        <RichTextBox x:Name="docBox" />
-                                        <DataGrid Height="250" Width="740" Margin="10" FontSize="16" x:Name="datagrid3"></DataGrid>
-                                    </Paragraph>
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
+                                            </ListView>
+                                        </StackPanel>
+                                    </BlockUIContainer>
                                 </FlowDocument>
-                            </FlowDocumentScrollViewer>
-                            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" >
-                                <Button Content="Сохранить" Margin="10" Click="Save_Click" Width="200" />
-                                <Button Content="Удалить" Margin="10" Width="200" />
-                                <Button Content="Загрузить" Margin="10" Click="Load_Click" Width="200" />
+                            </FlowDocumentScrollViewer>-->
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                                <Button Content="Сохранить" MinWidth="370"
+                                    Click="Save_Click" />
+                                <Button
+                                Content="Загрузить" Margin="20,0,0,0" MinWidth="370"
+                                Click="Load_Click"/>
                             </StackPanel>
                         </Grid>
-                    </StackPanel>
+        </StackPanel>
                 </TabItem>
                 <TabItem Header="Списание фурнитуры">
                     <StackPanel>
                         <TextBlock Text="Отчет по списанию фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
-                        <DataGrid Height="250" Margin="10" FontSize="16" x:Name="datagrid4"></DataGrid>
-                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
-                            <Button Content="Обновить" MinWidth="380" Click="Button_Click_5"/>
-                            <Button Content="Печать" MinWidth="380" Margin="10,0,0,0" Click="Button_Click_2"/>
-                        </WrapPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <!--<FlowDocumentScrollViewer>
+                                <FlowDocument>
+                                    <BlockUIContainer>
+                                        <StackPanel
+                                            Grid.Row="3"
+                                            Orientation="Vertical">
+                                            <ListView
+                                                ItemsSource="{Binding NewClothesList}"
+                                                SizeChanged="ListView_OnSizeChanged">
+                                                <ListView.View>
+                                                    <GridView>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_code}"
+                                                            Width="90">
+                                                            Артикул
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_name}"
+                                                            Width="90">
+                                                            Название
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_width}"
+                                                            Width="90">
+                                                            Ширина
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_height}"
+                                                            Width="90">
+                                                            Длина
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_price}"
+                                                            Width="90">
+                                                            Цена
+                                                        </GridViewColumn>
+                                                    </GridView>
+                                                </ListView.View>
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="ListViewItem"
+                                                           BasedOn="{StaticResource {x:Type ListBoxItem}}">
+
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
+                                            </ListView>
+                                        </StackPanel>
+                                    </BlockUIContainer>
+                                </FlowDocument>
+                            </FlowDocumentScrollViewer>-->
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                                <Button Content="Сохранить" MinWidth="370"
+                                    Click="Save_Click" />
+                                <Button
+                                Content="Загрузить" Margin="20,0,0,0" MinWidth="370"
+                                Click="Load_Click"/>
+                            </StackPanel>
+                        </Grid>
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Остатки тканей">
                     <StackPanel>
                         <TextBlock Text="Отчет по остаткам тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
-                        <DataGrid Height="250" Margin="10" FontSize="16" x:Name="datagrid2"></DataGrid>
-                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
-                            <Button Content="Обновить" MinWidth="380" Click="Button_Click_3"/>
-                            <Button Content="Печать" MinWidth="380" Margin="10,0,0,0" Click="Button_Click_2"/>
-                        </WrapPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <!--<FlowDocumentScrollViewer x:Name="fyrDoc">
+                                <FlowDocument>
+                                    <BlockUIContainer>
+                                        <StackPanel
+                                            Grid.Row="3"
+                                            Orientation="Vertical">
+                                            <ListView
+                                                ItemsSource="{Binding NewClothesList}"
+                                                SizeChanged="ListView_OnSizeChanged">
+                                                <ListView.View>
+                                                    <GridView>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_code}"
+                                                            Width="90">
+                                                            Артикул
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_name}"
+                                                            Width="90">
+                                                            Название
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_width}"
+                                                            Width="90">
+                                                            Ширина
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_height}"
+                                                            Width="90">
+                                                            Длина
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_price}"
+                                                            Width="90">
+                                                            Цена
+                                                        </GridViewColumn>
+                                                    </GridView>
+                                                </ListView.View>
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="ListViewItem"
+                                                           BasedOn="{StaticResource {x:Type ListBoxItem}}">
+
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
+                                            </ListView>
+                                        </StackPanel>
+                                    </BlockUIContainer>
+                                </FlowDocument>
+                            </FlowDocumentScrollViewer>-->
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                                <Button Content="Сохранить" MinWidth="370"
+                                    Click="Save_Click" />
+                                <Button
+                                Content="Загрузить" Margin="20,0,0,0" MinWidth="370"
+                                Click="Load_Click"/>
+                            </StackPanel>
+                        </Grid>
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Остатки фурнитуры">
                     <StackPanel>
                         <TextBlock Text="Отчет по остаткам фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
-                        <DataGrid Height="250" Margin="10" FontSize="16" x:Name="datagrid1"></DataGrid>
-                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
-                            <Button Content="Обновить" MinWidth="380" Click="Button_Click_1"/>
-                            <Button Content="Печать" MinWidth="380" Margin="10,0,0,0" Click="Button_Click_2"/>
-                        </WrapPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <!--<FlowDocumentScrollViewer>
+                                <FlowDocument>
+                                    <BlockUIContainer>
+                                        <StackPanel
+                                            Grid.Row="3"
+                                            Orientation="Vertical">
+                                            <ListView
+                                                ItemsSource="{Binding NewClothesList}"
+                                                SizeChanged="ListView_OnSizeChanged">
+                                                <ListView.View>
+                                                    <GridView>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_code}"
+                                                            Width="90">
+                                                            Артикул
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_name}"
+                                                            Width="90">
+                                                            Название
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_width}"
+                                                            Width="90">
+                                                            Ширина
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_height}"
+                                                            Width="90">
+                                                            Длина
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_price}"
+                                                            Width="90">
+                                                            Цена
+                                                        </GridViewColumn>
+                                                    </GridView>
+                                                </ListView.View>
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="ListViewItem"
+                                                           BasedOn="{StaticResource {x:Type ListBoxItem}}">
+
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
+                                            </ListView>
+                                        </StackPanel>
+                                    </BlockUIContainer>
+                                </FlowDocument>
+                            </FlowDocumentScrollViewer>-->
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                                <Button Content="Сохранить" MinWidth="370"
+                                    Click="Save_Click" />
+                                <Button
+                                Content="Загрузить" Margin="20,0,0,0" MinWidth="370"
+                                Click="Load_Click"/>
+                            </StackPanel>
+                        </Grid>
                     </StackPanel>
                 </TabItem>
             </TabControl>

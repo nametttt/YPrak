@@ -55,7 +55,7 @@ namespace YPrak
                                  Партия = Fabric_Fyr.Party,
                                  Количество = Fabric_Fyr.Count
                              };
-                datagrid1.ItemsSource = query1.ToList();
+                //datagrid1.ItemsSource = query1.ToList();
             }
         }
 
@@ -72,7 +72,7 @@ namespace YPrak
                                  Рулон = Fabric_Textile.Roll,
                                  Длина = Fabric_Textile.Lenght
                              };
-                datagrid2.ItemsSource = query1.ToList();
+                //datagrid2.ItemsSource = query1.ToList();
             }
         }
 
@@ -97,7 +97,7 @@ namespace YPrak
                                  Цвет = Color.Color1,
                                  Количество = Fabric_Textile.Lenght
                              };
-                datagrid3.ItemsSource = query1.ToList();
+                //datagrid3.ItemsSource = query1.ToList();
             }
         }
 
@@ -117,7 +117,7 @@ namespace YPrak
                                  Тип = Type.Type1,
                                  Количество = Fabric_Fyr.Count
                              };
-                datagrid4.ItemsSource = query1.ToList();
+                //datagrid4.ItemsSource = query1.ToList();
             }
         }
 
@@ -147,41 +147,41 @@ namespace YPrak
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Text Files (*.txt)|*.txt|RichText Files (*.rtf)|*.rtf|XAML Files (*.xaml)|*.xaml|All files (*.*)|*.*";
-            if (Convert.ToBoolean(sfd.ShowDialog()) == true)
-            {
-                TextRange doc = new TextRange(docBox.Document.ContentStart, docBox.Document.ContentEnd);
-                using (FileStream fs = File.Create(sfd.FileName))
-                {
-                    if (System.IO.Path.GetExtension(sfd.FileName).ToLower() == ".rtf")
-                        doc.Save(fs, DataFormats.Rtf);
-                    else if (Path.GetExtension(sfd.FileName).ToLower() == ".txt")
-                        doc.Save(fs, DataFormats.Text);
-                    else
-                        doc.Save(fs, DataFormats.Xaml);
-                }
-            }
+            //SaveFileDialog sfd = new SaveFileDialog();
+            //sfd.Filter = "Text Files (*.txt)|*.txt|RichText Files (*.rtf)|*.rtf|XAML Files (*.xaml)|*.xaml|All files (*.*)|*.*";
+            //if (Convert.ToBoolean(sfd.ShowDialog()) == true)
+            //{
+            //    TextRange doc = new TextRange(docBox.Document.ContentStart, docBox.Document.ContentEnd);
+            //    using (FileStream fs = File.Create(sfd.FileName))
+            //    {
+            //        if (System.IO.Path.GetExtension(sfd.FileName).ToLower() == ".rtf")
+            //            doc.Save(fs, DataFormats.Rtf);
+            //        else if (Path.GetExtension(sfd.FileName).ToLower() == ".txt")
+            //            doc.Save(fs, DataFormats.Text);
+            //        else
+            //            doc.Save(fs, DataFormats.Xaml);
+            //    }
+            //}
         }
 
         private void Load_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "RichText Files (*.rtf)|*.rtf|All files (*.*)|*.*";
+            //OpenFileDialog ofd = new OpenFileDialog();
+            //ofd.Filter = "RichText Files (*.rtf)|*.rtf|All files (*.*)|*.*";
 
-            if (Convert.ToBoolean(ofd.ShowDialog()) == true)
-            {
-                TextRange doc = new TextRange(docBox.Document.ContentStart, docBox.Document.ContentEnd);
-                using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open))
-                {
-                    if (Path.GetExtension(ofd.FileName).ToLower() == ".rtf")
-                        doc.Load(fs, DataFormats.Rtf);
-                    else if (Path.GetExtension(ofd.FileName).ToLower() == ".txt")
-                        doc.Load(fs, DataFormats.Text);
-                    else
-                        doc.Load(fs, DataFormats.Xaml);
-                }
-            }
+            //if (Convert.ToBoolean(ofd.ShowDialog()) == true)
+            //{
+            //    TextRange doc = new TextRange(docBox.Document.ContentStart, docBox.Document.ContentEnd);
+            //    using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open))
+            //    {
+            //        if (Path.GetExtension(ofd.FileName).ToLower() == ".rtf")
+            //            doc.Load(fs, DataFormats.Rtf);
+            //        else if (Path.GetExtension(ofd.FileName).ToLower() == ".txt")
+            //            doc.Load(fs, DataFormats.Text);
+            //        else
+            //            doc.Load(fs, DataFormats.Xaml);
+            //    }
+            //}
         }
     }
 }

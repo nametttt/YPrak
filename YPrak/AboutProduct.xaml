@@ -23,9 +23,9 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="3" Grid.Column="0" x:Name="plow" Text="Артикул: " Margin="10"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="width" HorizontalAlignment="Left" Text="Ширина: " Margin="10"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" x:Name="width" Text="Ширина: " Margin="10"/>
 
-        <TextBlock Grid.Row="4" Grid.Column="0" x:Name="name" Text="Название: "  Margin="10" />
+        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="name" Text="Название: " HorizontalAlignment="Left" Margin="10" />
         <TextBlock Grid.Row="4" Grid.Column="1" x:Name="height" HorizontalAlignment="Left" Text="Длина: " Margin="10"/>
         <TextBlock Grid.Row="5" Grid.Column="0"  Text="Количество: " Margin="10"/>
         <WrapPanel Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
@@ -33,7 +33,7 @@
             <TextBox IsReadOnly="True" x:Name="Count" Text="0" MinWidth="30" Margin="15,0,15,0" TextAlignment="Center" BorderBrush="Black"/>
             <Button Content="+" Width="30" VerticalContentAlignment="Top" Background="#FFD1EEFC" Click="Button_Click"/>
         </WrapPanel>
-        <Button Grid.Row="6" Grid.ColumnSpan="2" Content="Сохранить" Margin="10"/>
+        <Button Grid.Row="6" Grid.ColumnSpan="2" Content="Сохранить" Margin="10" Click="Button_Click_1"/>
         <Image Grid.ColumnSpan="2" Grid.RowSpan="3" x:Name="image" Margin="10" />
 
     </Grid>

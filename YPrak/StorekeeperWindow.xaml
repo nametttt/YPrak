@@ -17,7 +17,180 @@
         <StackPanel>
             <Button Content="Выход" Margin="0,10,10,5" HorizontalAlignment="Right" Click="Button_Click"/>
             <TabControl>
-                <TabItem Header="Поступление тканей">
+                <TabItem Header="Поступление ткани">
+                    <StackPanel>
+                        
+                        <Grid Margin="0,20,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <FlowDocumentScrollViewer x:Name="textilDoc">
+                                <FlowDocument>
+                                    <Paragraph TextAlignment="Center">
+                                        Отчет по поступлению ткани
+                                    </Paragraph>
+                                    <BlockUIContainer>
+                                        <StackPanel
+                                            Grid.Row="3"
+                                            Orientation="Vertical">
+                                            <ListView
+                                                x:Name="Postkani"
+                                                ItemsSource="{Binding PostTextile}">
+                                                <ListView.View>
+                                                    <GridView>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=Textile_Id}"
+                                                            x:Name="Id"
+                                                            Width="90">
+                                                            Артикул
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=Name}"
+                                                            x:Name="NameT"
+                                                            Width="90">
+                                                            Название
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=Width}"
+                                                            x:Name="Width"
+                                                            Width="90">
+                                                            Ширина
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=Lenght}"
+                                                            x:Name="Lenght"
+                                                            Width="90">
+                                                            Длина
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=Cost}"
+                                                            x:Name="Cost"
+                                                            Width="90">
+                                                            Цена
+                                                        </GridViewColumn>
+                                                    </GridView>
+                                                </ListView.View>
+                                            </ListView>
+                                        </StackPanel>
+                                    </BlockUIContainer>
+                                </FlowDocument>
+                            </FlowDocumentScrollViewer>
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                                <Button Content="Сохранить" MinWidth="370"
+                                     />
+                                <Button
+                                Content="Загрузить" Margin="20,0,0,0" MinWidth="370"
+                                />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Поступление фурнитуры">
+                    <StackPanel>
+                        
+                        <Grid Margin="0,20,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <!--<FlowDocumentScrollViewer x:Name="fyrDoc">
+                                <FlowDocument>
+                                    <Paragraph TextAlignment="Center">
+                                        Отчет по поступлению фурнитуры
+                                    </Paragraph>
+                                    <BlockUIContainer>
+                                        <StackPanel
+                                            Grid.Row="3"
+                                            Orientation="Vertical">
+                                            <ListView
+                                                ItemsSource="{Binding NewClothesList}"
+                                                SizeChanged="ListView_OnSizeChanged">
+                                                <ListView.View>
+                                                    <GridView>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_code}"
+                                                            Width="90">
+                                                            Артикул
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_name}"
+                                                            Width="90">
+                                                            Название
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_width}"
+                                                            Width="90">
+                                                            Ширина
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_height}"
+                                                            Width="90">
+                                                            Длина
+                                                        </GridViewColumn>
+                                                        <GridViewColumn
+                                                            DisplayMemberBinding="{Binding Path=c_price}"
+                                                            Width="90">
+                                                            Цена
+                                                        </GridViewColumn>
+                                                    </GridView>
+                                                </ListView.View>
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="ListViewItem"
+                                                           BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                                        
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
+                                            </ListView>
+                                        </StackPanel>
+                                    </BlockUIContainer>
+                                </FlowDocument>
+                            </FlowDocumentScrollViewer>-->
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                                <Button Content="Сохранить" MinWidth="370"
+                                     />
+                                <Button
+                                Content="Загрузить" Margin="20,0,0,0" MinWidth="370"
+                                />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Инвентаризация">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Инвентаризация" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Text="Выберите вид материала:"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Выберите материал:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Данные на складе:"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Пересчитанные данные:"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Расхождения:"/>
+                            <ComboBox Grid.Column="1" Margin="10" x:Name="combobox1" SelectionChanged="ComboBox_SelectionChanged" Height="28">
+                                <ComboBoxItem Content="Ткани"/>
+                                <ComboBoxItem Content="Фурнитура"/>
+                            </ComboBox>
+                            <ComboBox Grid.Row="1" Grid.Column="1" x:Name="combobox2" Margin="10" SelectionChanged="combobox2_SelectionChanged" Height="28"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="sklad" Margin="10" IsReadOnly="True"/>
+
+                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="textbox1" Margin="10" TextChanged="textbox1_TextChanged"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" x:Name="textbox2" Margin="10" IsReadOnly="True"/>
+                            <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Отправить на утверждение" Margin="10,10,10,10" Click="Button_Click_1"/>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Ткани">
                     <StackPanel>
                         <TextBlock Text="Поступление ткани" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,20"/>
                         <Grid>
@@ -34,32 +207,61 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
 
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,0,5" Text="Укажите артикул:" />
                             <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,0,5" Text="Укажите название:" />
                             <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,0,5" Text="Укажите рисунок:" />
                             <TextBlock Grid.Row="3" Grid.Column="0" Margin="10,0,0,5" Text="Укажите длину:" />
-                            <TextBlock Grid.Row="4" Grid.Column="0" Margin="10,0,0,5" Text="Укажите цену:" />
-                            <TextBlock Grid.Row="5" Grid.Column="0" Margin="10,0,0,5" Text="Укажите количество:" />
-                            <TextBlock Grid.Row="6" Grid.Column="0" Margin="10,0,0,5" Text="Итоговая стоимость:" />
+                            <TextBlock Grid.Row="4" Grid.Column="0" Margin="10,0,0,5" Text="Укажите ширину:" />
+                            <TextBlock Grid.Row="5" Grid.Column="0" Margin="10,0,0,5" Text="Укажите цену:" />
+                            <TextBlock Grid.Row="6" Grid.Column="0" Margin="10,0,0,5" Text="Укажите количество:" />
+                            <TextBlock Grid.Row="7" Grid.Column="0" Margin="10,0,0,5" Text="Итоговая стоимость:" />
 
                             <TextBox Grid.Row="0" Grid.Column="1" Margin="10" x:Name="textilId" />
                             <TextBox Grid.Row="1" Grid.Column="1" Margin="10" x:Name="textilName" />
-                            <ComboBox Grid.Row="2" Grid.Column="1" Margin="10" x:Name="textilePicture"/>
+                            <ComboBox Grid.Row="2" Grid.Column="1" Margin="10" x:Name="textilPicture"/>
 
-                            <TextBox Grid.Row="3" Grid.Column="1" Margin="10" />
-                            <TextBox Grid.Row="4" Grid.Column="1" Margin="10" />
-                            <TextBox Grid.Row="5" Grid.Column="1" Margin="10" />
-                            <TextBox Grid.Row="6" Grid.Column="1" Margin="10" />
+                            <TextBox Grid.Row="3" Grid.Column="1" Margin="10" x:Name="textilLenght"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" Margin="10" x:Name="textilWidth"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" Margin="10" x:Name="textilCost" />
+                            <TextBox Grid.Row="6" Grid.Column="1" Margin="10"  x:Name="textilCount" TextChanged="textilCount_TextChanged" />
+                            <TextBox Grid.Row="7" Grid.Column="1" Margin="10"  x:Name="textilAllCost" IsReadOnly="True"/>
 
-
-                            <Button Grid.Row="7" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostTkani"/>
+                            <Button Grid.Row="8" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostTkani"/>
+                        </Grid>
+                        <TextBlock Text="Списание тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Название ткани:" />
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Поиск по названию:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Единица измерения:" />
+                            <ComboBox x:Name="sptkani" Margin="10" Grid.Row="0" Grid.Column="1"/>
+                            <TextBox Margin="10" Grid.Row="1" Grid.Column="1"  Name="Search1" KeyDown="Search1_KeyDown"/>
+                            <ComboBox Margin="10" Grid.Row="2" Grid.Column="1" Name="Edin1" SelectionChanged="Edin1_SelectionChanged">
+                                <ComboBoxItem Content="мм"/>
+                                <ComboBoxItem Content="см"/>
+                                <ComboBoxItem Content="дм"/>
+                                <ComboBoxItem Content="м"/>
+                            </ComboBox>
+                            <Button Margin="10" Content="Списать" Grid.Row="3" Grid.ColumnSpan="2" Click="SpTkani"/>
+                            <DataGrid Height="500" Grid.Row="4" Grid.ColumnSpan="2"  Margin="10" x:Name="datagrid1" BorderBrush="Black"></DataGrid>
                         </Grid>
 
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Поступление фурнитуры">
+                <TabItem Header="Фурнитура">
                     <StackPanel>
                         <TextBlock Text="Поступление фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,20"/>
                         <Grid>
@@ -102,77 +304,6 @@
 
                             <Button Grid.Row="8" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostFyr"/>
                         </Grid>
-
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="Инвентаризация">
-                    <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="Инвентаризация" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.5*"/>
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Column="0" Text="Выберите вид материала:"/>
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Выберите материал:"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Данные на складе:"/>
-                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Пересчитанные данные:"/>
-                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Расхождения:"/>
-                            <ComboBox Grid.Column="1" Margin="10" x:Name="combobox1" SelectionChanged="ComboBox_SelectionChanged" Height="28">
-                                <ComboBoxItem Content="Ткани"/>
-                                <ComboBoxItem Content="Фурнитура"/>
-                            </ComboBox>
-                            <ComboBox Grid.Row="1" Grid.Column="1" x:Name="combobox2" Margin="10" SelectionChanged="combobox2_SelectionChanged" Height="28"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="sklad" Margin="10" IsReadOnly="True"/>
-
-                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="textbox1" Margin="10" KeyDown="textbox_KeyDown"/>
-                            <TextBox Grid.Row="4" Grid.Column="1" x:Name="textbox2" Margin="10" IsReadOnly="True"/>
-                            <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Отправить на утверждение" Margin="10,10,10,10" Click="Button_Click_1"/>
-                        </Grid>
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="Списание тканей">
-                    <StackPanel>
-                        <TextBlock Text="Списание тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.5*"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Название ткани:" />
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Поиск по названию:"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Единица измерения:" />
-                            <ComboBox x:Name="sptkani" Margin="10" Grid.Row="0" Grid.Column="1"/>
-                            <TextBox Margin="10" Grid.Row="1" Grid.Column="1"  Name="Search1" KeyDown="Search1_KeyDown"/>
-                            <ComboBox Margin="10" Grid.Row="2" Grid.Column="1" Name="Edin1" SelectionChanged="Edin1_SelectionChanged">
-                                <ComboBoxItem Content="мм"/>
-                                <ComboBoxItem Content="см"/>
-                                <ComboBoxItem Content="дм"/>
-                                <ComboBoxItem Content="м"/>
-                            </ComboBox>
-                            <Button Margin="10" Content="Списать" Grid.Row="3" Grid.ColumnSpan="2" Click="SpTkani"/>
-                            <DataGrid Height="500" Grid.Row="4" Grid.ColumnSpan="2"  Margin="10" x:Name="datagrid1" BorderBrush="Black"></DataGrid>
-                        </Grid>
-
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="Списание фурнитуры">
-                    <StackPanel>
                         <TextBlock Text="Списание фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
                         <Grid>
                             <Grid.ColumnDefinitions>

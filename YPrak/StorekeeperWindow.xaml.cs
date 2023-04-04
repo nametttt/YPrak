@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
@@ -24,13 +25,16 @@ namespace YPrak
     public partial class StorekeeperWindow : Window
     {
         string textileId, fyrId;
+        int textilePicture;
         string textileName, fyrName;
+        private List<Textile> PostTextile = new List<Textile>();
         public StorekeeperWindow()
         {
             InitializeComponent();
             Edin1.SelectedIndex = 1;
             Edin2.SelectedIndex = 1;
         }
+
 
         private void UpdateTkani(double edin)
         {
@@ -267,6 +271,12 @@ namespace YPrak
                     //postfyr.Items.Add(fyr.Name);
                 }
 
+                foreach (Picture picture in prak.Picture)
+                {
+                    textilPicture.Items.Add(picture.Picture1);
+                    //posttkani.Items.Add(textile.Name);
+                }
+
             }
         }
 
@@ -316,55 +326,6 @@ namespace YPrak
             }
         }
 
-        private void textbox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                using (prak1Entities1 prak = new prak1Entities1())
-                {
-                    try
-                    {
-                        if (combobox1.SelectedIndex == 0)
-                        {
-
-                            foreach (Fabric_Textile count1 in prak.Fabric_Textile)
-                            {
-                                if (textileId == count1.Textile_Id)
-                                {
-                                    double changes;
-                                    double x, y;
-                                    x = Convert.ToInt32(count1.Roll);
-                                    y = Convert.ToInt32(textbox1.Text);
-                                    changes = ((x - y) / x) * 100;
-                                    textbox2.Text = changes.ToString();
-                                }
-                            }
-                        }
-                        else if (combobox1.SelectedIndex == 1)
-                        {
-
-                            foreach (Fabric_Fyr count2 in prak.Fabric_Fyr)
-                            {
-                                if (fyrId == count2.Fyr_Id)
-                                {
-                                    double changes;
-                                    double x, y;
-                                    x = Convert.ToInt32(count2.Count);
-                                    y = Convert.ToInt32(textbox1.Text);
-                                    changes = ((x - y) / x) * 100;
-                                    textbox2.Text = changes.ToString();
-                                }
-
-                            }
-                        }
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Произошла ошибка!");
-                    }
-                }
-            }
-        }
         private void SpFyr(object sender, RoutedEventArgs e)
         {
             try
@@ -452,6 +413,71 @@ namespace YPrak
             }
         }
 
+        private void textilCount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (textilCost.Text != "" && textilCount.Text != "")
+                {
+                    int count = Convert.ToInt32(textilCount.Text);
+                    int cost = Convert.ToInt32(textilCost.Text);
+                    int newcost = count * cost;
+                    textilAllCost.Text = newcost.ToString();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Произошла ошибка!");
+            }
+        }
+
+        private void textbox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            using (prak1Entities1 prak = new prak1Entities1())
+            {
+                try
+                {
+                    if (combobox1.SelectedIndex == 0)
+                    {
+
+                        foreach (Fabric_Textile count1 in prak.Fabric_Textile)
+                        {
+                            if (textileId == count1.Textile_Id)
+                            {
+                                double changes;
+                                double x, y;
+                                x = Convert.ToInt32(count1.Roll);
+                                y = Convert.ToInt32(textbox1.Text);
+                                changes = ((x - y) / x) * 100;
+                                textbox2.Text = changes.ToString();
+                            }
+                        }
+                    }
+                    else if (combobox1.SelectedIndex == 1)
+                    {
+
+                        foreach (Fabric_Fyr count2 in prak.Fabric_Fyr)
+                        {
+                            if (fyrId == count2.Fyr_Id)
+                            {
+                                double changes;
+                                double x, y;
+                                x = Convert.ToInt32(count2.Count);
+                                y = Convert.ToInt32(textbox1.Text);
+                                changes = ((x - y) / x) * 100;
+                                textbox2.Text = changes.ToString();
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Произошла ошибка!");
+                }
+
+            }
+        }
+
         private void PostFyr(object sender, RoutedEventArgs e)
         {
             try
@@ -468,12 +494,14 @@ namespace YPrak
                             Width = Convert.ToInt32(fyrnWidth.Text),
                             Cost = Convert.ToInt32(fyrnCost.Text)
                         };
+                        prak.Fyr.Add(fyr);
 
                         Fabric_Fyr fabric = new Fabric_Fyr()
                         { 
                             Fyr_Id = fyrnId.Text,
                             Count = Convert.ToInt32(fyrnCount.Text)
                         };
+                        prak.Fabric_Fyr.Add(fabric);
 
                         prak.SaveChanges();
                         MessageBox.Show("Фурнитура добавлена!");
@@ -486,36 +514,48 @@ namespace YPrak
         }
         private void PostTkani(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    using (prak1Entities1 prak = new prak1Entities1())
-            //    {
-            //        string str = Convert.ToString(posttkani.SelectedItem);
-            //        foreach (Textile textile in prak.Textile)
-            //        {
-            //            if (str == textile.Name)
-            //                textileId = textile.Textile_Id;
-            //        }
-            //        int count1 = Convert.ToInt32(count.Text);
-            //        int cost1 = Convert.ToInt32(cost.Text);
-            //        int newcost = count1 * cost1;
-            //        allcost.Text = newcost.ToString();
-            //        foreach (Fabric_Textile fab_textile in prak.Fabric_Textile)
-            //        {
-            //            if (textileId == fab_textile.Textile_Id)
-            //            {
-            //                fab_textile.Roll += count1;
-            //                fab_textile.Lenght += Convert.ToDouble(lenght.Text);
-            //            }
-            //        }
-            //        prak.SaveChanges();
-            //        MessageBox.Show("Запись обновлена!");
-            //    }
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Запись обновлена!");
-            //}
+            try
+            {
+                if (textilId.Text != "" || textilName.Text != "" || textilWidth.Text != "" || textilLenght.Text != "" || textilCost.Text != "" || textilCount.Text != "" || textilPicture.Text != "")
+
+                    using (prak1Entities1 prak = new prak1Entities1())
+                    {
+                        foreach (Picture picture in prak.Picture)
+                        {
+                            if (picture.Picture1 == textilPicture.Text)
+                            {
+                                textilePicture = picture.Picture_Id;
+                            }    
+                        };
+
+                        Textile textile = new Textile()
+                        {
+                            Textile_Id = textilId.Text,
+                            Name = textilName.Text,
+                            Lenght = Convert.ToInt32(textilLenght.Text),
+                            Width = Convert.ToInt32(textilWidth.Text),
+                            Cost = Convert.ToInt32(textilCost.Text),
+                            Picture_Id = textilePicture
+                        };
+                        prak.Textile.Add(textile);
+
+
+                        Fabric_Textile fabric = new Fabric_Textile()
+                        {
+                            Textile_Id = textilId.Text,
+                            Roll = Convert.ToInt32(textilCount.Text),
+                            Lenght = Convert.ToInt32(textilLenght.Text)
+                        };
+                        prak.Fabric_Textile.Add(fabric);
+
+                        prak.SaveChanges();
+                        MessageBox.Show("Ткань добавлена!");
+                    }
+            }
+            catch
+            {
+                MessageBox.Show("Произошла ошибка!");
+            }
         }
     }
 }

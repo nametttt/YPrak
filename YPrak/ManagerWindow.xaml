@@ -48,14 +48,38 @@
                 <TabItem Header="Оформление заказа">
                     <StackPanel>
                         <TextBlock Text="Оформление заказа" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Итоговая стоимость" Grid.Row="3" Grid.Column="0"/>
+                            <TextBlock Text="Поиск по названию" Grid.Row="0" Grid.Column="0"/>
+                            <TextBlock Text="Покупатель" Grid.Row="1" Grid.Column="0"/>
+                            <ComboBox Margin="10" Grid.Row="2" Grid.Column="1" Name="Edin1" SelectionChanged="Edin1_SelectionChanged">
+                                <ComboBoxItem Content="мм"/>
+                                <ComboBoxItem Content="см"/>
+                                <ComboBoxItem Content="дм"/>
+                                <ComboBoxItem Content="м"/>
+                            </ComboBox>
+                            <TextBlock Text="Единица измерения" Grid.Row="2" Grid.Column="0"/>
+                            <TextBox x:Name="Customer" Margin="10" Grid.Row="1" Grid.Column="1"/>
 
-                        <DataGrid Height="300" Margin="10,10" x:Name="datagrid11" Background="White"></DataGrid>
+                            <TextBox x:Name="OrderSearch" Margin="10" Grid.Row="0" Grid.Column="1" KeyDown="OrderSearch_KeyDown"/>
+                            <TextBox Text="0" x:Name="AllCost" Margin="10" Grid.Row="3" Grid.Column="1" IsReadOnly="True"/>
+                            <DataGrid Height="500" Grid.Row="3" Grid.ColumnSpan="2"  Margin="10" x:Name="datagrid11" MouseDown="datagrid1_PreviewMouseDown"></DataGrid>
+                            <Button Margin="10,10,10,20" Grid.Row="4" Grid.ColumnSpan="2" Content="Оформить" Click="Button_Click_1"/>
 
-                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Label Content="Итоговая стоимость"/>
-                            <TextBox Margin="10, 0, 0, 0" MinWidth="600" Name="AllCost"/>
-                        </WrapPanel>
-                        <Button Margin="10" Content="Оформить" Click="Button_Click_1"/>
+                        </Grid>
+
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Заказы">
