@@ -210,10 +210,18 @@ namespace YPrak
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            try
+            {
+
             if (Convert.ToDouble(textbox2.Text) > 20)
                 MessageBox.Show("Данные отправлены на утверждение Дирекцией");
             else
                 MessageBox.Show("Данные приняты к учету");
+            }
+            catch
+            {
+                MessageBox.Show("Введите все данные!");
+            }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -268,6 +276,15 @@ namespace YPrak
                         if (fyrName == fyr.Name)
                         {
                             fyrId = fyr.Fyr_Id;
+
+                            foreach (Fabric_Fyr count1 in prak.Fabric_Fyr)
+                            {
+                                if (fyrId == count1.Fyr_Id)
+                                {
+                                    sklad.Text = count1.Count.ToString();
+
+                                }
+                            }
                         }
                     }
                 }
@@ -279,6 +296,14 @@ namespace YPrak
                         if (textileName == textile.Name)
                         {
                             textileId = textile.Textile_Id;
+
+                            foreach (Fabric_Textile count1 in prak.Fabric_Textile)
+                            {
+                                if (textileId == count1.Textile_Id)
+                                {
+                                    sklad.Text = count1.Roll.ToString();
+                                }
+                            }
                         }
                     }
                 }
@@ -303,7 +328,7 @@ namespace YPrak
                                     double changes;
                                     double x, y;
                                     x = Convert.ToInt32(count1.Roll);
-                                    y = Convert.ToInt32(textbox.Text);
+                                    y = Convert.ToInt32(textbox1.Text);
                                     changes = ((x - y) / x) * 100;
                                     textbox2.Text = changes.ToString();
                                 }
@@ -319,7 +344,7 @@ namespace YPrak
                                     double changes;
                                     double x, y;
                                     x = Convert.ToInt32(count2.Count);
-                                    y = Convert.ToInt32(textbox.Text);
+                                    y = Convert.ToInt32(textbox1.Text);
                                     changes = ((x - y) / x) * 100;
                                     textbox2.Text = changes.ToString();
                                 }
