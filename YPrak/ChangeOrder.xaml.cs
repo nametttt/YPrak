@@ -46,6 +46,7 @@ namespace YPrak
                 MessageBox.Show("Заказ изменен!");
                 this.Hide();
             }
+            /// Получение активного окна и обновление таблицы
             foreach (ManagerWindow window in Application.Current.Windows.OfType<ManagerWindow>())
             {
                 window.UpdateZakaz();

@@ -46,6 +46,8 @@ namespace YPrak
                 MessageBox.Show("Ткань изменена!");
                 this.Hide();
             }
+
+            /// Получение активного окна и обновление таблицы
             foreach (StorekeeperWindow window in Application.Current.Windows.OfType<StorekeeperWindow>())
             {
                 window.UpdateTkani(1);

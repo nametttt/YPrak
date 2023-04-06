@@ -449,5 +449,16 @@ namespace YPrak
             }
 
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            using (prak1Entities1 prak = new prak1Entities1())
+            {
+                foreach (User user in prak.User)
+                {
+                    Customer.Items.Add(user);
+                }
+            }
+        }
     }
 }

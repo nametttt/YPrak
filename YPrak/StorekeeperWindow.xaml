@@ -8,17 +8,11 @@
         Background="#fffcd6"
         WindowStartupLocation="CenterScreen"
         Title="Экран кладовщика" Height="550" Width="800" MinHeight="550" MinWidth="800" Icon="Logo/logo-02.jpg" Closed="Window_Closed" Loaded="Window_Loaded">
-    <Window.Resources>
-        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#D1EEFC" />
-        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#D1EEFC" />
-        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
-        <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
-    </Window.Resources>
     <ScrollViewer>
         <StackPanel>
             <Button Content="Выход" Margin="0,10,10,5" HorizontalAlignment="Right" Click="Button_Click"/>
-            <TabControl Background="#fffcd6">
-                <TabItem Header="Поступление ткани" Background="#D1EEFC">
+            <TabControl>
+                <TabItem Header="Поступление ткани">
                     <StackPanel>
                         <TextBlock Text="Поступление ткани" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,20"/>
                         <Grid>
@@ -62,7 +56,7 @@
 
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Поступление фурнитуры" Background="#D1EEFC">
+                <TabItem Header="Поступление фурнитуры">
                     <StackPanel>
                         <TextBlock Text="Поступление фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,20"/>
                         <Grid>
@@ -107,7 +101,7 @@
                         </Grid>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Инвентаризация" Background="#D1EEFC" Height="27" Margin="-2,0,-2,0" VerticalAlignment="Bottom">
+                <TabItem Header="Инвентаризация">
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="Инвентаризация" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
                         <Grid>
@@ -141,7 +135,7 @@
                         </Grid>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Ткани" Background="#D1EEFC">
+                <TabItem Header="Списание ткани" Background="#D1EEFC">
                     <StackPanel>
                         <TextBlock Text="Списание тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
                         <Grid>
@@ -179,7 +173,7 @@
 
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Фурнитура" Background="#D1EEFC">
+                <TabItem Header="Списание фурнитуры">
                     <StackPanel>
                         <TextBlock Text="Списание фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
                         <Grid>

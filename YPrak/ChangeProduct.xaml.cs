@@ -45,6 +45,8 @@ namespace YPrak
                 MessageBox.Show("Изделие изменено!");
                 this.Hide();
             }
+
+            /// Получение активного окна и обновление таблицы
             foreach (ManagerWindow window in Application.Current.Windows.OfType<ManagerWindow>())
             {
                 window.UpdateIz(1);

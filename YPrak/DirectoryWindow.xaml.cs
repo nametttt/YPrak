@@ -1,21 +1,27 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.SqlClient;
+﻿using System;
 using System.IO;
+using System.IO.Packaging;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Xaml;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Path = System.IO.Path;
+using System.Windows.Xps.Packaging;
+using System.Windows.Xps.Serialization;
+using System.Windows.Markup;
+using XamlWriter = System.Windows.Markup.XamlWriter;
+using System.Windows.Documents;
+using System.Text;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using DocumentFormat.OpenXml;
+using System.Data;
+using Table = DocumentFormat.OpenXml.Wordprocessing.Table;
+using TableRow = DocumentFormat.OpenXml.Wordprocessing.TableRow;
+using TableCell = DocumentFormat.OpenXml.Wordprocessing.TableCell;
+using Paragraph = DocumentFormat.OpenXml.Wordprocessing.Paragraph;
+using Run = DocumentFormat.OpenXml.Wordprocessing.Run;
+using Microsoft.Win32;
 
 namespace YPrak
 {
@@ -182,44 +188,27 @@ namespace YPrak
         {
             UpdateSpFyr();
         }
-        private void Save_Click(object sender, RoutedEventArgs e)
+
+        private void PrintDoc(DataGrid dataGrid, string header)
         {
-            //SaveFileDialog sfd = new SaveFileDialog();
-            //sfd.Filter = "Text Files (*.txt)|*.txt|RichText Files (*.rtf)|*.rtf|XAML Files (*.xaml)|*.xaml|All files (*.*)|*.*";
-            //if (Convert.ToBoolean(sfd.ShowDialog()) == true)
-            //{
-            //    TextRange doc = new TextRange(docBox.Document.ContentStart, docBox.Document.ContentEnd);
-            //    using (FileStream fs = File.Create(sfd.FileName))
-            //    {
-            //        if (System.IO.Path.GetExtension(sfd.FileName).ToLower() == ".rtf")
-            //            doc.Save(fs, DataFormats.Rtf);
-            //        else if (Path.GetExtension(sfd.FileName).ToLower() == ".txt")
-            //            doc.Save(fs, DataFormats.Text);
-            //        else
-            //            doc.Save(fs, DataFormats.Xaml);
-            //    }
-            //}
+            string text = "";
+            foreach (var a in dataGrid.Items)
+            {
+                text += a + "\n";
+            }
+
+            PrintDialog printDlg = new PrintDialog();
+            TextBlock visual = new TextBlock();
+            visual.Inlines.Add(text);
+            visual.Margin = new Thickness(5);
+            visual.TextWrapping = TextWrapping.Wrap;
+            Size pageSize = new Size(printDlg.PrintableAreaWidth, printDlg.PrintableAreaHeight);
+            visual.Measure(pageSize);
+            visual.Arrange(new Rect(0, 0, pageSize.Width, pageSize.Height));
+            if (printDlg.ShowDialog() == true)
+                printDlg.PrintVisual(visual, header);
         }
 
-        private void Load_Click(object sender, RoutedEventArgs e)
-        {
-            //OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.Filter = "RichText Files (*.rtf)|*.rtf|All files (*.*)|*.*";
-
-            //if (Convert.ToBoolean(ofd.ShowDialog()) == true)
-            //{
-            //    TextRange doc = new TextRange(docBox.Document.ContentStart, docBox.Document.ContentEnd);
-            //    using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open))
-            //    {
-            //        if (Path.GetExtension(ofd.FileName).ToLower() == ".rtf")
-            //            doc.Load(fs, DataFormats.Rtf);
-            //        else if (Path.GetExtension(ofd.FileName).ToLower() == ".txt")
-            //            doc.Load(fs, DataFormats.Text);
-            //        else
-            //            doc.Load(fs, DataFormats.Xaml);
-            //    }
-            //}
-        }
         private void Search1_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -249,6 +238,52 @@ namespace YPrak
                     MessageBox.Show("Изделий не найдено!");
                 }
             }
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            using (WordprocessingDocument doc = WordprocessingDocument.Create("output.txt", WordprocessingDocumentType.Document))
+            {
+                /// Создаем основной раздел (MainDocumentPart)
+                MainDocumentPart mainPart = doc.AddMainDocumentPart();
+                mainPart.Document = new Document();
+
+                /// Создаем пустой тело документа
+                Body body = new Body();
+                mainPart.Document.Append(body);
+
+                /// Создаем таблицу
+                Table table = new Table();
+
+
+                /// Заголовки столбцов
+                TableRow headerRow = new TableRow();
+                foreach (DataGridColumn column in datagrid1.Columns)
+                {
+                    headerRow.Append(new TableCell(new Paragraph(new Run(column.Header.ToString()))));
+                }
+                table.Append(headerRow);
+
+                /// Данные таблицы
+                foreach (var row in datagrid1.Items)
+                {
+                    TableRow tableRow = new TableRow();
+                    foreach (DataGridColumn column in datagrid1.Columns)
+                    {
+                        string cellValue = row.GetType().GetProperty(column.SortMemberPath).GetValue(row, null)?.ToString() ?? "";
+                        tableRow.Append(new TableCell(new Paragraph(new Run(cellValue))));
+                    }
+                    table.Append(tableRow);
+                }
+
+                /// Добавляем таблицу в тело документа
+                body.Append(table);
+            }
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            PrintDoc(datagrid2, header1.Text);
         }
     }
 }

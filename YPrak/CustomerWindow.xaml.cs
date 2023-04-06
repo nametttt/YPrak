@@ -198,6 +198,7 @@ namespace YPrak
         {
             var selectedItems = datagrid1.SelectedItems;
 
+            /// Получение нажатой строки
             if (selectedItems.Count > 0)
             {
                 var selectedItem = selectedItems[0];
@@ -212,10 +213,13 @@ namespace YPrak
                     return (cellContent as TextBlock)?.Text;
                 }).ToList();
 
+                /// Получение значений нажатой строки
                 var cellValue = cells[0];
                 var cellText = cells[1];
                 var cellValueText = cells[2];
                 var cellWidth = cells[3];
+
+                /// Открытие формы с информацией об изделии
                 AboutProduct product = new AboutProduct();
                 product.Show();
                 product.plow.Text += cellValue;
@@ -223,6 +227,7 @@ namespace YPrak
                 product.width.Text += cellWidth;
                 product.height.Text += cellValueText;
 
+                /// Вывод изображения изделия
                 var s = cellValue;
                 Image image = new Image();
                 BitmapImage bitmap = new BitmapImage();

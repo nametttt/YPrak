@@ -67,12 +67,14 @@ namespace YPrak
                 this.Hide();
             }
 
-            
 
+            /// Получение активного окна и обновление таблицы
             foreach (CustomerWindow window in Application.Current.Windows.OfType<CustomerWindow>())
             {
                 int sum =Convert.ToInt32(window.AllCost.Text);
                 window.UpdateIz(1);
+
+                /// Получение стоимости изделелий
                 using (prak1Entities1 prak = new prak1Entities1())
                 {
                     foreach(var fyfr in prak.Fyr_Product)
@@ -103,9 +105,8 @@ namespace YPrak
                         }
                     }
                 }
-                sum *= count;
+                    sum *= count;
                     window.AllCost.Text = sum.ToString();
-
             }
         }
     }

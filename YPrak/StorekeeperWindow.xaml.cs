@@ -260,12 +260,10 @@ namespace YPrak
                 foreach (Textile textile in prak.Textile)
                 {
                     sptkani.Items.Add(textile.Name);
-                    //posttkani.Items.Add(textile.Name);
                 }
                 foreach (Fyr fyr in prak.Fyr)
                 {
                     spfyr.Items.Add(fyr.Name);
-                    //postfyr.Items.Add(fyr.Name);
                 }
                 foreach (Picture pic in prak.Picture)
                 {
@@ -341,10 +339,10 @@ namespace YPrak
                             else
                             {
                                 fab_fyr.Count = 0;
+                                MessageBox.Show("Фурнитура списана!");
                             }
                         }
                     }
-                    MessageBox.Show("Фурнитура списана!");
                     prak.SaveChanges();
                     UpdateFyr(1);
                 }
@@ -374,11 +372,11 @@ namespace YPrak
                                 MessageBox.Show("Ткань уже была списана!");
                             else
                             {
-                                fab_textile.Lenght = 0;
+                                fab_textile.Roll = 0;
+                                MessageBox.Show("Ткань списана!");
                             }
                         }
                     }
-                    MessageBox.Show("Ткань списана!");
                     prak.SaveChanges();
                     UpdateTkani(1);
                 }
@@ -560,18 +558,18 @@ namespace YPrak
         {
             Application wordApp = new Application();
 
-            // Создание нового документа
+            /// Создание нового документа
             Document wordDoc = wordApp.Documents.Add();
 
-            // Создание таблицы в документе
+            /// Создание таблицы в документе
             Table wordTable = wordDoc.Tables.Add(
-                wordDoc.Paragraphs[1].Range, // Добавляем таблицу в начало документа
-                1, // Количество строк
-                6, // Количество столбцов
-                WdDefaultTableBehavior.wdWord9TableBehavior, // Поведение таблицы по умолчанию
-                WdAutoFitBehavior.wdAutoFitWindow); // Подгонка размеров таблицы под содержимое
+                wordDoc.Paragraphs[1].Range, /// Добавляем таблицу в начало документа
+                1, /// Количество строк
+                6, /// Количество столбцов
+                WdDefaultTableBehavior.wdWord9TableBehavior, /// Поведение таблицы по умолчанию
+                WdAutoFitBehavior.wdAutoFitWindow); /// Подгонка размеров таблицы под содержимое
 
-            // Заголовки столбцов таблицы
+            /// Заголовки столбцов таблицы
             wordTable.Cell(1, 1).Range.Text = "артикул";
             wordTable.Cell(1, 2).Range.Text = "название";
             wordTable.Cell(1, 3).Range.Text = "длина";
@@ -579,8 +577,8 @@ namespace YPrak
             wordTable.Cell(1, 5).Range.Text = "цена";
             wordTable.Cell(1, 6).Range.Text = "количество";
 
-            // Добавление данных из текстовых полей в таблицу
-            wordTable.Rows.Add(); // Добавляем новую строку в таблицу
+            /// Добавление данных из текстовых полей в таблицу
+            wordTable.Rows.Add(); /// Добавляем новую строку в таблицу
             wordTable.Cell(2, 1).Range.Text = fyrnId.Text;
             wordTable.Cell(2, 2).Range.Text = fyrnName.Text;
             wordTable.Cell(2, 3).Range.Text = fyrnLenght.Text;
@@ -588,16 +586,16 @@ namespace YPrak
             wordTable.Cell(2, 5).Range.Text = fyrnCost.Text;
             wordTable.Cell(2, 6).Range.Text = fyrnCount.Text;
 
-            // Отображение диалогового окна сохранения файла
+            /// Отображение диалогового окна сохранения файла
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Документ Word (*.docx)|*.docx|Все файлы (*.*)|*.*";
             if (saveFileDialog.ShowDialog() == true)
             {
-                // Сохранение документа
+                /// Сохранение документа
                 wordDoc.SaveAs2(Path.GetFullPath(saveFileDialog.FileName));
             }
 
-            // Закрытие документа и приложения Word
+            /// Закрытие документа и приложения Word
             wordDoc.Close();
             wordApp.Quit();
         }
@@ -648,18 +646,18 @@ namespace YPrak
         {
             Application wordApp = new Application();
 
-            // Создание нового документа
+            /// Создание нового документа
             Document wordDoc = wordApp.Documents.Add();
 
-            // Создание таблицы в документе
+            /// Создание таблицы в документе
             Table wordTable = wordDoc.Tables.Add(
-                wordDoc.Paragraphs[1].Range, // Добавляем таблицу в начало документа
-                1, // Количество строк
-                6, // Количество столбцов
-                WdDefaultTableBehavior.wdWord9TableBehavior, // Поведение таблицы по умолчанию
-                WdAutoFitBehavior.wdAutoFitWindow); // Подгонка размеров таблицы под содержимое
+                wordDoc.Paragraphs[1].Range, /// Добавляем таблицу в начало документа
+                1, /// Количество строк
+                6, /// Количество столбцов
+                WdDefaultTableBehavior.wdWord9TableBehavior, /// Поведение таблицы по умолчанию
+                WdAutoFitBehavior.wdAutoFitWindow); /// Подгонка размеров таблицы под содержимое
 
-            // Заголовки столбцов таблицы
+            /// Заголовки столбцов таблицы
             wordTable.Cell(1, 1).Range.Text = "артикул";
             wordTable.Cell(1, 2).Range.Text = "название";
             wordTable.Cell(1, 3).Range.Text = "длина";
@@ -667,8 +665,8 @@ namespace YPrak
             wordTable.Cell(1, 5).Range.Text = "цена";
             wordTable.Cell(1, 6).Range.Text = "количество";
 
-            // Добавление данных из текстовых полей в таблицу
-            wordTable.Rows.Add(); // Добавляем новую строку в таблицу
+            /// Добавление данных из текстовых полей в таблицу
+            wordTable.Rows.Add(); /// Добавляем новую строку в таблицу
             wordTable.Cell(2, 1).Range.Text = textilId.Text;
             wordTable.Cell(2, 2).Range.Text = textilName.Text;
             wordTable.Cell(2, 3).Range.Text = textilLenght.Text;
@@ -676,21 +674,23 @@ namespace YPrak
             wordTable.Cell(2, 5).Range.Text = textilCost.Text;
             wordTable.Cell(2, 6).Range.Text = textilCount.Text;
 
-            // Отображение диалогового окна сохранения файла
+            /// Отображение диалогового окна сохранения файла
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Документ Word (*.docx)|*.docx|Все файлы (*.*)|*.*";
             if (saveFileDialog.ShowDialog() == true)
             {
-                // Сохранение документа
+                /// Сохранение документа
                 wordDoc.SaveAs2(Path.GetFullPath(saveFileDialog.FileName));
             }
 
-            // Закрытие документа и приложения Word
+            /// Закрытие документа и приложения Word
             wordDoc.Close();
             wordApp.Quit();
         }
         private void datagrid1_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
+            /// Получение выделенной строки datagrid
+            
             var selectedItems = datagrid1.SelectedItems;
 
             if (selectedItems.Count > 0)
@@ -713,6 +713,7 @@ namespace YPrak
                 var cellWidth = cells[5];
                 var cellCost = cells[7];
 
+                /// Отправка значений на форму
                 AboutTextile product = new AboutTextile();
                 product.Show();
                 product.plow.Text += cellValue;
