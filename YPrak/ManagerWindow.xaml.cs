@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Drawing.Charts;
+using DocumentFormat.OpenXml.Vml;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -34,6 +37,33 @@ namespace YPrak
             Edin1.SelectedIndex = 1;
             Edin.SelectedIndex = 1;
             UpdateZakaz();
+            UpdateTextile();
+        }
+
+        public void UpdateTextile()
+        {
+            datagrid4.Items.Refresh();
+            using (prak1Entities1 prak = new prak1Entities1())
+            {
+                var query1 = from Textile in prak.Textile
+                             join Picture in prak.Picture on Textile.Picture_Id equals Picture.Picture_Id
+                             join Textile_Color in prak.Textile_Color on Textile.Textile_Id equals Textile_Color.Textile_Id
+                             join Color in prak.Color on Textile_Color.Color_Id equals Color.Color_Id
+                             join Textile_Consist in prak.Textile_Consist on Textile.Textile_Id equals Textile_Consist.Textile_Id
+                             join Consist in prak.Consist on Textile_Consist.Consist_Id equals Consist.Consist_Id
+                             select new
+                             {
+                                 Артикул = Textile.Textile_Id,
+                                 Название = Textile.Name,
+                                 Рисунок = Picture.Picture1,
+                                 Состав = Consist.Consist1,
+                                 Цвет = Color.Color1,
+                                 Ширина = Textile.Width,
+                                 Длина = Textile.Lenght,
+                                 Цена = Textile.Cost
+                             };
+                datagrid4.ItemsSource = query1.ToList();
+            }
         }
 
         private void OrderSearch_KeyDown(object sender, KeyEventArgs e)
@@ -69,7 +99,9 @@ namespace YPrak
 
         public void UpdateIz(double edin)
         {
+            datagrid11.ItemsSource = null;
             datagrid1.ItemsSource = null;
+
             using (prak1Entities1 prak = new prak1Entities1())
             {
 
@@ -81,7 +113,9 @@ namespace YPrak
                                  Ширина = Product.Width * edin,
                                  Длина = Product.Lenght * edin
                              };
+                datagrid11.ItemsSource = query1.ToList();
                 datagrid1.ItemsSource = query1.ToList();
+
             }
         }
 
@@ -100,7 +134,8 @@ namespace YPrak
 
         public void UpdateZakaz()
         {
-            datagrid2.ItemsSource=null;
+            datagrid2.ItemsSource = null;
+            datagrid3.ItemsSource = null;
             using (prak1Entities1 prak = new prak1Entities1())
             {
                 var query1 = from Order in prak.Order
@@ -113,6 +148,7 @@ namespace YPrak
                                  Менеджер = Order.Manager
                              };
                 datagrid2.ItemsSource = query1.ToList();
+                datagrid3.ItemsSource = query1.ToList();
             }
         }
 
@@ -458,6 +494,142 @@ namespace YPrak
                 {
                     Customer.Items.Add(user);
                 }
+            }
+        }
+
+
+        private void datagrid3_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            using (prak1Entities1 prak = new prak1Entities1())
+            {
+                int ordCount = 0, minus = 0, fabryc = 0;
+                var selectedItems = datagrid3.SelectedItems;
+
+                if (selectedItems.Count > 0)
+                {
+                    var selectedItem = selectedItems[0];
+
+                    var selectedRow = (DataGridRow)datagrid3.ItemContainerGenerator.ContainerFromItem(selectedItem);
+
+                    int selectedIndex = datagrid3.ItemContainerGenerator.IndexFromContainer(selectedRow);
+
+                    var cells = datagrid3.Columns.Select(column =>
+                    {
+                        var cellContent = column.GetCellContent(selectedRow);
+                        return (cellContent as TextBlock)?.Text;
+                    }).ToList();
+
+                    var number = cells[0];
+
+                    IdFyr.Text = number;
+
+                    var orderedProduct = prak.Ordered_Products.FirstOrDefault(i => i.Order_Id.ToString() == number);
+
+                    if (orderedProduct != null)
+                    {
+                        ordCount = orderedProduct.Count;
+
+                        var fyrProduct = prak.Fyr_Product.FirstOrDefault(j => j.Product_Id == orderedProduct.Product_Id);
+                        var fabricFyr = prak.Fabric_Fyr.FirstOrDefault(x => x.Fyr_Id == fyrProduct.Fyr_Id);
+
+                        if (fyrProduct != null)
+                        {
+                            minus = fyrProduct.Count;
+                            fabryc = fabricFyr.Count;
+                        }
+                    }
+                    DoFyr.Text = (ordCount * minus).ToString();
+                    IsFyr.Text = fabryc.ToString();
+                }
+            }
+        }
+
+        private void button_Click_2(object sender, RoutedEventArgs e)
+        {
+            bool canCutAll = false;
+            Cutting ct = new Cutting();
+            int? w = 0;
+            int? h = 0;
+            foreach (var item in datagrid4.SelectedItems)
+            {
+                var dataRowView = item as DataRowView;
+                if (dataRowView != null)
+                {
+                    // Обработка данных строки
+                    List<Tovar> products = new List<Tovar>();
+                    var prodId = dataRowView["Product_Id"];
+                    var nam = dataRowView["Name"].ToString();
+                    var wid = Convert.ToInt32(dataRowView["Width"]);
+                    var len = Convert.ToInt32(dataRowView["Lenght"]);
+                    using (prak1Entities1 db = new prak1Entities1())
+                    {
+                        foreach (var i in db.Textile_Product)
+                        {
+                            if (i.Product_Id == prodId.ToString())
+                            {
+                                foreach (var j in db.Textile)
+                                {
+                                    if (j.Textile_Id == i.Textile_Id)
+                                    {
+                                        w = j.Width;
+                                        h = j.Lenght;
+                                        Fabric fabric = new Fabric()
+                                        {
+                                            Width = (int)w,
+                                            Length = (int)h,
+                                            Cuts = new List<Cut> { new Cut { Width = 100, Length = 100 } }
+                                        };
+                                        Tovar t = new Tovar()
+                                        {
+                                            Name = nam,
+                                            Width = wid,
+                                            Length = len,
+                                        };
+                                        products.Add(t);
+
+
+                                        canCutAll = ct.CutFabric(fabric, products);
+                                    };
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if (canCutAll)
+            {
+                MessageBox.Show("Ткани хватит на все изделия");
+            }
+            else
+            {
+                MessageBox.Show("Ткани не хватит на все изделия");
+            }
+        }
+
+        private void TextileName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            datagrid4.Items.Refresh();
+            using (prak1Entities1 prak = new prak1Entities1())
+            {
+                var query1 = from Textile in prak.Textile
+                             join Picture in prak.Picture on Textile.Picture_Id equals Picture.Picture_Id
+                             join Textile_Color in prak.Textile_Color on Textile.Textile_Id equals Textile_Color.Textile_Id
+                             join Color in prak.Color on Textile_Color.Color_Id equals Color.Color_Id
+                             join Textile_Consist in prak.Textile_Consist on Textile.Textile_Id equals Textile_Consist.Textile_Id
+                             join Consist in prak.Consist on Textile_Consist.Consist_Id equals Consist.Consist_Id
+                             where Textile.Name.ToLower().Contains(TextileName.Text)
+                             select new
+                             {
+                                 Артикул = Textile.Textile_Id,
+                                 Название = Textile.Name,
+                                 Рисунок = Picture.Picture1,
+                                 Состав = Consist.Consist1,
+                                 Цвет = Color.Color1,
+                                 Ширина = Textile.Width,
+                                 Длина = Textile.Lenght,
+                                 Цена = Textile.Cost
+                             };
+                datagrid4.ItemsSource = query1.ToList();
             }
         }
     }

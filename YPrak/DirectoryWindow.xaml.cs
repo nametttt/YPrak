@@ -114,6 +114,7 @@ namespace YPrak
             {
                 var query1 = from Textile in prak.Textile
                              join Fabric_Textile in prak.Fabric_Textile on Textile.Textile_Id equals Fabric_Textile.Textile_Id
+                             where Fabric_Textile.Roll > 0
                              select new
                              {
                                  Артикул = Textile.Textile_Id,
@@ -197,6 +198,8 @@ namespace YPrak
                 text += a + "\n";
             }
 
+            /// Печать отчета
+            
             PrintDialog printDlg = new PrintDialog();
             TextBlock visual = new TextBlock();
             visual.Inlines.Add(text);
@@ -283,7 +286,22 @@ namespace YPrak
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            PrintDoc(datagrid2, header1.Text);
+            PrintDoc(datagrid2, header2.Text);
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            PrintDoc(datagrid4, header4.Text);
+        }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            PrintDoc(datagrid3, header3.Text);
+        }
+
+        private void Button_Click_10(object sender, RoutedEventArgs e)
+        {
+            PrintDoc(datagrid1, header1.Text);
         }
     }
 }

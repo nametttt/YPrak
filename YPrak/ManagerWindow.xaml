@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
          Background="#fffcd6"
-        Title="Экран менеджера" Height="520" Width="800" MinHeight="500" MinWidth="800" Icon="Logo/logo-02.jpg" Closed="Window_Closed">
+        Title="Экран менеджера" Height="520" Width="800" MinHeight="500" MinWidth="800" Icon="Logo/logo-02.jpg" Closed="Window_Closed" Loaded="Window_Loaded">
+
     <ScrollViewer>
         <StackPanel>
             <Button Content="Выход" Margin="0,10,10,0" HorizontalAlignment="Right" Click="Button_Click"/>
@@ -103,6 +104,55 @@
                            
                             <Button Margin="10" Grid.Row="2" Grid.ColumnSpan="2" Content="Обновить" Click="Button_Click_1" />
                             <DataGrid Height="500" Grid.Row="2" Grid.ColumnSpan="2"  Margin="10" x:Name="datagrid2" MouseDown="datagrid2_MouseDown"/>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Затраты фурнитуры">
+                    <StackPanel>
+                        <TextBlock Text="Оценка затрат фурнитуры" Margin="0,40,0,30" FontSize="36" HorizontalAlignment="Center"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <DataGrid Height="300" Grid.Row="0" Grid.ColumnSpan="2"  Margin="10" x:Name="datagrid3" MouseDown="datagrid3_MouseDown"/>
+                           
+                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Номер заказа"/>
+                            <TextBlock Grid.Column="0" Grid.Row="2" Text="На складе имеется"/>
+                            <TextBlock Grid.Column="0" Grid.Row="3" Text="Для заказа требуется"/>
+                           
+                            <TextBox Name="IdFyr" Grid.Column="1" Grid.Row="1" Margin="10" IsReadOnly="True"/>
+                            <TextBox Name="IsFyr" Grid.Column="1" Grid.Row="2" Margin="10" IsReadOnly="True"/>
+                            <TextBox Name="DoFyr" Grid.Column="1" Grid.Row="3" Margin="10" IsReadOnly="True"/>
+
+                        </Grid> 
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Затраты тканей">
+                    <StackPanel>
+                        <TextBlock Text="Оценка затрат тканей" Margin="0,40,0,30" FontSize="36" HorizontalAlignment="Center"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <DataGrid Height="300" Grid.Row="1" Grid.ColumnSpan="2"  Margin="10" x:Name="datagrid4"/>
+
+                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Группировка по названию"/>
+                            <TextBox Grid.Column="1" Grid.Row="0" Margin="10" x:Name="TextileName" TextChanged="TextileName_TextChanged"/>
+                            <Button x:Name="button" Grid.ColumnSpan="2" Grid.Row="3" Content="Проверить" Margin="10" Click="button_Click_2" />
                         </Grid>
                     </StackPanel>
                 </TabItem>

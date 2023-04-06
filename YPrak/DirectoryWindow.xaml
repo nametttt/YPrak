@@ -14,7 +14,7 @@
             <TabControl>
                 <TabItem Header="Списание тканей">
                     <StackPanel>
-                        <TextBlock Text="Отчет по списанию тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,10"/>
+                        <TextBlock x:Name="header3" Text="Отчет по списанию тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,10"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -32,14 +32,14 @@
                                     </Paragraph>
                                 </FlowDocument>
                             </FlowDocumentScrollViewer>
-                            <Button Content="Печать" Grid.ColumnSpan="2"  Grid.Row="1" Margin="20,10,10,0" Click="Button_Click_6"/>
+                            <Button Content="Печать" Grid.ColumnSpan="2"  Grid.Row="1" Margin="20,0,10,0" Click="Button_Click_9"/>
 
                         </Grid>
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Списание фурнитуры">
                     <StackPanel>
-                        <TextBlock Text="Отчет по списанию фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,10"/>
+                        <TextBlock x:Name="header4" Text="Отчет по списанию фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,10"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -57,7 +57,7 @@
                                     </Paragraph>
                                 </FlowDocument>
                             </FlowDocumentScrollViewer>
-                            <Button Content="Печать" Grid.ColumnSpan="2"  Grid.Row="1" Margin="20,10,10,0" Click="Button_Click_6"/>
+                            <Button Content="Печать" Grid.ColumnSpan="2"  Grid.Row="1" Margin="20,0,10,0" Click="Button_Click_8"/>
 
                         </Grid>
 
@@ -65,7 +65,7 @@
                 </TabItem>
                 <TabItem Header="Остатки тканей">
                     <StackPanel>
-                        <TextBlock x:Name="header1" Text="Отчет по остаткам тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,10"/>
+                        <TextBlock x:Name="header2" Text="Отчет по остаткам тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,10"/>
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -85,7 +85,7 @@
                                 </FlowDocument>
                             </FlowDocumentScrollViewer>
 
-                            <Button Content="Печать" Grid.ColumnSpan="2"  Grid.Row="1" Margin="20,10,10,0" Click="Button_Click_7"/>
+                            <Button Content="Печать" Grid.ColumnSpan="2"  Grid.Row="1" Margin="20,0,10,0" Click="Button_Click_7"/>
 
                         </Grid>
 
@@ -93,7 +93,7 @@
                 </TabItem>
                 <TabItem Header="Остатки фурнитуры">
                     <StackPanel>
-                        <TextBlock Text="Отчет по остаткам фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,10"/>
+                        <TextBlock x:Name="header1" Text="Отчет по остаткам фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,10"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -105,14 +105,14 @@
                             </Grid.RowDefinitions>
 
                             <FlowDocumentScrollViewer Grid.Row="0" Grid.ColumnSpan="2">
-                                <FlowDocument x:Name="DocFyr">
+                                <FlowDocument>
                                     <Paragraph>
                                         <DataGrid Height="400" Width="720" FontSize="16" x:Name="datagrid1"></DataGrid>
                                     </Paragraph>
                                 </FlowDocument>
                             </FlowDocumentScrollViewer>
 
-                            <Button Content="Печать" Grid.ColumnSpan="2"  Grid.Row="1" Margin="20,10,10,0" Click="Button_Click_6"/>
+                            <Button Content="Печать" Grid.ColumnSpan="2"  Grid.Row="1" Margin="20,0,10,0" Click="Button_Click_10"/>
                         </Grid>
                     </StackPanel>
                 </TabItem>

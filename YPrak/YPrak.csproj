@@ -168,6 +168,7 @@
     <Compile Include="Textile.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TextileHelp.cs" />
     <Compile Include="Textile_Color.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>

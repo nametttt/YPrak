@@ -157,7 +157,7 @@ namespace YPrak
                                 Product_Id = i.Product_Id.ToString(),
                                 Count = Convert.ToInt32(i.Count)
                             };
-                            products.Add(ordered);
+                            prak.Ordered_Products.Add(ordered);
 
                         }
 
@@ -173,7 +173,7 @@ namespace YPrak
 
                             foreach (Order ord in orders)
                             {
-                                sql = $"INSERT INTO \"Order\"VALUES   ({DateTime.Now}, \"Новый\", {selectedUser.Login}, {Convert.ToInt32(i.Count)})";
+                                sql = $"INSERT INTO \"Ordered_Products\"VALUES   ({DateTime.Now}, \"Новый\", {selectedUser.Login}, {Convert.ToInt32(i.Count)})";
                                 SqlCommand command = new SqlCommand(sql, connection);
 
                             }

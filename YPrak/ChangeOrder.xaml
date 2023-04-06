@@ -35,8 +35,13 @@
         <TextBox Grid.Row="1" Grid.Column="1" Margin="10" x:Name="date"/>
         <ComboBox Grid.Row="2" Grid.Column="1" Margin="10" x:Name="status">
             <ComboBoxItem Content="Новый"/>
-            <ComboBoxItem Content="Принят"/>
-            <ComboBoxItem Content="Завершен"/>
+            <ComboBoxItem Content="Ожидает"/>
+            <ComboBoxItem Content="Обработка"/>
+            <ComboBoxItem Content="Отклонен"/>
+            <ComboBoxItem Content="К оплате"/>
+            <ComboBoxItem Content="Оплачен"/>
+            <ComboBoxItem Content="Раскрой"/>
+            <ComboBoxItem Content="Готов"/>
         </ComboBox>
         <TextBox Grid.Row="3" Grid.Column="1" Margin="10" x:Name="manager" IsReadOnly="True"/>
         <TextBox Grid.Row="4" Grid.Column="1" Margin="10" x:Name="customer" IsReadOnly="True"/>
