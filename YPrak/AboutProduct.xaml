@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YPrak"
         mc:Ignorable="d"
+        Background="#fffcd6"
         WindowStartupLocation="CenterScreen"
          Title="Подробнее о товаре" Height="450" Width="450" MinHeight="450" MinWidth="420" Icon="Logo/logo-02.jpg" Closed="Window_Closed">
     <Grid>

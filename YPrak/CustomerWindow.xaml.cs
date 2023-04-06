@@ -77,7 +77,7 @@ namespace YPrak
             {
 
                 var query1 = from Order in prak.Order
-                             where Order.Customer == "Логин"
+                             where Order.Customer == "Я"
                              select new
                              {
                                  Номер = Order.Order_Id,

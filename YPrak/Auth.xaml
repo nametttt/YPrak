@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YPrak"
+         Background="#fffcd6"
         mc:Ignorable="d"
        WindowStartupLocation="CenterScreen"
         Title="Авторизация" Height="320" Width="450" MinHeight="300" MinWidth="350" Icon="Logo/logo-02.jpg" Closed="Window_Closed">

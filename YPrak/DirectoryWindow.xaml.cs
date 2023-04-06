@@ -26,10 +26,12 @@ namespace YPrak
     {
         public DirectoryWindow()
         {
-            InitializeComponent(); UpdateOstFyr();
+            InitializeComponent(); 
+            UpdateOstFyr();
             UpdateOstTkani();
             UpdateSpTkani();
             UpdateSpFyr();
+            Edin.SelectedIndex = 1;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -50,6 +52,7 @@ namespace YPrak
             {
                 var query1 = from Fyr in prak.Fyr
                              join Fabric_Fyr in prak.Fabric_Fyr on Fyr.Fyr_Id equals Fabric_Fyr.Fyr_Id
+                             where Fabric_Fyr.Count > 0
                              select new
                              {
                                  Артикул = Fyr.Fyr_Id,
@@ -57,7 +60,45 @@ namespace YPrak
                                  Партия = Fabric_Fyr.Party,
                                  Количество = Fabric_Fyr.Count
                              };
-                //datagrid1.ItemsSource = query1.ToList();
+                datagrid1.ItemsSource = query1.ToList();
+            }
+        }
+
+        public void UpdateIz(double edin)
+        {
+            datagridItem.ItemsSource = null;
+            using (prak1Entities1 prak = new prak1Entities1())
+            {
+
+                var query1 = from Product in prak.Product
+                             select new
+                             {
+                                 Артикул = Product.Product_Id,
+                                 Название = Product.Name,
+                                 Ширина = Product.Width * edin,
+                                 Длина = Product.Lenght * edin
+                             };
+                datagridItem.ItemsSource = query1.ToList();
+            }
+        }
+
+        private void Edin1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Edin.SelectedIndex == 0)
+            {
+                UpdateIz(10);
+            }
+            else if (Edin.SelectedIndex == 2)
+            {
+                UpdateIz(0.1);
+            }
+            else if (Edin.SelectedIndex == 3)
+            {
+                UpdateIz(0.01);
+            }
+            else if (Edin.SelectedIndex == 1)
+            {
+                UpdateIz(1);
             }
         }
 
@@ -74,7 +115,7 @@ namespace YPrak
                                  Рулон = Fabric_Textile.Roll,
                                  Длина = Fabric_Textile.Lenght
                              };
-                //datagrid2.ItemsSource = query1.ToList();
+                datagrid2.ItemsSource = query1.ToList();
             }
         }
 
@@ -83,41 +124,17 @@ namespace YPrak
             using (prak1Entities1 prak = new prak1Entities1())
             {
                 var query = from Textile in prak.Textile
-                             join Fabric_Textile in prak.Fabric_Textile on Textile.Textile_Id equals Fabric_Textile.Textile_Id
-                             select new
-                             {
-                                 Артикул = Textile.Textile_Id,
-                                 Название = Textile.Name,
-                                 Рулон = Fabric_Textile.Roll,
-                                 Длина = Fabric_Textile.Lenght
-                             };
+                            join Fabric_Textile in prak.Fabric_Textile on Textile.Textile_Id equals Fabric_Textile.Textile_Id
+                            select new
+                            {
+                                Артикул = Textile.Textile_Id,
+                                Название = Textile.Name,
+                                Рулон = Fabric_Textile.Roll,
+                                Длина = Fabric_Textile.Lenght
+                            };
+                datagrid3.ItemsSource = query.ToList();
 
-                // Создаем FlowDocument
-                FlowDocument doc = new FlowDocument();
-                Table table = new Table();
-
-                // Добавляем столбцы в таблицу
-                table.Columns.Add(new TableColumn { Width = new GridLength(1, GridUnitType.Auto) });
-                table.Columns.Add(new TableColumn { Width = new GridLength(1, GridUnitType.Auto) });
-
-                // Добавляем строки в таблицу
-                foreach (var item in query)
-                {
-                    table.RowGroups[0].Rows.Add(new TableRow
-                    {
-                        Cells = {
-                new TableCell(new Paragraph(new Run(item.Название.ToString()))),
-                new TableCell(new Paragraph(new Run(item.Артикул.ToString())))
             }
-                    });
-                }
-
-                // Добавляем таблицу в документ
-                doc.Blocks.Add(table);
-
-                // Отображаем документ в элементе управления FlowDocumentReader
-                flow.Document = doc;
-        }
         }
 
         private void UpdateSpFyr()
@@ -136,7 +153,7 @@ namespace YPrak
                                  Тип = Type.Type1,
                                  Количество = Fabric_Fyr.Count
                              };
-                //datagrid4.ItemsSource = query1.ToList();
+                datagrid4.ItemsSource = query1.ToList();
             }
         }
 
@@ -147,6 +164,7 @@ namespace YPrak
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+
             MessageBox.Show("Отправлено на печать!");
         }
 
@@ -201,6 +219,36 @@ namespace YPrak
             //            doc.Load(fs, DataFormats.Xaml);
             //    }
             //}
+        }
+        private void Search1_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (Search1.Text != "")
+                {
+                    string s = Search1.Text;
+
+                    datagridItem.Items.Refresh();
+                    using (prak1Entities1 prak = new prak1Entities1())
+                    {
+                        var query1 = from Product in prak.Product
+                                     where Product.Name.ToLower().Contains(s)
+                                     select new
+                                     {
+                                         Артикул = Product.Product_Id,
+                                         Название = Product.Name,
+                                         Ширина = Product.Width,
+                                         Длина = Product.Lenght
+                                     };
+                        datagridItem.ItemsSource = query1.ToList();
+                        Search1.Text = "";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Изделий не найдено!");
+                }
+            }
         }
     }
 }

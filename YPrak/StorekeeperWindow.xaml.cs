@@ -12,6 +12,7 @@ using Document = Microsoft.Office.Interop.Word.Document;
 using Window = System.Windows.Window;
 using Application = Microsoft.Office.Interop.Word.Application;
 using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace YPrak
 {
@@ -32,7 +33,7 @@ namespace YPrak
         }
 
 
-        private void UpdateTkani(double edin)
+        public void UpdateTkani(double edin)
         {
             datagrid1.Items.Refresh();
             using (prak1Entities1 prak = new prak1Entities1())
@@ -58,7 +59,7 @@ namespace YPrak
             }
         }
 
-        private void UpdateFyr(double edin)
+        public void UpdateFyr(double edin)
         {
             datagrid2.Items.Refresh();
 
@@ -340,10 +341,10 @@ namespace YPrak
                             else
                             {
                                 fab_fyr.Count = 0;
-                                MessageBox.Show("Фурнитура списана!");
                             }
                         }
                     }
+                    MessageBox.Show("Фурнитура списана!");
                     prak.SaveChanges();
                     UpdateFyr(1);
                 }
@@ -374,10 +375,10 @@ namespace YPrak
                             else
                             {
                                 fab_textile.Lenght = 0;
-                                MessageBox.Show("Ткань списана!");
                             }
                         }
                     }
+                    MessageBox.Show("Ткань списана!");
                     prak.SaveChanges();
                     UpdateTkani(1);
                 }
@@ -496,7 +497,7 @@ namespace YPrak
                             Count = Convert.ToInt32(fyrnCount.Text)
                         };
                         prak.Fabric_Fyr.Add(fabric);
-
+                        CreateWordDocument();
                         prak.SaveChanges();
                         MessageBox.Show("Фурнитура добавлена!");
                     }
@@ -542,7 +543,7 @@ namespace YPrak
                         };
                         prak.Fabric_Textile.Add(fabric);
 
-                        CreateWordDocument();
+                        CreateWordDocument1();
 
                         prak.SaveChanges();
                         MessageBox.Show("Ткань добавлена!");
@@ -554,7 +555,96 @@ namespace YPrak
                 MessageBox.Show(ex.ToString());
             }
         }
+
         private void CreateWordDocument()
+        {
+            Application wordApp = new Application();
+
+            // Создание нового документа
+            Document wordDoc = wordApp.Documents.Add();
+
+            // Создание таблицы в документе
+            Table wordTable = wordDoc.Tables.Add(
+                wordDoc.Paragraphs[1].Range, // Добавляем таблицу в начало документа
+                1, // Количество строк
+                6, // Количество столбцов
+                WdDefaultTableBehavior.wdWord9TableBehavior, // Поведение таблицы по умолчанию
+                WdAutoFitBehavior.wdAutoFitWindow); // Подгонка размеров таблицы под содержимое
+
+            // Заголовки столбцов таблицы
+            wordTable.Cell(1, 1).Range.Text = "артикул";
+            wordTable.Cell(1, 2).Range.Text = "название";
+            wordTable.Cell(1, 3).Range.Text = "длина";
+            wordTable.Cell(1, 4).Range.Text = "ширина";
+            wordTable.Cell(1, 5).Range.Text = "цена";
+            wordTable.Cell(1, 6).Range.Text = "количество";
+
+            // Добавление данных из текстовых полей в таблицу
+            wordTable.Rows.Add(); // Добавляем новую строку в таблицу
+            wordTable.Cell(2, 1).Range.Text = fyrnId.Text;
+            wordTable.Cell(2, 2).Range.Text = fyrnName.Text;
+            wordTable.Cell(2, 3).Range.Text = fyrnLenght.Text;
+            wordTable.Cell(2, 4).Range.Text = fyrnWidth.Text;
+            wordTable.Cell(2, 5).Range.Text = fyrnCost.Text;
+            wordTable.Cell(2, 6).Range.Text = fyrnCount.Text;
+
+            // Отображение диалогового окна сохранения файла
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Документ Word (*.docx)|*.docx|Все файлы (*.*)|*.*";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                // Сохранение документа
+                wordDoc.SaveAs2(Path.GetFullPath(saveFileDialog.FileName));
+            }
+
+            // Закрытие документа и приложения Word
+            wordDoc.Close();
+            wordApp.Quit();
+        }
+
+        private void datagrid2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItems = datagrid2.SelectedItems;
+
+            if (selectedItems.Count > 0)
+            {
+                var selectedItem = selectedItems[0];
+
+                var selectedRow = (DataGridRow)datagrid2.ItemContainerGenerator.ContainerFromItem(selectedItem);
+
+                int selectedIndex = datagrid2.ItemContainerGenerator.IndexFromContainer(selectedRow);
+
+                var cells = datagrid2.Columns.Select(column =>
+                {
+                    var cellContent = column.GetCellContent(selectedRow);
+                    return (cellContent as TextBlock)?.Text;
+                }).ToList();
+
+                var cellValue = cells[0];
+                var cellText = cells[1];
+                var cellValueText = cells[3];
+                var cellWidth = cells[4];
+                var cellCost = cells[5];
+
+                AboutFyr product = new AboutFyr();
+                product.Show();
+                product.plow.Text = cellValue;
+                product.name.Text = cellText;
+                product.width.Text = cellWidth;
+                product.height.Text = cellValueText;
+                product.cost.Text = cellCost;
+
+                var s = cellValue;
+                Image image = new Image();
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri($"FyrImage/{s}.JPG", UriKind.Relative);
+                bitmap.EndInit();
+                product.image.Source = bitmap;
+            }
+        }
+
+        private void CreateWordDocument1()
         {
             Application wordApp = new Application();
 
@@ -598,6 +688,47 @@ namespace YPrak
             // Закрытие документа и приложения Word
             wordDoc.Close();
             wordApp.Quit();
+        }
+        private void datagrid1_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItems = datagrid1.SelectedItems;
+
+            if (selectedItems.Count > 0)
+            {
+                var selectedItem = selectedItems[0];
+
+                var selectedRow = (DataGridRow)datagrid1.ItemContainerGenerator.ContainerFromItem(selectedItem);
+
+                int selectedIndex = datagrid1.ItemContainerGenerator.IndexFromContainer(selectedRow);
+
+                var cells = datagrid1.Columns.Select(column =>
+                {
+                    var cellContent = column.GetCellContent(selectedRow);
+                    return (cellContent as TextBlock)?.Text;
+                }).ToList();
+
+                var cellValue = cells[0];
+                var cellText = cells[1];
+                var cellValueText = cells[6];
+                var cellWidth = cells[5];
+                var cellCost = cells[7];
+
+                AboutTextile product = new AboutTextile();
+                product.Show();
+                product.plow.Text += cellValue;
+                product.name.Text += cellText;
+                product.width.Text += cellWidth;
+                product.height.Text += cellValueText;
+                product.cost.Text += cellCost;
+
+                var s = cellValue;
+                Image image = new Image();
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri($"TextileImage/{s}.JPG", UriKind.Relative);
+                bitmap.EndInit();
+                product.image.Source = bitmap;
+            }
         }
     }
 }

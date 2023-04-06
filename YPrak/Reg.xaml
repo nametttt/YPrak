@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YPrak"
         mc:Ignorable="d"
+         Background="#fffcd6"
         WindowStartupLocation="CenterScreen"
        Title="Регистрация" Height="320" Width="450" MinHeight="300" MinWidth="350" Icon="Logo/logo-02.jpg" Closed="Window_Closed" BorderThickness="0,1,0,0">
     <StackPanel HorizontalAlignment="Center">

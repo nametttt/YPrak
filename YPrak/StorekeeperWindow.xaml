@@ -5,135 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YPrak"
         mc:Ignorable="d"
+        Background="#fffcd6"
         WindowStartupLocation="CenterScreen"
         Title="Экран кладовщика" Height="550" Width="800" MinHeight="550" MinWidth="800" Icon="Logo/logo-02.jpg" Closed="Window_Closed" Loaded="Window_Loaded">
     <Window.Resources>
-        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
-        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#D1EEFC" />
+        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#D1EEFC" />
         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
         <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
     </Window.Resources>
     <ScrollViewer>
         <StackPanel>
             <Button Content="Выход" Margin="0,10,10,5" HorizontalAlignment="Right" Click="Button_Click"/>
-            <TabControl>
-                <TabItem Header="Поступление ткани">
-                    <StackPanel>
-                        
-                            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-                                <Button Content="Сохранить" MinWidth="370"
-                                     />
-                                <Button
-                                Content="Загрузить" Margin="20,0,0,0" MinWidth="370"
-                                />
-                            </StackPanel>
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="Поступление фурнитуры">
-                    <StackPanel>
-                        
-                        <Grid Margin="0,20,0,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <!--<FlowDocumentScrollViewer x:Name="fyrDoc">
-                                <FlowDocument>
-                                    <Paragraph TextAlignment="Center">
-                                        Отчет по поступлению фурнитуры
-                                    </Paragraph>
-                                    <BlockUIContainer>
-                                        <StackPanel
-                                            Grid.Row="3"
-                                            Orientation="Vertical">
-                                            <ListView
-                                                ItemsSource="{Binding NewClothesList}"
-                                                SizeChanged="ListView_OnSizeChanged">
-                                                <ListView.View>
-                                                    <GridView>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=c_code}"
-                                                            Width="90">
-                                                            Артикул
-                                                        </GridViewColumn>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=c_name}"
-                                                            Width="90">
-                                                            Название
-                                                        </GridViewColumn>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=c_width}"
-                                                            Width="90">
-                                                            Ширина
-                                                        </GridViewColumn>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=c_height}"
-                                                            Width="90">
-                                                            Длина
-                                                        </GridViewColumn>
-                                                        <GridViewColumn
-                                                            DisplayMemberBinding="{Binding Path=c_price}"
-                                                            Width="90">
-                                                            Цена
-                                                        </GridViewColumn>
-                                                    </GridView>
-                                                </ListView.View>
-                                                <ListView.ItemContainerStyle>
-                                                    <Style TargetType="ListViewItem"
-                                                           BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                                                        
-                                                    </Style>
-                                                </ListView.ItemContainerStyle>
-                                            </ListView>
-                                        </StackPanel>
-                                    </BlockUIContainer>
-                                </FlowDocument>
-                            </FlowDocumentScrollViewer>-->
-                            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-                                <Button Content="Сохранить" MinWidth="370"
-                                     />
-                                <Button
-                                Content="Загрузить" Margin="20,0,0,0" MinWidth="370"
-                                />
-                            </StackPanel>
-                        </Grid>
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="Инвентаризация">
-                    <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="Инвентаризация" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.5*"/>
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Column="0" Text="Выберите вид материала:"/>
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Выберите материал:"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Данные на складе:"/>
-                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Пересчитанные данные:"/>
-                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Расхождения:"/>
-                            <ComboBox Grid.Column="1" Margin="10" x:Name="combobox1" SelectionChanged="ComboBox_SelectionChanged" Height="28">
-                                <ComboBoxItem Content="Ткани"/>
-                                <ComboBoxItem Content="Фурнитура"/>
-                            </ComboBox>
-                            <ComboBox Grid.Row="1" Grid.Column="1" x:Name="combobox2" Margin="10" SelectionChanged="combobox2_SelectionChanged" Height="28"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="sklad" Margin="10" IsReadOnly="True"/>
-
-                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="textbox1" Margin="10" TextChanged="textbox1_TextChanged"/>
-                            <TextBox Grid.Row="4" Grid.Column="1" x:Name="textbox2" Margin="10" IsReadOnly="True"/>
-                            <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Отправить на утверждение" Margin="10,10,10,10" Click="Button_Click_1"/>
-                        </Grid>
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="Ткани">
+            <TabControl Background="#fffcd6">
+                <TabItem Header="Поступление ткани" Background="#D1EEFC">
                     <StackPanel>
                         <TextBlock Text="Поступление ткани" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,20"/>
                         <Grid>
@@ -174,37 +59,10 @@
 
                             <Button Grid.Row="8" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostTkani"/>
                         </Grid>
-                        <TextBlock Text="Списание тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.5*"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Название ткани:" />
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Поиск по названию:"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Единица измерения:" />
-                            <ComboBox x:Name="sptkani" Margin="10" Grid.Row="0" Grid.Column="1"/>
-                            <TextBox Margin="10" Grid.Row="1" Grid.Column="1"  Name="Search1" KeyDown="Search1_KeyDown"/>
-                            <ComboBox Margin="10" Grid.Row="2" Grid.Column="1" Name="Edin1" SelectionChanged="Edin1_SelectionChanged">
-                                <ComboBoxItem Content="мм"/>
-                                <ComboBoxItem Content="см"/>
-                                <ComboBoxItem Content="дм"/>
-                                <ComboBoxItem Content="м"/>
-                            </ComboBox>
-                            <Button Margin="10" Content="Списать" Grid.Row="3" Grid.ColumnSpan="2" Click="SpTkani"/>
-                            <DataGrid Height="500" Grid.Row="4" Grid.ColumnSpan="2"  Margin="10" x:Name="datagrid1" BorderBrush="Black"></DataGrid>
-                        </Grid>
 
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Фурнитура">
+                <TabItem Header="Поступление фурнитуры" Background="#D1EEFC">
                     <StackPanel>
                         <TextBlock Text="Поступление фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,20"/>
                         <Grid>
@@ -247,6 +105,82 @@
 
                             <Button Grid.Row="8" Grid.ColumnSpan="2" Content="Зафиксировать" Margin="10" Click="PostFyr"/>
                         </Grid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Инвентаризация" Background="#D1EEFC" Height="27" Margin="-2,0,-2,0" VerticalAlignment="Bottom">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Инвентаризация" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Text="Выберите вид материала:"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Выберите материал:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Данные на складе:"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Пересчитанные данные:"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Расхождения:"/>
+                            <ComboBox Grid.Column="1" Margin="10" x:Name="combobox1" SelectionChanged="ComboBox_SelectionChanged" Height="28">
+                                <ComboBoxItem Content="Ткани"/>
+                                <ComboBoxItem Content="Фурнитура"/>
+                            </ComboBox>
+                            <ComboBox Grid.Row="1" Grid.Column="1" x:Name="combobox2" Margin="10" SelectionChanged="combobox2_SelectionChanged" Height="28"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="sklad" Margin="10" IsReadOnly="True"/>
+
+                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="textbox1" Margin="10" TextChanged="textbox1_TextChanged"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" x:Name="textbox2" Margin="10" IsReadOnly="True"/>
+                            <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Отправить на утверждение" Margin="10,10,10,10" Click="Button_Click_1"/>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Ткани" Background="#D1EEFC">
+                    <StackPanel>
+                        <TextBlock Text="Списание тканей" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Название ткани:" />
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Поиск по названию:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Единица измерения:" />
+                            <ComboBox x:Name="sptkani" Margin="10" Grid.Row="0" Grid.Column="1"/>
+                            <TextBox Margin="10" Grid.Row="1" Grid.Column="1"  Name="Search1" KeyDown="Search1_KeyDown"/>
+                            <ComboBox Margin="10" Grid.Row="2" Grid.Column="1" Name="Edin1" SelectionChanged="Edin1_SelectionChanged">
+                                <ComboBoxItem Content="мм"/>
+                                <ComboBoxItem Content="см"/>
+                                <ComboBoxItem Content="дм"/>
+                                <ComboBoxItem Content="м"/>
+                            </ComboBox>
+                            <Button Margin="10" Content="Списать" Grid.Row="3" Grid.ColumnSpan="2" Click="SpTkani"/>
+                            <DataGrid Height="500" Grid.Row="4" Grid.ColumnSpan="2"  Margin="10" x:Name="datagrid1" BorderBrush="Black" MouseDown="datagrid1_PreviewMouseDown">
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="Background" Value="#D1EEFC"></Setter>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                            </DataGrid>
+                        </Grid>
+
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Фурнитура" Background="#D1EEFC">
+                    <StackPanel>
                         <TextBlock Text="Списание фурнитуры" FontSize="36" HorizontalAlignment="Center" Margin="0,40,0,30"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -272,7 +206,13 @@
                                 <ComboBoxItem Content="м"/>
                             </ComboBox>
                             <Button Margin="10" Content="Списать" Grid.Row="3" Grid.ColumnSpan="2" Click="SpFyr"/>
-                            <DataGrid Height="500" Grid.Row="4" Grid.ColumnSpan="2"  Margin="10" x:Name="datagrid2"></DataGrid>
+                            <DataGrid Height="500" Grid.Row="4" Grid.ColumnSpan="2"  Margin="10" x:Name="datagrid2" MouseDown="datagrid2_MouseDown">
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="Background" Value="#D1EEFC"></Setter>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                            </DataGrid>
                         </Grid>
 
                     </StackPanel>
