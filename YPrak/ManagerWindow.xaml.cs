@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Drawing;
 
 namespace YPrak
 {
@@ -37,30 +38,24 @@ namespace YPrak
             Edin1.SelectedIndex = 1;
             Edin.SelectedIndex = 1;
             UpdateZakaz();
-            UpdateTextile();
+            UpdateMyProduct();
         }
 
-        public void UpdateTextile()
+        public void UpdateMyProduct()
         {
             datagrid4.Items.Refresh();
             using (prak1Entities1 prak = new prak1Entities1())
             {
-                var query1 = from Textile in prak.Textile
-                             join Picture in prak.Picture on Textile.Picture_Id equals Picture.Picture_Id
-                             join Textile_Color in prak.Textile_Color on Textile.Textile_Id equals Textile_Color.Textile_Id
-                             join Color in prak.Color on Textile_Color.Color_Id equals Color.Color_Id
-                             join Textile_Consist in prak.Textile_Consist on Textile.Textile_Id equals Textile_Consist.Textile_Id
-                             join Consist in prak.Consist on Textile_Consist.Consist_Id equals Consist.Consist_Id
+                var query1 = from Product in prak.Product
+                             join textile_Product in prak.Textile_Product on Product.Product_Id equals textile_Product.Product_Id
+                             join textile in prak.Textile on textile_Product.Textile_Id equals textile.Textile_Id
                              select new
                              {
-                                 Артикул = Textile.Textile_Id,
-                                 Название = Textile.Name,
-                                 Рисунок = Picture.Picture1,
-                                 Состав = Consist.Consist1,
-                                 Цвет = Color.Color1,
-                                 Ширина = Textile.Width,
-                                 Длина = Textile.Lenght,
-                                 Цена = Textile.Cost
+                                 Артикул = Product.Product_Id,
+                                 Название = Product.Name,
+                                 Ширина = Product.Width,
+                                 Длина = Product.Lenght,
+                                 Ткань = textile.Name
                              };
                 datagrid4.ItemsSource = query1.ToList();
             }
@@ -538,6 +533,17 @@ namespace YPrak
                             fabryc = fabricFyr.Count;
                         }
                     }
+
+                    if (ordCount * minus > fabryc)
+                    {
+                        DoFyr.Text = (fabryc / minus).ToString();
+                        IsFyr.Background = Brushes.Red;
+                    }
+                    else
+                    {
+                        BrushConverter bc = new BrushConverter();
+                        IsFyr.Background = (Brush)bc.ConvertFrom("#FFB5D5CA");
+                    }
                     DoFyr.Text = (ordCount * minus).ToString();
                     IsFyr.Text = fabryc.ToString();
                 }
@@ -548,24 +554,24 @@ namespace YPrak
         {
             bool canCutAll = false;
             Cutting ct = new Cutting();
-            int? w = 0;
-            int? h = 0;
-            foreach (var item in datagrid4.SelectedItems)
+            int w = 0;
+            int h = 0;
+            foreach (var item in datagrid4.Items)
             {
                 var dataRowView = item as DataRowView;
                 if (dataRowView != null)
                 {
                     // Обработка данных строки
                     List<Tovar> products = new List<Tovar>();
-                    var prodId = dataRowView["Product_Id"];
-                    var nam = dataRowView["Name"].ToString();
-                    var wid = Convert.ToInt32(dataRowView["Width"]);
-                    var len = Convert.ToInt32(dataRowView["Lenght"]);
+                    var prodId = dataRowView[0].ToString();
+                    var nam = dataRowView[1].ToString();
+                    var wid = Convert.ToInt32(dataRowView[2]);
+                    var len = Convert.ToInt32(dataRowView[3]);
                     using (prak1Entities1 db = new prak1Entities1())
                     {
                         foreach (var i in db.Textile_Product)
                         {
-                            if (i.Product_Id == prodId.ToString())
+                            if (i.Product_Id == prodId)
                             {
                                 foreach (var j in db.Textile)
                                 {
@@ -586,8 +592,6 @@ namespace YPrak
                                             Length = len,
                                         };
                                         products.Add(t);
-
-
                                         canCutAll = ct.CutFabric(fabric, products);
                                     };
                                 }
@@ -598,11 +602,11 @@ namespace YPrak
             }
             if (canCutAll)
             {
-                MessageBox.Show("Ткани хватит на все изделия");
+                MessageBox.Show("Ткани хватит на все изделия!");
             }
             else
             {
-                MessageBox.Show("Ткани не хватит на все изделия");
+                MessageBox.Show("Ткани не хватит на все изделия!");
             }
         }
 
@@ -611,23 +615,17 @@ namespace YPrak
             datagrid4.Items.Refresh();
             using (prak1Entities1 prak = new prak1Entities1())
             {
-                var query1 = from Textile in prak.Textile
-                             join Picture in prak.Picture on Textile.Picture_Id equals Picture.Picture_Id
-                             join Textile_Color in prak.Textile_Color on Textile.Textile_Id equals Textile_Color.Textile_Id
-                             join Color in prak.Color on Textile_Color.Color_Id equals Color.Color_Id
-                             join Textile_Consist in prak.Textile_Consist on Textile.Textile_Id equals Textile_Consist.Textile_Id
-                             join Consist in prak.Consist on Textile_Consist.Consist_Id equals Consist.Consist_Id
-                             where Textile.Name.ToLower().Contains(TextileName.Text)
+                var query1 = from Product in prak.Product
+                             join textile_Product in prak.Textile_Product on Product.Product_Id equals textile_Product.Product_Id
+                             join textile in prak.Textile on textile_Product.Textile_Id equals textile.Textile_Id
+                             where textile.Name.ToLower().Contains(TextileName.Text)
                              select new
                              {
-                                 Артикул = Textile.Textile_Id,
-                                 Название = Textile.Name,
-                                 Рисунок = Picture.Picture1,
-                                 Состав = Consist.Consist1,
-                                 Цвет = Color.Color1,
-                                 Ширина = Textile.Width,
-                                 Длина = Textile.Lenght,
-                                 Цена = Textile.Cost
+                                 Артикул = Product.Product_Id,
+                                 Название = Product.Name,
+                                 Ширина = Product.Width,
+                                 Длина = Product.Lenght,
+                                 Ткань = textile.Name
                              };
                 datagrid4.ItemsSource = query1.ToList();
             }
